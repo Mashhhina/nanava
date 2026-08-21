@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Каталог — NANAVA</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <nav>
+    <a href="catalog.html">Каталог</a>
+    <a href="catalog.html?cat=clothes">Одежда</a>
+    <a href="catalog.html?cat=bags">Сумки</a>
+  </nav>
+  <a class="logo" href="index.html">Nanava</a>
+  <nav class="right">
+    <a href="#">Помощь</a>
+    <a href="#">Аккаунт</a>
+    <a href="#">Избранное</a>
+    <a href="#">Корзина 00</a>
+  </nav>
+</header>
+
+<div class="subbar">
+  <div class="filters">
+    <button data-cat="all">Все</button>
+    <button data-cat="clothes">Одежда</button>
+    <button data-cat="bags">Сумки</button>
+    <button data-cat="accessories">Аксессуары</button>
+    <button data-cat="objects">Объекты</button>
+  </div>
+  <span class="count" data-count></span>
+</div>
+
+<main class="grid" data-catalog></main>
+
+<footer>
+  <span>© NANAVA 2026</span>
+  <span>Дизайн — Аля Члаба</span>
+  <a href="mailto:hello@nanava.store">hello@nanava.store</a>
+</footer>
+
+<script src="data/items.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
