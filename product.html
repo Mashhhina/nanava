@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,85 +10,123 @@
 
 <header class="topbar">
   <nav>
-    <a href="catalog.html">Каталог</a>
-    <a href="catalog.html?cat=clothes">Одежда</a>
-    <a href="catalog.html?cat=bags">Сумки</a>
+    <a href="catalog.html" data-i18n="womenswear">Womenswear</a>
+    <a href="catalog.html" data-i18n="menswear">Menswear</a>
+    <a href="catalog.html" data-i18n="collections">Collections</a>
   </nav>
   <a class="logo" href="index.html">Nanava</a>
   <nav class="right">
-    <a href="#">Помощь</a>
-    <a href="#">Аккаунт</a>
-    <a href="#">Избранное</a>
-    <a href="#">Корзина 00</a>
+    <a href="mailto:hello@nanava.store" data-i18n="help">Help</a>
+    <span class="lang"><button data-lang="en">EN</button> / <button data-lang="be">BY</button></span>
+    <a href="bag.html"><span data-i18n="bag">Bag</span> <span data-bag-count>(0)</span></a>
   </nav>
 </header>
 
 <main class="pdp" data-pdp>
-  <div class="pdp-gallery">
+  <div class="pdp-left">
+    <div class="brand">Nanava</div>
+    <p class="lead" data-lead></p>
+    <p class="desc" data-desc></p>
+    <div class="sku" data-sku></div>
+  </div>
+
+  <div class="pdp-imgs">
     <div class="fr"><img data-g-main src="" alt=""></div>
     <div class="fr zoom"><img data-g-zoom src="" alt="" aria-hidden="true"></div>
   </div>
 
-  <div class="pdp-panel">
-    <div class="pdp-head">
-      <h1 data-title></h1>
-      <span class="price" data-price></span>
-    </div>
-    <p class="pdp-lead" data-lead></p>
+  <div class="pdp-buy">
+    <h1 data-title></h1>
+    <div class="price" data-price></div>
 
     <div class="pdp-sizes" data-sizes>
-      <div class="ss">
-        <button data-size>XS</button>
-        <button data-size>S</button>
-        <button data-size>M</button>
-        <button data-size>L</button>
-      </div>
-      <span class="hint">Размерные характеристики</span>
+      <button data-size>XS</button>
+      <button data-size>S</button>
+      <button data-size>M</button>
+      <button data-size>L</button>
     </div>
 
-    <button class="pdp-buy" data-buy>Выберите размер</button>
+    <button class="btn-buy" data-buy data-i18n="add_bag">Add to bag</button>
+    <div class="added" data-added data-i18n="added">Added to bag</div>
 
-    <div class="pdp-sku" data-sku></div>
-    <p class="pdp-desc" data-desc></p>
-
-    <div class="acc">
+    <div class="pdp-acc">
       <details>
-        <summary>Состав и уход</summary>
-        <div class="bd">Состав уточняется для каждой вещи отдельно. Деликатная стирка при 30°, глажение с изнанки, вещи с принтом не отбеливать. Изделия из атласа и кружева — только химчистка.</div>
+        <summary data-i18n="details">Details &amp; care</summary>
+        <div class="bd" data-i18n="details_bd"></div>
       </details>
       <details>
-        <summary>Доставка и оплата</summary>
-        <div class="bd">Вещи коллекции пока не запущены в производство — доставка и оплата появятся вместе с первым тиражом. Оставьте почту, и мы напишем первым.</div>
+        <summary data-i18n="shipping">Shipping &amp; payment</summary>
+        <div class="bd" data-i18n="shipping_bd"></div>
       </details>
       <details>
-        <summary>О проекте</summary>
-        <div class="bd">NANAVA — независимый проект. Все принты и формы — авторские работы Али Члабы: графика, вышивка и объекты, переведённые в носибельные вещи. Каждая модель существует в единичной визуализации до запуска тиража.</div>
+        <summary data-i18n="about_pr">About the project</summary>
+        <div class="bd" data-i18n="about_bd"></div>
       </details>
       <details>
-        <summary>Нужна помощь?</summary>
-        <div class="bd">Пишите на <a href="mailto:hello@nanava.store" style="text-decoration:underline">hello@nanava.store</a> — ответим в течение дня.</div>
+        <summary data-i18n="need_help">Need help?</summary>
+        <div class="bd" data-i18n="help_bd"></div>
       </details>
     </div>
   </div>
 </main>
 
-<div class="sect-h also-h"><span>Смотрите также</span><a href="catalog.html">Все вещи →</a></div>
-<section class="grid also" data-also></section>
+<div class="sect-h">
+  <span data-i18n="also_like">You may also like</span>
+  <a href="catalog.html" data-i18n="view_all">View all</a>
+</div>
+<section class="rail" data-also></section>
+
+<footer>
+  <div class="foot-grid">
+    <div class="news">
+      <h4 data-i18n="news">Newsletter</h4>
+      <p data-i18n="news_p" style="margin-bottom:6px">New pieces and launch dates — first.</p>
+      <input type="email" data-i18n-ph="email" placeholder="Email address">
+      <button data-open-notice data-i18n="subscribe">Subscribe</button>
+    </div>
+    <div>
+      <h4 data-i18n="about">About</h4>
+      <ul>
+        <li><a href="#" data-open-notice data-i18n="brand_history">Brand history</a></li>
+        <li><a href="mailto:hello@nanava.store" data-i18n="contacts">Contacts</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="customers">For customers</h4>
+      <ul>
+        <li><a href="#" data-open-notice data-i18n="payment">Payment</a></li>
+        <li><a href="#" data-open-notice data-i18n="delivery">Delivery</a></li>
+        <li><a href="#" data-open-notice data-i18n="loyalty">Loyalty program</a></li>
+        <li><a href="#" data-open-notice data-i18n="faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nanava</h4>
+      <ul>
+        <li data-i18n="address">Minsk — Warsaw</li>
+        <li><a href="mailto:hello@nanava.store">hello@nanava.store</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© NANAVA 2026 — <span data-i18n="rights">All rights reserved</span></span>
+    <span>Design — Alya Chlaba</span>
+  </div>
+</footer>
 
 <div class="veil" data-veil>
   <div class="notice">
     <div class="nm">Nanava</div>
-    <p>Эти вещи пока не в продаже.<br>Мы готовим первый тираж — оставьте почту, и вы узнаете о запуске первыми.</p>
-    <a class="em" href="mailto:hello@nanava.store?subject=NANAVA%20—%20хочу%20знать%20о%20запуске">Оставить почту</a><br>
-    <button class="cl" data-close>Закрыть</button>
+    <p data-i18n="notice_p">These pieces are not on sale yet.</p>
+    <a class="em" href="mailto:hello@nanava.store?subject=NANAVA%20launch" data-i18n="leave_email">Leave email</a><br>
+    <button class="cl" data-close data-i18n="close">Close</button>
   </div>
 </div>
 
-<footer>
-  <span>© NANAVA 2026</span>
-  <span>Дизайн — Аля Члаба</span>
-  <a href="mailto:hello@nanava.store">hello@nanava.store</a>
-</footer>
+<div class="cookies" data-cookies>
+  <span data-i18n="cookies_t">This site uses cookies.</span>
+  <button data-i18n="ok">OK</button>
+</div>
 
 <script src="data/items.js"></script>
 <script src="assets/app.js"></script>

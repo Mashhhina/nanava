@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Catalog — NANAVA</title>
+<title>Shopping bag — NANAVA</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -22,34 +22,21 @@
   </nav>
 </header>
 
-<div class="cat-wrap">
-  <aside class="side">
-    <h3 data-i18n="categories">Categories</h3>
-    <ul>
-      <li><button data-cat="all" data-i18n="all">All</button></li>
-      <li><button data-cat="clothes" data-i18n="clothes">Clothing</button></li>
-      <li><button data-cat="bags" data-i18n="bags">Bags</button></li>
-      <li><button data-cat="accessories" data-i18n="accessories">Accessories</button></li>
-      <li><button data-cat="objects" data-i18n="objects">Objects</button></li>
-    </ul>
-    <h3 data-i18n="designer">Designer</h3>
-    <div class="designer">Alya Chlaba</div>
-  </aside>
+<div class="bag-wrap">
+  <div>
+    <div class="bag-h" data-i18n="shopping_bag">Shopping bag</div>
+    <div class="bag-cols"><span data-i18n="item">Item</span><span data-i18n="total">Total</span></div>
+    <div data-bag-items></div>
+    <div class="bag-tot" data-bag-tot></div>
+  </div>
 
-  <main>
-    <div class="cat-tools">
-      <span class="count" data-count></span>
-      <label data-i18n="color">Color</label>
-      <select data-color></select>
-      <label data-i18n="sort">Sort</label>
-      <select data-sort>
-        <option value="new" data-i18n="sort.new">New in</option>
-        <option value="priceAsc" data-i18n="sort.priceAsc">Price low–high</option>
-        <option value="priceDesc" data-i18n="sort.priceDesc">Price high–low</option>
-      </select>
-    </div>
-    <div class="grid" data-catalog></div>
-  </main>
+  <aside class="checkout">
+    <h3 data-i18n="checkout">Checkout</h3>
+    <p data-i18n="checkout_p">Enter your email to login or continue to checkout as a guest.</p>
+    <label data-i18n="email">Email address</label>
+    <input type="email">
+    <button class="btn-checkout" data-open-notice data-i18n="proceed">Proceed to checkout</button>
+  </aside>
 </div>
 
 <footer>

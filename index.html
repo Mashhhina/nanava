@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,65 +10,116 @@
 
 <header class="topbar">
   <nav>
-    <a href="catalog.html">Каталог</a>
-    <a href="catalog.html?cat=clothes">Одежда</a>
-    <a href="catalog.html?cat=bags">Сумки</a>
+    <a href="catalog.html" data-i18n="womenswear">Womenswear</a>
+    <a href="catalog.html" data-i18n="menswear">Menswear</a>
+    <a href="catalog.html" data-i18n="collections">Collections</a>
   </nav>
   <a class="logo" href="index.html">Nanava</a>
   <nav class="right">
-    <a href="#">Помощь</a>
-    <a href="#">Аккаунт</a>
-    <a href="#">Избранное</a>
-    <a href="#">Корзина 00</a>
+    <a href="mailto:hello@nanava.store" data-i18n="help">Help</a>
+    <span class="lang"><button data-lang="en">EN</button> / <button data-lang="be">BY</button></span>
+    <a href="bag.html"><span data-i18n="bag">Bag</span> <span data-bag-count>(0)</span></a>
   </nav>
 </header>
 
-<section class="hero">
-  <div class="hero-mark">
-    <h1>Nanava</h1>
-    <p>Коллекция 01 — всадники, короны и звери</p>
+<section class="hero-look">
+  <a href="product.html?id=dress-tiedye"><img src="img/p06.webp" alt=""></a>
+  <a href="product.html?id=mockneck-dark-rider"><img src="img/p07.webp" alt=""></a>
+  <a href="product.html?id=vest-crown"><img src="img/p04.webp" alt=""></a>
+  <div class="mid">
+    <div class="t1" data-i18n="shop_look">Shop by Look</div>
+    <div class="t2" data-i18n="season">Garderobe Fall Winter 26/27</div>
+    <a class="cta" href="catalog.html" data-i18n="explore">Explore the collection</a>
   </div>
-  <div class="hero-tris">
-    <a href="product.html?id=dress-tiedye"><img src="img/p06.webp" alt="Платье Tie-Dye из шифона"></a>
-    <a href="product.html?id=sweater-rider"><img src="img/p05.webp" alt="Свитер Rider красный"></a>
-    <a href="product.html?id=mockneck-dark-rider"><img src="img/p07.webp" alt="Гольф атласный Dark Rider"></a>
-  </div>
-  <a class="hero-cta" href="catalog.html">Смотреть каталог →</a>
+  <a href="product.html?id=sweater-rider"><img src="img/p05.webp" alt=""></a>
+  <a href="product.html?id=shirt-fangs"><img src="img/p11.webp" alt=""></a>
+  <a href="product.html?id=jacket-knight"><img src="img/p14.webp" alt=""></a>
 </section>
 
-<div class="sect-h">
-  <span>Новое</span>
-  <a href="catalog.html">Все вещи →</a>
-</div>
-<section class="grid" data-new></section>
+<a class="banner" href="catalog.html?cat=objects">
+  <img src="img/p12.webp" alt="">
+  <span class="cap">
+    <span class="b1" style="display:block">Nanava</span>
+    <span class="b2" style="display:block" data-i18n="objects">Objects</span>
+  </span>
+</a>
 
 <div class="sect-h">
-  <span>Категории</span>
+  <span data-i18n="new_in">New in</span>
+  <a href="catalog.html" data-i18n="view_all">View all</a>
 </div>
+<section class="rail" data-new></section>
+
 <section class="cats">
   <a href="catalog.html?cat=clothes">
-    <span class="ph"><img src="img/p04.webp" alt="Одежда"></span>
-    <span class="lb">Одежда</span>
+    <span class="ph"><img src="img/p04.webp" alt=""></span>
+    <span class="lb" data-i18n="clothes">Clothing</span>
   </a>
   <a href="catalog.html?cat=bags">
-    <span class="ph"><img src="img/p17.webp" alt="Сумки"></span>
-    <span class="lb">Сумки</span>
+    <span class="ph"><img src="img/p17.webp" alt=""></span>
+    <span class="lb" data-i18n="bags">Bags</span>
   </a>
   <a href="catalog.html?cat=accessories">
-    <span class="ph"><img src="img/p18.webp" alt="Аксессуары"></span>
-    <span class="lb">Аксессуары</span>
+    <span class="ph"><img src="img/p18.webp" alt=""></span>
+    <span class="lb" data-i18n="accessories">Accessories</span>
   </a>
   <a href="catalog.html?cat=objects">
-    <span class="ph"><img src="img/p12.webp" alt="Объекты"></span>
-    <span class="lb">Объекты</span>
+    <span class="ph"><img src="img/p12.webp" alt=""></span>
+    <span class="lb" data-i18n="objects">Objects</span>
   </a>
 </section>
 
 <footer>
-  <span>© NANAVA 2026</span>
-  <span>Дизайн — Аля Члаба</span>
-  <a href="mailto:hello@nanava.store">hello@nanava.store</a>
+  <div class="foot-grid">
+    <div class="news">
+      <h4 data-i18n="news">Newsletter</h4>
+      <p data-i18n="news_p" style="margin-bottom:6px">New pieces and launch dates — first.</p>
+      <input type="email" data-i18n-ph="email" placeholder="Email address">
+      <button data-open-notice data-i18n="subscribe">Subscribe</button>
+    </div>
+    <div>
+      <h4 data-i18n="about">About</h4>
+      <ul>
+        <li><a href="#" data-open-notice data-i18n="brand_history">Brand history</a></li>
+        <li><a href="mailto:hello@nanava.store" data-i18n="contacts">Contacts</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 data-i18n="customers">For customers</h4>
+      <ul>
+        <li><a href="#" data-open-notice data-i18n="payment">Payment</a></li>
+        <li><a href="#" data-open-notice data-i18n="delivery">Delivery</a></li>
+        <li><a href="#" data-open-notice data-i18n="loyalty">Loyalty program</a></li>
+        <li><a href="#" data-open-notice data-i18n="faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Nanava</h4>
+      <ul>
+        <li data-i18n="address">Minsk — Warsaw</li>
+        <li><a href="mailto:hello@nanava.store">hello@nanava.store</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-base">
+    <span>© NANAVA 2026 — <span data-i18n="rights">All rights reserved</span></span>
+    <span>Design — Alya Chlaba</span>
+  </div>
 </footer>
+
+<div class="veil" data-veil>
+  <div class="notice">
+    <div class="nm">Nanava</div>
+    <p data-i18n="notice_p">These pieces are not on sale yet.</p>
+    <a class="em" href="mailto:hello@nanava.store?subject=NANAVA%20launch" data-i18n="leave_email">Leave email</a><br>
+    <button class="cl" data-close data-i18n="close">Close</button>
+  </div>
+</div>
+
+<div class="cookies" data-cookies>
+  <span data-i18n="cookies_t">This site uses cookies.</span>
+  <button data-i18n="ok">OK</button>
+</div>
 
 <script src="data/items.js"></script>
 <script src="assets/app.js"></script>
