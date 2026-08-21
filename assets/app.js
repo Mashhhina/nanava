@@ -175,9 +175,11 @@
     var id = new URLSearchParams(location.search).get("id");
     var it = byId[id] || D.items[0];
     document.title = it.title + " — " + D.brand;
-    document.querySelector("[data-g-main]").src = it.image;
-    document.querySelector("[data-g-main]").alt = it.title;
-    document.querySelector("[data-g-zoom]").src = it.image;
+    var frames = [it.image].concat(it.images || []);
+    document.querySelector("[data-gallery]").innerHTML = frames.map(function (src, i) {
+      // без пролёток: второй кадр — автозум-деталь из эталона
+      return '<div class="fr"><img src="' + src + '" alt="' + (i ? "" : it.title) + '" loading="lazy"></div>';
+    }).join("") + (frames.length === 1 ? '<div class="fr zoom"><img src="' + it.image + '" alt="" aria-hidden="true"></div>' : "");
     document.querySelector("[data-title]").textContent = it.title;
     document.querySelector("[data-price]").textContent = eur(it.price);
     document.querySelector("[data-lead]").textContent = it.lead;
