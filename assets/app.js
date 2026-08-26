@@ -164,7 +164,7 @@
   function renderHome() {
     var newRow = document.querySelector("[data-new]");
     if (!newRow) return;
-    renderInto(newRow, ["sweater-rider", "bag-nanava", "hoodie-horns", "bag-frill", "dress-tiedye", "jacket-knight"].map(function (id) { return byId[id]; }));
+    renderInto(newRow, ["dress-feather", "sweater-rider", "bag-nanava", "hoodie-horns", "bag-frill", "dress-tiedye"].map(function (id) { return byId[id]; }));
   }
 
   /* ---------- карточка товара ---------- */
