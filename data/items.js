@@ -91,6 +91,11 @@ window.NNV_DATA = {
       lead: "A grin printed in an arc.",
       desc: "Oversized longsleeve in washed-black heavyweight jersey. The peach lettering is set by hand: BELARUSIAN arched downward, SMILE answering below — together they draw a grin across the chest. Ribbed round neck, dropped shoulder, long wide sleeves.",
       image: "img/longsleeve-smile/main.webp", images: ["img/longsleeve-smile/f2.webp", "img/longsleeve-smile/f3.webp", "img/longsleeve-smile/f4.webp", "img/longsleeve-smile/f5.webp", "img/longsleeve-smile/f6.webp"] },
+    { id: "skirt-dipdye", title: "Dip-Dye Petal Skirt", category: "clothes",
+      price: 250, colorGroup: "pink", sku: "NNV0115A",
+      lead: "Three dyes under one drawing.",
+      desc: "Midi skirt in fluid washed satin, hand dip-dyed in three bleeding bands — graphite, mustard, powder pink. One continuous pencil sketch from the archive runs across all three, printed as drawn. Scalloped overlay hem over tiers of petal-cut flounces, each edged with contrast overlock. Elastic waist with drawstring.",
+      image: "img/skirt-dipdye/main.webp", images: ["img/skirt-dipdye/f2.webp", "img/skirt-dipdye/f3.webp", "img/skirt-dipdye/f4.webp", "img/skirt-dipdye/f5.webp", "img/skirt-dipdye/f6.webp"] },
     { id: "cardholder-nanava", title: "NANAVA Cardholder", category: "accessories",
       price: 75, colorGroup: "black", sku: "NNV0301A",
       lead: "Flowers over leather, graffiti over flowers.",
@@ -125,6 +130,11 @@ window.NNV_DATA = {
       price: 120, colorGroup: "pink", sku: "NNV0304A",
       lead: "A spine curled around the ear.",
       desc: "Full-ear cuff cast in matte resin, dusty-rose shade. A chain of vertebrae follows the rim of the ear while long rib spikes fan outward like a halo; a rounded bone paddle rests at the lobe. Flexible enough to hug any ear — no piercing needed.",
-      image: "img/p23.webp", images: ["img/earcuff-spine/f2.webp", "img/earcuff-spine/f3.webp"] }
+      image: "img/p23.webp", images: ["img/earcuff-spine/f2.webp", "img/earcuff-spine/f3.webp"] },
+    { id: "earrings-cameo", title: "Bone Cameo Drop Earrings", category: "accessories",
+      price: 130, colorGroup: "pink", sku: "NNV0305A",
+      lead: "Relics carved in dusty pink.",
+      desc: "Statement drop earrings cast in one piece: an oval cameo held by rib-like wings and a spiked crest, then a shield-cut faceted crystal ringed with crescent horns and thorns. Monochrome dusty-rose lacquer, glossy porcelain finish; the pair is mirrored. A spare crescent bead comes in the box — wear it on the tongue.",
+      image: "img/p22.webp", images: ["img/earrings-cameo/f2.webp", "img/earrings-cameo/f3.webp"] }
   ]
 };
