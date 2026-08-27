@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 15:06",
+  "generated": "2026-08-27 15:52",
   "unknown": [],
   "models": [
     {
@@ -31,7 +31,8 @@ window.NNV_MODELS = {
         "dress-feather",
         "earcuff-spine",
         "earrings-cameo",
-        "scarf-organza"
+        "scarf-organza",
+        "sweater-rider"
       ],
       "sheetSrc": "refs/models/katya/character-sheet.png"
     },
@@ -70,7 +71,10 @@ window.NNV_MODELS = {
       "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, long dark blonde hair falling well below the shoulders in soft loose waves, thin wispy curtain-style bangs over the forehead, light grey-blue eyes, pale skin, no makeup, soft rounded face with a gently pointed chin. The reference is a night street photo: reconstruct the SAME real person faithfully in clean studio light, do not idealize or invent a different face. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, long dark blonde hair falling well below the shoulders in soft loose waves, thin wispy curtain-style bangs over the forehead, light grey-blue eyes, pale skin, no makeup, soft rounded face with a gently pointed chin. The reference is a night street photo: reconstruct the SAME real person faithfully in clean studio light, do not idealize or invent a different face. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
-      "items": [],
+      "items": [
+        "dress-tiedye",
+        "tee-star"
+      ],
       "sheetSrc": "refs/models/alya/character-sheet-candidate.jpg"
     },
     {
@@ -126,7 +130,9 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, short dark brown hair cut as a chin-length bob with a short blunt fringe, light green-grey eyes, thick straight dark eyebrows, very full lips with a prominent lower lip, oval face with a defined jaw and high cheekbones, light freckles across the nose and cheeks, pale light skin, no makeup. The reference photos show her with different hair (braids, curls, pixie): use ONLY the short dark brown bob with blunt fringe, and keep the facial identity identical across all references. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
-        "skirt-dipdye"
+        "shirt-fangs",
+        "skirt-dipdye",
+        "vest-crown"
       ],
       "sheetSrc": "refs/models/lina/character-sheet-candidate.jpg"
     },
@@ -162,7 +168,9 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, fully shaved bald head (smooth, no stubble), very pale light skin, light grey-blue eyes, thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
-        "mask-denim"
+        "longsleeve-smile",
+        "mask-denim",
+        "tee-riders"
       ],
       "sheetSrc": "refs/models/nikita/character-sheet-candidate.jpg"
     },
@@ -206,8 +214,41 @@ window.NNV_MODELS = {
       "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, dark brown straight chin-length hair (soft bob parted near the middle, strands often tucked behind the ears), warm hazel-brown eyes, medium dark eyebrows, soft oval face with a gentle jawline, light skin with a warm undertone, a small silver SEPTUM RING in the nose and a small silver hoop earring in each ear (keep the septum ring and hoops in every view). Canonical look is CLEAN-SHAVEN: one reference photo shows light chin stubble — ignore it. Keep the facial identity identical to the reference photos. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, dark brown straight chin-length hair (soft bob parted near the middle, strands often tucked behind the ears), warm hazel-brown eyes, medium dark eyebrows, soft oval face with a gentle jawline, light skin with a warm undertone, a small silver SEPTUM RING in the nose and a small silver hoop earring in each ear (keep the septum ring and hoops in every view). Canonical look is CLEAN-SHAVEN: one reference photo shows light chin stubble — ignore it. Keep the facial identity identical to the reference photos. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
-      "items": [],
+      "items": [
+        "hoodie-horns",
+        "jacket-knight"
+      ],
       "sheetSrc": "refs/models/lesha/character-sheet-candidate.jpg"
+    },
+    {
+      "name": "pasha",
+      "ru": "Паша",
+      "gender": "m",
+      "height": null,
+      "build": "уточнить у Алексея",
+      "note": "Реальный Паша. Канон: очень короткий бритый ёжик и лёгкая щетина. Исходник — селфи с телефона сверху и с тёплым цветом; сверка обязательна.",
+      "desc": "young man, very short buzzed light brown hair (close crop, high receding hairline at the temples), light blue-grey eyes, straight light eyebrows, long narrow face with a straight nose, defined jaw and prominent cheekbones, short light stubble beard on the chin, jaw and upper lip, thin lips, fair skin with a warm undertone, slightly protruding ears",
+      "sheetStatus": "candidate",
+      "sheet": "img/models/pasha/sheet.webp",
+      "photos": [
+        {
+          "file": "face-photo-crop.jpg",
+          "url": "img/models/pasha/photo-01.webp"
+        },
+        {
+          "file": "photo-01-selfie.webp",
+          "url": "img/models/pasha/photo-02.webp"
+        }
+      ],
+      "refs": [
+        "face-photo-crop.jpg",
+        "photo-01-selfie.webp"
+      ],
+      "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, very short buzzed light brown hair (close crop, high receding hairline at the temples), light blue-grey eyes, straight light eyebrows, long narrow face with a straight nose, defined jaw and prominent cheekbones, short light stubble beard on the chin, jaw and upper lip, thin lips, fair skin with a warm undertone, slightly protruding ears. The reference is a warm-toned phone selfie shot from above: reconstruct the SAME real person faithfully, neutralize the colour cast and the upward angle, do not idealize or invent a different face. Keep the short stubble beard and the buzzed hair in every view. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, very short buzzed light brown hair (close crop, high receding hairline at the temples), light blue-grey eyes, straight light eyebrows, long narrow face with a straight nose, defined jaw and prominent cheekbones, short light stubble beard on the chin, jaw and upper lip, thin lips, fair skin with a warm undertone, slightly protruding ears. The reference is a warm-toned phone selfie shot from above: reconstruct the SAME real person faithfully, neutralize the colour cast and the upward angle, do not idealize or invent a different face. Keep the short stubble beard and the buzzed hair in every view. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptCustom": false,
+      "items": [],
+      "sheetSrc": "refs/models/pasha/character-sheet-candidate.jpg"
     }
   ]
 };
