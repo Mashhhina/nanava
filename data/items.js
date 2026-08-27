@@ -50,7 +50,7 @@ window.NNV_DATA = {
       price: 160, colorGroup: "grey", sku: "NNV0108A",
       lead: "You can see the horns even from behind.",
       desc: "Cropped hoodie in heavyweight fleece with sculpted horns on the hood. NNV letters embroidered in graphite tone. Raw double-folded hem, wide cuffs.",
-      image: "img/p08.webp", images: ["img/hoodie-horns/f2.webp", "img/hoodie-horns/f3.webp", "img/hoodie-horns/f4.webp", "img/hoodie-horns/f5.webp", "img/hoodie-horns/f6.webp"] },
+      image: "img/p08.webp", images: ["img/hoodie-horns/f2.webp", "img/hoodie-horns/f3.webp", "img/hoodie-horns/f4.webp", "img/hoodie-horns/f5.webp", "img/hoodie-horns/f6.webp", "img/hoodie-horns/process.webp"] },
     { id: "skirt-lace", title: "Satin Lace Skirt", category: "clothes",
       price: 220, colorGroup: "silver", sku: "NNV0109A",
       lead: "Steel and lemon lace.",
