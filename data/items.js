@@ -135,7 +135,7 @@ window.NNV_DATA = {
       price: 120, colorGroup: "pink", sku: "NNV0304A",
       lead: "A spine curled around the ear.",
       desc: "Full-ear cuff cast in matte resin, dusty-rose shade. A chain of vertebrae follows the rim of the ear while long rib spikes fan outward like a halo; a rounded bone paddle rests at the lobe. Flexible enough to hug any ear — no piercing needed.",
-      image: "img/p23.webp", images: ["img/earcuff-spine/f2.webp", "img/earcuff-spine/f3.webp"] },
+      image: "img/earcuff-spine/main.webp", images: ["img/p23.webp", "img/earcuff-spine/f3.webp", "img/earcuff-spine/f2.webp", "img/earcuff-spine/f4.webp"] },
     { id: "earrings-cameo", title: "Bone Cameo Drop Earrings", category: "accessories",
       price: 130, colorGroup: "pink", sku: "NNV0305A",
       lead: "Relics carved in dusty pink.",
