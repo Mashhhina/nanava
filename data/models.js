@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 19:07",
+  "generated": "2026-08-27 19:14",
   "unknown": [],
   "models": [
     {
