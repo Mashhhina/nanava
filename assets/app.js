@@ -28,6 +28,9 @@
       about_bd: "NANAVA is an independent project. All prints and shapes are original works by Alya Chlaba — graphics, embroidery and objects translated into wearable pieces.",
       help_bd: "Write to hello@nanava.store — we reply within a day.",
       also_like: "You may also like",
+      process_caps: "DESIGN PROCESS",
+      process_note: "Working sheets from the studio — the sketches, notes and fabric marks this piece grew from.",
+      process_home: "PROCESS", process_home_note: "How the season was drawn.",
       shopping_bag: "Shopping bag", item: "Item", total: "Total",
       shipping_est: "Shipping estimate", calc_checkout: "Calculated at checkout",
       duties: "Duties and taxes", included: "Included", order_total: "Order total",
@@ -65,6 +68,9 @@
       about_bd: "NANAVA — незалежны праект. Усе прынты і формы — аўтарскія працы Алі Члабы: графіка, вышыўка і аб'екты, пераведзеныя ў рэчы.",
       help_bd: "Пішыце на hello@nanava.store — адкажам на працягу дня.",
       also_like: "Вам таксама спадабаецца",
+      process_caps: "ПРАЦЭС", 
+      process_note: "Рабочыя лісты са студыі — накіды, паметкі і адзнакі тканіны, з якіх вырасла рэч.",
+      process_home: "ПРАЦЭС", process_home_note: "Як маляваўся сезон.",
       shopping_bag: "Кошык", item: "Тавар", total: "Разам",
       shipping_est: "Кошт дастаўкі", calc_checkout: "Разлічваецца пры афармленні",
       duties: "Пошліны і падаткі", included: "Уключаны", order_total: "Разам да аплаты",
@@ -262,11 +268,27 @@
       setTimeout(function () { ok.classList.remove("show"); }, 1800);
     };
 
+    renderProcess(it);
+
     var also = D.items.filter(function (x) { return x.id !== it.id && x.category === it.category; });
     D.items.forEach(function (x) {
       if (also.length < 8 && x.id !== it.id && also.indexOf(x) === -1) also.push(x);
     });
     renderInto(document.querySelector("[data-also]"), also.slice(0, 8));
+  }
+
+  /* «процесс работы»: листы вещи целиком, без кропа (PLAYBOOK, тип 4) */
+  function renderProcess(it) {
+    var sect = document.querySelector("[data-process]");
+    if (!sect) return;
+    var list = it.process || [];
+    sect.hidden = !list.length;
+    if (!list.length) return;
+    document.querySelector("[data-process-list]").innerHTML = list.map(function (p) {
+      return '<figure class="proc-fig">' +
+        '<img src="' + p.src + '" alt="" loading="lazy">' +
+        '<figcaption>' + p.cap + "</figcaption></figure>";
+    }).join("");
   }
 
   /* ---------- страница корзины ---------- */
