@@ -1,0 +1,123 @@
+/* Админский редактор картинок (см. assets/edit.js). Стили грузятся на всех
+   страницах, но ничего не показывают: разметку рисует только edit.js и только
+   в админском режиме. Все классы с префиксом nnv-ed. */
+
+.nnv-ed-btn {
+  position: fixed; z-index: 2147483000; display: none;
+  font: 500 11px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em;
+  text-transform: uppercase; color: #fff; background: rgba(18,18,18,.86);
+  border: 0; border-radius: 2px; padding: 7px 10px; cursor: pointer;
+  backdrop-filter: blur(6px); transition: background .12s;
+}
+.nnv-ed-btn:hover { background: #121212; }
+.nnv-ed-btn.on { display: block; }
+
+.nnv-ed {
+  position: fixed; inset: 0; z-index: 2147483100; display: flex;
+  background: rgba(12,12,12,.94); color: #eee;
+  font: 13px/1.45 ui-sans-serif, system-ui, sans-serif;
+}
+.nnv-ed[hidden] { display: none; }
+
+/* ---------- холст ---------- */
+.nnv-ed__stage {
+  flex: 1; min-width: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px; padding: 18px;
+}
+.nnv-ed__wrap { position: relative; line-height: 0; max-width: 100%; max-height: calc(100vh - 96px); }
+.nnv-ed__wrap img { display: block; max-width: 100%; max-height: calc(100vh - 96px); width: auto; height: auto; }
+.nnv-ed__after { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+.nnv-ed__cv { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; touch-action: none; }
+.nnv-ed__cv.hide { display: none; }
+
+.nnv-ed__split { position: absolute; top: 0; bottom: 0; width: 2px; background: #fff; cursor: ew-resize; }
+.nnv-ed__split::after {
+  content: ""; position: absolute; top: 50%; left: -13px; width: 28px; height: 28px;
+  margin-top: -14px; border: 2px solid #fff; border-radius: 50%; background: rgba(0,0,0,.35);
+}
+.nnv-ed__tag {
+  position: absolute; top: 8px; padding: 3px 7px; font-size: 10px; letter-spacing: .08em;
+  text-transform: uppercase; background: rgba(0,0,0,.6); border-radius: 2px; pointer-events: none;
+}
+
+.nnv-ed__tools { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: center; }
+.nnv-ed__tools button, .nnv-ed__panel button, .nnv-ed select, .nnv-ed input[type=number] {
+  font: 500 11px/1 inherit; letter-spacing: .04em; text-transform: uppercase;
+  color: #ddd; background: #1e1e1e; border: 1px solid #333; border-radius: 2px;
+  padding: 8px 11px; cursor: pointer;
+}
+.nnv-ed__tools button.on { background: #f1f1ef; color: #111; border-color: #f1f1ef; }
+.nnv-ed__tools button:disabled, .nnv-ed__panel button:disabled { opacity: .4; cursor: default; }
+.nnv-ed__tools .hint { text-transform: none; letter-spacing: 0; color: #777; font-size: 11px; padding-left: 6px; }
+
+/* ---------- панель ---------- */
+.nnv-ed__panel {
+  width: 340px; flex: none; display: flex; flex-direction: column; gap: 14px;
+  padding: 18px; overflow-y: auto; background: #141414; border-left: 1px solid #262626;
+}
+.nnv-ed__panel > * { flex: none; }          /* иначе колонка сжимает блоки внахлёст */
+.nnv-ed__head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.nnv-ed__head b { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+.nnv-ed__head span { color: #777; font-size: 11px; }
+.nnv-ed h4 {
+  margin: 0 0 6px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: #8a8a8a; font-weight: 600;
+}
+.nnv-ed textarea, .nnv-ed input[type=text] {
+  width: 100%; box-sizing: border-box; background: #1c1c1c; color: #eee;
+  border: 1px solid #333; border-radius: 2px; padding: 9px 10px; font: 13px/1.4 inherit;
+  resize: vertical;
+}
+.nnv-ed textarea:focus, .nnv-ed input:focus { outline: 0; border-color: #6a6a6a; }
+.nnv-ed textarea::placeholder, .nnv-ed input::placeholder { color: #5d5d5d; }
+
+.nnv-ed__drop {
+  border: 1px dashed #3a3a3a; border-radius: 2px; padding: 10px; text-align: center;
+  color: #777; font-size: 11px; cursor: pointer;
+}
+.nnv-ed__drop.over { border-color: #f1f1ef; color: #ddd; }
+.nnv-ed__thumbs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.nnv-ed__thumbs figure { position: relative; margin: 0; width: 54px; height: 54px; }
+.nnv-ed__thumbs img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+.nnv-ed__thumbs button {
+  position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; padding: 0;
+  border-radius: 50%; background: #000; border: 1px solid #444; color: #ccc; line-height: 1;
+}
+
+.nnv-ed__zone { border: 1px solid #2a2a2a; border-radius: 2px; padding: 9px; margin-bottom: 7px; }
+.nnv-ed__zone.on { border-color: #d36ad3; }
+.nnv-ed__zone header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.nnv-ed__zone header b { font-size: 11px; letter-spacing: .06em; color: #d36ad3; }
+.nnv-ed__zone header span { color: #666; font-size: 11px; margin-left: auto; }
+.nnv-ed__zone header button {
+  padding: 3px 6px; font-size: 11px; background: transparent; border-color: transparent; color: #888;
+}
+
+.nnv-ed__row { display: flex; gap: 6px; align-items: center; }
+.nnv-ed__row { flex-wrap: wrap; }
+.nnv-ed__row > * { flex: 1 1 84px; min-width: 0; padding-left: 8px; padding-right: 8px; }
+.nnv-ed__go {
+  width: 100%; padding: 12px !important; background: #f1f1ef !important; color: #111 !important;
+  border-color: #f1f1ef !important; font-weight: 600 !important;
+}
+.nnv-ed__cost { color: #8a8a8a; font-size: 11px; text-align: center; }
+.nnv-ed__log { white-space: pre-wrap; color: #7d7d7d; font-size: 11px; min-height: 16px;
+  max-height: 76px; overflow-y: auto; }
+.nnv-ed__log.err { color: #e2707a; }
+
+.nnv-ed__vars { display: flex; gap: 6px; flex-wrap: wrap; }
+.nnv-ed__vars img { width: 68px; height: 68px; object-fit: cover; border: 2px solid transparent; border-radius: 2px; cursor: pointer; }
+.nnv-ed__vars img.on { border-color: #f1f1ef; }
+.nnv-ed__foot { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+.nnv-ed__foot .muted { background: transparent; border-color: #333; color: #999; }
+
+/* настройки: ключи админа */
+.nnv-ed__keys { position: fixed; inset: 0; z-index: 2147483200; display: flex;
+  align-items: center; justify-content: center; background: rgba(10,10,10,.9); }
+.nnv-ed__keys[hidden] { display: none; }
+.nnv-ed__keys form { width: 420px; max-width: 92vw; background: #161616;
+  border: 1px solid #2a2a2a; border-radius: 3px; padding: 20px; display: flex;
+  flex-direction: column; gap: 12px; }
+.nnv-ed__keys p { margin: 0; color: #8a8a8a; font-size: 11px; line-height: 1.5; }
+.nnv-ed__keys a { color: #bbb; }
+.nnv-ed__ok { color: #7bbf86; } .nnv-ed__bad { color: #e2707a; }
