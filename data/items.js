@@ -95,7 +95,7 @@ window.NNV_DATA = {
       price: 250, colorGroup: "pink", sku: "NNV0115A",
       lead: "Three dyes under one drawing.",
       desc: "Midi skirt in fluid washed satin, hand dip-dyed in three bleeding bands — graphite, mustard, powder pink. One continuous pencil sketch from the archive runs across all three, printed as drawn. Scalloped overlay hem over tiers of petal-cut flounces, each edged with contrast overlock. Elastic waist with drawstring.",
-      image: "img/skirt-dipdye/main.webp", images: ["img/skirt-dipdye/f2.webp", "img/skirt-dipdye/f3.webp", "img/skirt-dipdye/f4.webp", "img/skirt-dipdye/f5.webp", "img/skirt-dipdye/f6.webp"] },
+      image: "img/skirt-dipdye/main.webp", images: ["img/skirt-dipdye/m1.webp", "img/skirt-dipdye/f2.webp", "img/skirt-dipdye/f3.webp", "img/skirt-dipdye/f4.webp", "img/skirt-dipdye/f5.webp", "img/skirt-dipdye/f6.webp"] },
     { id: "cardholder-nanava", title: "NANAVA Cardholder", category: "accessories",
       price: 75, colorGroup: "black", sku: "NNV0301A",
       lead: "Flowers over leather, graffiti over flowers.",
