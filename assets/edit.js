@@ -450,12 +450,14 @@
     return cv(Math.max(64, w * k), Math.max(64, h * k));
   }
   function addZone(z) {
+    if (!z.rect.every(isFinite)) return null;         // без размеров холста координат нет
     z.id = ++S.n; z.prompt = ""; z.refs = [];
     S.zones.push(z); S.sel = z; paintZones(); render(); cost();
     return z;
   }
   function pt(e) {
     var r = ui.cv.getBoundingClientRect();
+    if (!r.width || !r.height) return null;           // холст ещё без размеров
     return { x: Math.min(1, Math.max(0, (e.clientX - r.left) / r.width)),
              y: Math.min(1, Math.max(0, (e.clientY - r.top) / r.height)) };
   }
@@ -463,13 +465,15 @@
   var drag = null;
   function down(e) {
     if (!S || S.pick) return;
-    ui.cv.setPointerCapture(e.pointerId);
     var p = pt(e);
+    if (!p) return fitCanvas();
+    try { ui.cv.setPointerCapture(e.pointerId); } catch (x) {}
     if (S.tool === "rect") drag = { a: p, b: p };
     else {
       var z = S.sel && S.sel.mask ? S.sel : null;
       if (S.tool === "erase" && !z) return;
       if (!z) z = addZone({ mask: maskCanvas(), rect: [p.x, p.y, 0, 0] });
+      if (!z) return;
       drag = { paint: z, last: p };
       stroke(z, p, p);
     }
@@ -478,6 +482,7 @@
   function move(e) {
     if (!drag) return;
     var p = pt(e);
+    if (!p) return;
     if (drag.paint) { stroke(drag.paint, drag.last, p); drag.last = p; }
     else drag.b = p;
     render();
