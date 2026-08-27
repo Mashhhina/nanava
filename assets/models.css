@@ -17,6 +17,7 @@
   font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
 }
 .kit-bar a:hover { border-color: var(--ink); }
+.kit-bar a.on { border-color: var(--ink); color: var(--ink); }
 .kit-bar a b { font-weight: 400; }
 .kit-bar a span { color: var(--muted); }
 
@@ -138,3 +139,40 @@
 .variants figure.on figcaption { color: var(--ink); }
 
 .kit-foot { display: flex; justify-content: space-between; padding: 18px; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
+
+/* ---------- вкладки ---------- */
+.tabs { display: flex; gap: 4px; margin-top: 14px; }
+.tabs button {
+  padding: 6px 14px; border: 1px solid var(--line);
+  font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted);
+}
+.tabs button:hover { color: var(--ink); }
+.tabs button.on { border-color: var(--ink); color: var(--ink); }
+
+/* ---------- вкладка «Вещи» ---------- */
+.itm { border-bottom: 1px solid var(--line); padding: 18px; }
+.itm-head { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.itm-head .sp { flex: 1 1 20px; }
+.itm-name { font-family: "Times New Roman", Times, serif; font-size: 17px; letter-spacing: .04em; }
+.itm-id { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-top: 3px; }
+.itm-head .btn { height: 26px; padding: 0 10px; display: inline-flex; align-items: center; }
+
+.frames { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.frames .frm { width: 92px; }
+.frames .frm img { width: 92px; height: 116px; object-fit: contain; background: var(--bg); border: 1px solid var(--line); padding: 3px; }
+.frames .frm.ref img { border-color: var(--ink); }
+.frames .frm figcaption { font-size: 9px; color: var(--muted); margin-top: 3px; text-transform: uppercase; letter-spacing: .06em; }
+.frames .frm.ref figcaption { color: var(--ink); }
+.frames .frm .no { display: grid; place-items: center; width: 92px; height: 116px; border: 1px dashed #b23; color: #b23; font-size: 9px; text-align: center; }
+
+.frames.edit .frm { width: 128px; }
+.frames.edit .frm img { width: 128px; height: 160px; }
+.frames.edit .frm .no { width: 128px; height: 160px; }
+.frm-act { display: flex; gap: 4px; margin-top: 4px; }
+.frm-act .mark {
+  flex: 1; font-size: 9px; text-transform: uppercase; letter-spacing: .06em;
+  border: 1px solid var(--line); color: var(--muted); padding: 3px 0;
+}
+.frm-act .mark:hover { border-color: var(--ink); color: var(--ink); }
+.frm.ref .frm-act [data-ref] { border-color: var(--ink); color: var(--ink); }
+.frm-act .mark[disabled] { opacity: .4; pointer-events: none; }

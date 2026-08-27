@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 16:08",
+  "generated": "2026-08-27 17:19",
   "unknown": [],
   "models": [
     {
@@ -250,6 +250,1394 @@ window.NNV_MODELS = {
         "mask-denim"
       ],
       "sheetSrc": "refs/models/pasha/character-sheet-candidate.jpg"
+    }
+  ],
+  "items": [
+    {
+      "id": "tee-star",
+      "title": "Star Oversized T-Shirt",
+      "category": "clothes",
+      "model": "alya",
+      "frames": [
+        {
+          "path": "img/p01.webp",
+          "label": "p01",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tee-star/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tee-star/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-star/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-star/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-star/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "longsleeve-rider",
+      "title": "Rider Layered Longsleeve",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p02.webp",
+          "label": "p02",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-rider/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-rider/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-rider/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-rider/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-rider/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "longsleeve-sketch",
+      "title": "Sketch Longsleeve Cream",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p03.webp",
+          "label": "p03",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-sketch/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-sketch/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-sketch/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-sketch/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-sketch/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "vest-crown",
+      "title": "Crown Wool Vest",
+      "category": "clothes",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "img/p04.webp",
+          "label": "p04",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/vest-crown/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/vest-crown/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/vest-crown/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/vest-crown/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/vest-crown/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "sweater-rider",
+      "title": "Rider Sweater Red",
+      "category": "clothes",
+      "model": "katya",
+      "frames": [
+        {
+          "path": "img/p05.webp",
+          "label": "p05",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/sweater-rider/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/sweater-rider/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-rider/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-rider/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-rider/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "dress-tiedye",
+      "title": "Tie-Dye Chiffon Dress",
+      "category": "clothes",
+      "model": "alya",
+      "frames": [
+        {
+          "path": "img/p06.webp",
+          "label": "p06",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-tiedye/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-tiedye/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-tiedye/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-tiedye/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-tiedye/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "mockneck-dark-rider",
+      "title": "Dark Rider Satin Mockneck",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p07.webp",
+          "label": "p07",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/mockneck-dark-rider/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/mockneck-dark-rider/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/mockneck-dark-rider/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/mockneck-dark-rider/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/mockneck-dark-rider/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "hoodie-horns",
+      "title": "Horns Hoodie Grey",
+      "category": "clothes",
+      "model": "lesha",
+      "frames": [
+        {
+          "path": "img/p08.webp",
+          "label": "p08",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/hoodie-horns/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/hoodie-horns/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/hoodie-horns/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/hoodie-horns/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/hoodie-horns/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/hoodie-horns/process.webp",
+          "label": "process",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "skirt-lace",
+      "title": "Satin Lace Skirt",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/skirt-lace/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/skirt-lace/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/skirt-lace/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-lace/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-lace/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-lace/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "tee-riders",
+      "title": "Riders Oversized T-Shirt",
+      "category": "clothes",
+      "model": "nikita",
+      "frames": [
+        {
+          "path": "img/p10.webp",
+          "label": "p10",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tee-riders/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tee-riders/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-riders/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-riders/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-riders/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "shirt-fangs",
+      "title": "Fangs Shirt Pink",
+      "category": "clothes",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "img/p11.webp",
+          "label": "p11",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/shirt-fangs/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/shirt-fangs/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/shirt-fangs/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/shirt-fangs/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/shirt-fangs/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "towel-rider",
+      "title": "Rider Towel",
+      "category": "objects",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p12.webp",
+          "label": "p12",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/towel-rider/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/towel-rider/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/towel-rider/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/towel-rider/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/towel-rider/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "bag-nanava",
+      "title": "NANAVA Raffia Bag",
+      "category": "bags",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p13.webp",
+          "label": "p13",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-nanava/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-nanava/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-nanava/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-nanava/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-nanava/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "jacket-knight",
+      "title": "Knight Knit Jacket",
+      "category": "clothes",
+      "model": "lesha",
+      "frames": [
+        {
+          "path": "img/p14.webp",
+          "label": "p14",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/jacket-knight/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/jacket-knight/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/jacket-knight/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/jacket-knight/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/jacket-knight/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "dress-feather",
+      "title": "Watch-Strap Feather Dress",
+      "category": "clothes",
+      "model": "katya",
+      "frames": [
+        {
+          "path": "img/p19.webp",
+          "label": "p19",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-feather/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-feather/m2.webp",
+          "label": "m2",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-feather/m3.webp",
+          "label": "m3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-feather/m4.webp",
+          "label": "m4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-feather/m5.webp",
+          "label": "m5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-feather/m6.webp",
+          "label": "m6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "longsleeve-smile",
+      "title": "Belarusian Smile Longsleeve",
+      "category": "clothes",
+      "model": "nikita",
+      "frames": [
+        {
+          "path": "img/longsleeve-smile/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-smile/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-smile/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-smile/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-smile/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-smile/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "skirt-dipdye",
+      "title": "Dip-Dye Petal Skirt",
+      "category": "clothes",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "img/skirt-dipdye/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/skirt-dipdye/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/skirt-dipdye/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-dipdye/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-dipdye/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-dipdye/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-dipdye/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "cardholder-nanava",
+      "title": "NANAVA Cardholder",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p15.webp",
+          "label": "p15",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/cardholder-nanava/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/cardholder-nanava/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/cardholder-nanava/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/cardholder-nanava/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/cardholder-nanava/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "tote-kitten",
+      "title": "Kitten Mesh Tote",
+      "category": "bags",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p16.webp",
+          "label": "p16",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tote-kitten/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tote-kitten/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tote-kitten/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tote-kitten/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tote-kitten/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "bag-frill",
+      "title": "Frill Patent Bag",
+      "category": "bags",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p17.webp",
+          "label": "p17",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-frill/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-frill/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-frill/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-frill/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-frill/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "bag-frill-yellow",
+      "title": "Frill Patent Bag Yellow",
+      "category": "bags",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/bag-frill-yellow/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-frill-yellow/f1.webp",
+          "label": "f1",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-frill-yellow/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-frill-yellow/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-frill-yellow/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-frill-yellow/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "bag-crown",
+      "title": "Crown Engraved Bag",
+      "category": "bags",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p21.webp",
+          "label": "p21",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-crown/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-crown/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crown/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crown/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crown/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "earcuff-crystal",
+      "title": "Crystal Ear Cuff",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p18.webp",
+          "label": "p18",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/earcuff-crystal/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/earcuff-crystal/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/earcuff-crystal/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/earcuff-crystal/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/earcuff-crystal/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "cap-fangs",
+      "title": "Fangs Denim Cap",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p20.webp",
+          "label": "p20",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/cap-fangs/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/cap-fangs/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "earcuff-spine",
+      "title": "Spine Ear Cuff",
+      "category": "accessories",
+      "model": "katya",
+      "frames": [
+        {
+          "path": "img/p23.webp",
+          "label": "p23",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/earcuff-spine/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/earcuff-spine/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "earrings-cameo",
+      "title": "Bone Cameo Drop Earrings",
+      "category": "accessories",
+      "model": "katya",
+      "frames": [
+        {
+          "path": "img/p22.webp",
+          "label": "p22",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/earrings-cameo/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/earrings-cameo/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "belt-holster",
+      "title": "Holster Velvet Belt",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/p25.webp",
+          "label": "p25",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/belt-holster/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/belt-holster/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "scarf-organza",
+      "title": "Layered Organza Scarf",
+      "category": "accessories",
+      "model": "katya",
+      "frames": [
+        {
+          "path": "img/scarf-organza/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/scarf-organza/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/scarf-organza/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "mask-denim",
+      "title": "Ripped Denim Cap Mask",
+      "category": "accessories",
+      "model": "pasha",
+      "frames": [
+        {
+          "path": "img/mask-denim/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/mask-denim/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/mask-denim/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/mask-denim/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "dress-feather",
+      "title": "",
+      "category": "",
+      "model": "katya",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "sweater-rider",
+      "title": "",
+      "category": "",
+      "model": "katya",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "tee-star",
+      "title": "",
+      "category": "",
+      "model": "alya",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "skirt-dipdye",
+      "title": "",
+      "category": "",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "dress-tiedye",
+      "title": "",
+      "category": "",
+      "model": "alya",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "shirt-fangs",
+      "title": "",
+      "category": "",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "vest-crown",
+      "title": "",
+      "category": "",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "longsleeve-smile",
+      "title": "",
+      "category": "",
+      "model": "nikita",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "tee-riders",
+      "title": "",
+      "category": "",
+      "model": "nikita",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "hoodie-horns",
+      "title": "",
+      "category": "",
+      "model": "lesha",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "jacket-knight",
+      "title": "",
+      "category": "",
+      "model": "lesha",
+      "frames": [
+        {
+          "path": "",
+          "label": "",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
     }
   ]
 };

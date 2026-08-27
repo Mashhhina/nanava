@@ -88,15 +88,216 @@
       '</section>');
   }
 
+  /* ---------- вкладка «Вещи» ---------- */
+  var CAT = { clothes: "одежда", bags: "сумки", accessories: "аксессуары",
+              objects: "объекты" };
+  var itemsMount = document.querySelector("[data-items]");
+  var tab = (location.hash === "#items") ? "items" : "people";
+
+  function ruModel(name) {
+    var m = byName(name);
+    return m ? m.ru : name;
+  }
+
+  function frameTile(f, i) {
+    return '<figure class="frm' + (f.ref ? " ref" : "") + (f.exists ? "" : " gone") +
+      '" data-f="' + esc(f.path) + '">' +
+      (f.exists ? '<img src="' + esc(f.path) + '" alt="" loading="lazy">'
+                : '<span class="no">нет файла</span>') +
+      '<figcaption>' + esc(f.label) + (f.ref ? ' · эталон' : '') + '</figcaption></figure>';
+  }
+
+  function itemBlock(it) {
+    var refs = it.frames.filter(function (f) { return f.ref; }).length;
+    return el(
+      '<section class="itm" id="item-' + esc(it.id) + '">' +
+      '<div class="itm-head">' +
+        '<div><span class="itm-name">' + esc(it.title) + '</span>' +
+          '<span class="itm-id">' + esc(it.id) + ' · ' + esc(CAT[it.category] || it.category) + '</span></div>' +
+        '<div class="sp"></div>' +
+        '<span class="badge' + (it.model ? "" : " draft") + '">' +
+          (it.model ? "в кадре: " + esc(ruModel(it.model)) : "модель не назначена") + '</span>' +
+        '<span class="badge' + (it.refsCustom ? " canon" : "") + '">эталон: ' + refs + ' из ' + it.frames.length + '</span>' +
+        '<a class="btn ghost" href="product.html?id=' + esc(it.id) + '" target="_blank">карточка</a>' +
+        '<button class="btn" data-item="' + esc(it.id) + '">Редактировать</button>' +
+      '</div>' +
+      '<div class="frames">' + it.frames.map(frameTile).join("") + '</div>' +
+      '</section>');
+  }
+
+  var cat = "all";
+
+  function renderItems() {
+    var list = (ST.items || []).filter(function (it) {
+      return cat === "all" || it.category === cat;
+    });
+    itemsMount.innerHTML = "";
+    list.forEach(function (it) { itemsMount.appendChild(itemBlock(it)); });
+    itemsMount.querySelectorAll("[data-item]").forEach(function (b) {
+      b.onclick = function () { openItemEdit(b.getAttribute("data-item")); };
+    });
+  }
+
+  function itemBar() {
+    var all = ST.items || [];
+    var cats = ["all"].concat(Object.keys(CAT));
+    return cats.map(function (c) {
+      var n = c === "all" ? all.length
+                          : all.filter(function (i) { return i.category === c; }).length;
+      return '<a href="#items" data-cat="' + c + '"' + (c === cat ? ' class="on"' : '') +
+        '><b>' + (c === "all" ? "все" : CAT[c]) + '</b><span>' + n + '</span></a>';
+    }).join("");
+  }
+
+  function drawBar() {
+    var bar = document.querySelector("[data-bar]");
+    if (tab === "items") {
+      bar.innerHTML = itemBar();
+      bar.querySelectorAll("[data-cat]").forEach(function (a) {
+        a.onclick = function (e) {
+          e.preventDefault();
+          cat = a.getAttribute("data-cat");
+          renderItems();
+          drawBar();
+        };
+      });
+    } else {
+      bar.innerHTML = ST.models.map(function (m) {
+        return '<a href="#' + esc(m.name) + '"><b>' + esc(m.ru) + '</b><span>' +
+          (m.gender === "m" ? "м" : "ж") + " · " + m.items.length + " вещ." + '</span></a>';
+      }).join("");
+    }
+  }
+
+  function switchTab(next) {
+    tab = next;
+    location.hash = next === "items" ? "#items" : "";
+    document.querySelectorAll("[data-tab]").forEach(function (b) {
+      b.classList.toggle("on", b.getAttribute("data-tab") === tab);
+    });
+    mount.hidden = tab !== "people";
+    itemsMount.hidden = tab !== "items";
+    document.querySelector("[data-title]").textContent = tab === "items" ? "Вещи" : "Модели";
+    drawBar();
+    document.querySelector("[data-sub]").innerHTML = tab === "items"
+      ? 'Раскадровка каждой вещи: все кадры карточки. Любой кадр можно заменить ' +
+        'или добавить новый — и отметить, какие кадры уходят <b>эталоном в ' +
+        'генерацию</b> (их берут скрипты через <code>scripts/item_refs.py</code>). ' +
+        'Источник — <code>site/data/items.js</code> + <code>refs/items/refs.json</code>.'
+      : 'Раскадровка (character sheet), постоянные параметры и все вещи, на ' +
+        'которых стоит человек. Источник — <code>refs/models/registry.json</code> + ' +
+        '<code>usage.json</code>; пересборка — <code>python3 scripts/build_models.py</code>.';
+  }
+
+  document.querySelectorAll("[data-tab]").forEach(function (b) {
+    b.onclick = function () { switchTab(b.getAttribute("data-tab")); };
+  });
+
+  /* ---------- модалка вещи ---------- */
+  function itemById(id) {
+    return (ST.items || []).filter(function (x) { return x.id === id; })[0];
+  }
+
+  function openItemEdit(id) {
+    var it = itemById(id);
+    var refs = it.frames.filter(function (f) { return f.ref; })
+                        .map(function (f) { return f.path; });
+
+    modal.innerHTML =
+      '<button class="close" data-x>×</button>' +
+      '<h2>' + esc(it.title) + ' <em style="font-size:12px;color:var(--muted)">' + esc(it.id) + '</em></h2>' +
+      '<p class="hint" style="margin-top:6px">' +
+        (it.model ? 'В кадре: <b>' + esc(ruModel(it.model)) + '</b>. ' : 'Модель не назначена. ') +
+        'Кадр «эталон» уходит референсом вещи в каждую генерацию — с него держится ' +
+        'форма, цвет и детали. Замена пишется поверх файла карточки: ' +
+        'на сайте кадр обновится после <code>git push</code>.</p>' +
+      '<h3>Кадры карточки</h3>' +
+      '<div class="frames edit" data-frames></div>' +
+      '<div class="row" style="margin-top:14px">' +
+        '<button class="btn" data-saverefs' + (LIVE ? "" : " disabled") + '>Сохранить эталон</button>' +
+        '<button class="btn ghost" data-add' + (LIVE ? "" : " disabled") + '>Добавить кадр</button>' +
+        '<input type="file" accept="image/*" data-file style="display:none">' +
+      '</div>' +
+      '<div class="log" data-log></div>' +
+      (LIVE ? "" :
+        '<div class="cmd">python3 scripts/models_server.py\n' +
+        '# затем http://localhost:8787/models.html#items — здесь кнопки заработают\n\n' +
+        '# эталонные кадры вещи из терминала:\n' +
+        'python3 scripts/item_refs.py ' + esc(it.id) + '</div>');
+    veil.hidden = false;
+    modal.querySelector("[data-x]").onclick = closeEdit;
+
+    var box = modal.querySelector("[data-frames]");
+    var log = modal.querySelector("[data-log]");
+    var file = modal.querySelector("[data-file]");
+    var slot = null;                      // какой кадр меняем (null = добавить)
+
+    function drawFrames() {
+      box.innerHTML = it.frames.map(function (f) {
+        var on = refs.indexOf(f.path) >= 0;
+        return '<figure class="frm' + (on ? " ref" : "") + '" data-p="' + esc(f.path) + '">' +
+          (f.exists ? '<img src="' + esc(f.path) + '?t=' + Date.now() + '" alt="">'
+                    : '<span class="no">нет файла</span>') +
+          '<figcaption>' + esc(f.label) + '</figcaption>' +
+          '<div class="frm-act">' +
+            '<button class="mark" data-ref>' + (on ? "эталон" : "не эталон") + '</button>' +
+            '<button class="mark" data-rep' + (LIVE ? "" : " disabled") + '>заменить</button>' +
+          '</div></figure>';
+      }).join("");
+      box.querySelectorAll("[data-p]").forEach(function (f) {
+        var p = f.getAttribute("data-p");
+        f.querySelector("[data-ref]").onclick = function () {
+          var i = refs.indexOf(p);
+          if (i >= 0) refs.splice(i, 1); else refs.push(p);
+          drawFrames();
+        };
+        f.querySelector("[data-rep]").onclick = function () {
+          slot = p; file.value = ""; file.click();
+        };
+      });
+    }
+    drawFrames();
+
+    modal.querySelector("[data-add]").onclick = function () {
+      slot = null; file.value = ""; file.click();
+    };
+    file.onchange = function () {
+      var f = file.files[0];
+      if (!f) return;
+      log.textContent = slot ? ("меняю " + slot + "…") : "добавляю кадр…";
+      var r = new FileReader();
+      r.onload = function () {
+        api("items/" + it.id + "/frame", {
+          slot: slot, file: { name: f.name, data: r.result.split(",")[1] }
+        }).then(function (j) {
+          applyState(j.state);
+          it = itemById(id);
+          refs = it.frames.filter(function (x) { return x.ref; })
+                          .map(function (x) { return x.path; });
+          drawFrames();
+          log.innerHTML = "<b>записано:</b> site/" + esc(j.slot) +
+            (slot ? "" : " — путь дописан в items.js");
+        }).catch(function (e) { log.innerHTML = "<b>ошибка:</b> " + esc(e.message); });
+      };
+      r.readAsDataURL(f);
+    };
+
+    modal.querySelector("[data-saverefs]").onclick = function () {
+      api("items/" + it.id + "/refs", { refs: refs }).then(function (j) {
+        applyState(j.state);
+        it = itemById(id);
+        log.innerHTML = "<b>сохранено</b> в refs/items/refs.json — эти кадры " +
+          "теперь уходят в генерацию";
+      }).catch(function (e) { log.innerHTML = "<b>ошибка:</b> " + esc(e.message); });
+    };
+  }
+
   function render() {
     mount.innerHTML = "";
     ST.models.forEach(function (m) { mount.appendChild(block(m)); });
-    document.querySelector("[data-bar]").innerHTML = ST.models.map(function (m) {
-      return '<a href="#' + esc(m.name) + '"><b>' + esc(m.ru) + '</b><span>' +
-        (m.gender === "m" ? "м" : "ж") + " · " + m.items.length + " вещ." + '</span></a>';
-    }).join("");
     document.querySelector("[data-generated]").textContent =
-      "собрано " + (ST.generated || "—") + " · " + ST.models.length + " моделей";
+      "собрано " + (ST.generated || "—") + " · " + ST.models.length + " моделей · " +
+      ((ST.items || []).length) + " вещей";
     var mode = document.querySelector("[data-mode]");
     mode.className = "kit-mode" + (LIVE ? " live" : "");
     mode.innerHTML = LIVE
@@ -107,6 +308,8 @@
     mount.querySelectorAll("[data-edit]").forEach(function (b) {
       b.onclick = function () { openEdit(b.getAttribute("data-edit")); };
     });
+    renderItems();
+    switchTab(tab);
   }
 
   /* ---------- модалка ---------- */

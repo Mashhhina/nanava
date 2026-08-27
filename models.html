@@ -22,18 +22,18 @@
 </header>
 
 <section class="kit-head">
-  <h1>Модели</h1>
-  <p class="kit-sub">
-    Раскадровка (character sheet), постоянные параметры и все вещи, на которых
-    стоит человек. Источник — <code>refs/models/registry.json</code> +
-    <code>usage.json</code>; страница пересобирается командой
-    <code>python3 scripts/build_models.py</code>.
-  </p>
+  <h1 data-title>Модели</h1>
+  <nav class="tabs">
+    <button data-tab="people" class="on">Люди</button>
+    <button data-tab="items">Вещи</button>
+  </nav>
+  <p class="kit-sub" data-sub></p>
   <div class="kit-bar" data-bar></div>
   <div class="kit-mode" data-mode></div>
 </section>
 
 <main data-models></main>
+<main data-items hidden></main>
 
 <footer class="kit-foot">
   <span data-generated></span>
