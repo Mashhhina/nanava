@@ -239,7 +239,7 @@ window.NNV_HOME = {
     { key: "tees",        href: "catalog.html?cat=clothes",        img: "img/home/t-p10.webp" },
     { key: "skirts",      href: "catalog.html?cat=clothes",        img: "img/home/t-skirt-lace.webp" },
     { key: "jewellery",   href: "catalog.html?cat=accessories",    img: "img/home/t-p22.webp" },
-    { key: "all",         href: "catalog.html",                    img: "img/home/t-p13.webp" }
+    { key: "all",         href: "catalog.html",                    img: "img/home/t-bag-nanava.webp" }
   ],
   looks: [
     { id: "dress-feather",      img: "img/home/look-01.webp", w: 418, h: 1442 },
