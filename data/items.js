@@ -255,9 +255,9 @@ window.NNV_HOME = {
     { id: "shirt-fangs",        img: "img/home/look-06.webp", w: 453, h: 1442 },
     { id: "vest-crown",         img: "img/home/look-07.webp", w: 385, h: 1442 },
     { id: "longsleeve-smile",   img: "img/home/look-08.webp", w: 490, h: 1442 },
-    { id: "tee-riders",         img: "img/home/look-09.webp", w: 527, h: 1442 },
-    { id: "hoodie-horns",       img: "img/home/look-10.webp", w: 437, h: 1442 },
-    { id: "jacket-knight",      img: "img/home/look-11.webp", w: 490, h: 1442 }
+    { id: "tee-riders",         img: "img/home/look-09.webp", w: 562, h: 1442 },
+    { id: "jacket-knight",      img: "img/home/look-11.webp", w: 490, h: 1442 },
+    { id: "hoodie-horns",       img: "img/home/look-10.webp", w: 740, h: 1442 }
   ],
   world: ["tee-star", "shirt-fangs", "jacket-knight", "cap-fangs",
           "earcuff-spine", "tote-kitten", "cardholder-nanava", "scarf-organza"],
