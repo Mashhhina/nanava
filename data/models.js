@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 19:35",
+  "generated": "2026-08-27 21:41",
   "unknown": [],
   "models": [
     {
@@ -271,12 +271,22 @@ window.NNV_MODELS = {
       "gender": "dog",
       "height": null,
       "build": "бордер-колли, среднего размера, поджарая; в кадре всегда лежит",
-      "note": "Наша собака и фишка каталога: ровно на каждой третьей вещи один кадр карточки — с Булочкой (PLAYBOOK, «Булочка в кадре»; кому досталась — python3 scripts/bulochka.py). В кадре она ЛЕЖИТ и без ошейника: аксессуары в кадре бывают только наши. Ждём живое фото — положить в refs/models/bulochka/photo-01-sofa.jpg, канона пока нет.",
+      "note": "Наша собака и фишка каталога: ровно на каждой третьей вещи один кадр карточки — с Булочкой (PLAYBOOK, «Булочка в кадре»; кому досталась — python3 scripts/bulochka.py). В кадре она ЛЕЖИТ и без ошейника: аксессуары в кадре бывают только наши. Живое фото от Алексея 27.08 (photo-01-sofa.jpg — стоит на диване у окна, Варшава-Муранув; face-photo-crop.jpg — кроп морды с него). Фото только одно и стоя, лежачей позы в референсах нет — если лежачий ракурс поедет, просить у Алексея кадр лёжа.",
       "desc": "a young border collie named Bulochka: medium-sized, slim athletic build, semi-long soft double coat in warm LIVER CHOCOLATE BROWN (never black), classic collie markings — a narrow white blaze running up the muzzle between the eyes, white muzzle and chin, a wide white ruff on the chest, white front legs and paws, brown mask over both eyes and cheeks, brown semi-erect ears folded at the tips, light amber-hazel eyes, brown liver nose and eye rims, feathered brown tail",
-      "sheetStatus": "none",
-      "sheet": null,
-      "photos": [],
+      "sheetStatus": "canon",
+      "sheet": "img/models/bulochka/sheet.webp",
+      "photos": [
+        {
+          "file": "face-photo-crop.jpg",
+          "url": "img/models/bulochka/photo-01.webp"
+        },
+        {
+          "file": "photo-01-sofa.jpg",
+          "url": "img/models/bulochka/photo-02.webp"
+        }
+      ],
       "refs": [
+        "face-photo-crop.jpg",
         "photo-01-sofa.jpg"
       ],
       "prompt": "Character reference sheet of the EXACT same dog as in the reference photo(s): a young border collie named Bulochka: medium-sized, slim athletic build, semi-long soft double coat in warm LIVER CHOCOLATE BROWN (never black), classic collie markings — a narrow white blaze running up the muzzle between the eyes, white muzzle and chin, a wide white ruff on the chest, white front legs and paws, brown mask over both eyes and cheeks, brown semi-erect ears folded at the tips, light amber-hazel eyes, brown liver nose and eye rims, feathered brown tail. This is a REAL dog and always the SAME dog: keep her markings and proportions identical in every frame, do not restyle her into a black-and-white collie, do not make her a puppy or a cartoon. NO COLLAR, no harness, no leash, no tag, no dog toys or bowls in the frame. One horizontal row of FIVE studio views of this same dog, left to right: (1) left profile standing, (2) left three-quarter standing, (3) frontal standing, (4) right three-quarter standing, (5) LYING DOWN in profile with front paws stretched forward and head up — the pose she is photographed in for the catalogue. EXACT same head shape, muzzle, ear set, eye colour and white markings in every view; preserve her identity, do not idealize her, do not change the markings, keep natural fur texture. Calm neutral expression, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent body size and eye level across all five views. No collar, no leash, no text, no labels, no watermarks.",
@@ -297,7 +307,8 @@ window.NNV_MODELS = {
         "tote-ghost"
       ],
       "kind": "dog",
-      "face": null
+      "face": "img/models/bulochka/face.webp",
+      "sheetSrc": "refs/models/bulochka/character-sheet.png"
     },
     {
       "name": "anya",
