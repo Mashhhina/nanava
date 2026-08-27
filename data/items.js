@@ -225,7 +225,12 @@ window.NNV_DATA = {
       price: 120, colorGroup: "silver", sku: "NNV0310A",
       lead: "A chapel roof, worn on one finger.",
       desc: "Heavy signet ring in silver-tone metal. A broad square top plate with softened corners carries a raised latin cross standing proud of the surface, its arms reaching almost to the edges of the plate; the shoulders fall away in two flat facets into a plain band. Brushed satin across the plate and cross, brighter polish along the band edges.",
-      image: "img/ring-cross/main.webp", images: ["img/ring-cross/f2.webp", "img/ring-cross/f3.webp", "img/ring-cross/f4.webp"] }
+      image: "img/ring-cross/main.webp", images: ["img/ring-cross/f2.webp", "img/ring-cross/f3.webp", "img/ring-cross/f4.webp"] },
+    { id: "ring-facet", title: "Boulder Facet Ring", category: "accessories",
+      price: 115, colorGroup: "silver", sku: "NNV0311A",
+      lead: "A rock caught halfway into metal.",
+      desc: "Sculptural band in silver-tone metal, the top massed like a small hewn boulder — irregular flat facets of different sizes meeting at hard edges, split by deep cut lines running across the surface like cracks. The mass sits low and wide over the finger before tapering into a plain band at the back. Polished faces catch the light at different angles; the cuts read as dark recessed grooves.",
+      image: "img/ring-facet/main.webp", images: ["img/ring-facet/f2.webp", "img/ring-facet/f3.webp", "img/ring-facet/f4.webp"] }
   ]
 };
 
