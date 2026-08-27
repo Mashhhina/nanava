@@ -110,6 +110,11 @@ window.NNV_DATA = {
       price: 95, colorGroup: "teal", sku: "NNV0303A",
       lead: "Three brims, many teeth.",
       desc: "Baseball cap in heavily washed sage-teal denim with ripped patches and loose threads. Three stacked visors fan out like a hand of cards, each edged with frayed crochet borders and rows of mint-glazed ceramic fang beads — the same teeth that bite through the Fangs shirt. Weathered metal top button.",
-      image: "img/p20.webp", images: ["img/cap-fangs/f2.webp", "img/cap-fangs/f3.webp"] }
+      image: "img/p20.webp", images: ["img/cap-fangs/f2.webp", "img/cap-fangs/f3.webp"] },
+    { id: "earcuff-spine", title: "Spine Ear Cuff", category: "accessories",
+      price: 120, colorGroup: "pink", sku: "NNV0304A",
+      lead: "A spine curled around the ear.",
+      desc: "Full-ear cuff cast in matte resin, dusty-rose shade. A chain of vertebrae follows the rim of the ear while long rib spikes fan outward like a halo; a rounded bone paddle rests at the lobe. Flexible enough to hug any ear — no piercing needed.",
+      image: "img/p23.webp", images: ["img/earcuff-spine/f2.webp", "img/earcuff-spine/f3.webp"] }
   ]
 };
