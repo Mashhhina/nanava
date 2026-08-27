@@ -21,6 +21,11 @@
 (function () {
   var CFG = {
     param: "nnv-studio",
+    /* Адрес прокси студии (proxy/worker.js). Пока он пуст, править может
+       только тот, кто вставил свои ключи кнопкой «Ключи». Как задеплоите
+       воркер — впишите сюда его адрес, и генерация с сохранением заработают
+       у любого гостя, без ключей. */
+    proxy: "",
     repo: "Mashhhina/nanava",
     branch: "main",
     api: "https://generativelanguage.googleapis.com/v1beta/interactions",
@@ -75,8 +80,27 @@
     for (var k in o) { var x = dig(o[k]); if (x) return x; }
     return null;
   }
+  function proxy() { return (A.proxy || CFG.proxy || "").replace(/\/+$/, ""); }
+  function phdr() {
+    var h = { "Content-Type": "application/json" };
+    if (A.pass) h["X-NNV-Pass"] = A.pass;
+    return h;
+  }
+  async function viaProxy(url, payload) {
+    var r = await fetch(url, { method: "POST", headers: phdr(), body: JSON.stringify(payload) });
+    var txt = await r.text(), js;
+    try { js = JSON.parse(txt); } catch (e) { throw new Error("студия ответила не JSON: " + txt.slice(0, 160)); }
+    if (!r.ok) throw new Error(js.error || ("студия: " + r.status));
+    return js;
+  }
+
   async function ask(prompt, parts, aspect, size) {
-    if (!A.gemini) throw new Error("не вставлен ключ Google — кнопка «Ключи» в шапке редактора");
+    var P = proxy();
+    if (!A.gemini && P) {                             // общий канал: гость ничего не вставляет
+      var js = await viaProxy(P + "/gen", { prompt: prompt, parts: parts, aspect: aspect, size: size });
+      return loadImg("data:image/jpeg;base64," + js.data);
+    }
+    if (!A.gemini) throw new Error("студия не подключена: нужен прокси (proxy/README.md) или свой ключ Google — кнопка «Ключи»");
     var r = await fetch(CFG.api, {
       method: "POST",
       headers: { "x-goog-api-key": A.gemini, "Content-Type": "application/json" },
@@ -309,7 +333,12 @@
       if (j.error) throw new Error(j.error);
       return "записано в файл, прежняя версия в refs/edits/";
     }
-    if (!A.github) throw new Error("не вставлен токен GitHub — кнопка «Ключи» в шапке редактора");
+    var P = proxy();
+    if (!A.github && P) {                             // сохранение общим каналом
+      await viaProxy(P + "/save", { path: rel, content: dataUrl, message: message });
+      return "залито на сайт, обновится за минуту";
+    }
+    if (!A.github) throw new Error("студия не подключена: нужен прокси (proxy/README.md) или свой токен GitHub — кнопка «Ключи»");
     var cur = await gh("/contents/" + rel + "?ref=" + CFG.branch, "GET");
     await gh("/contents/" + rel, "PUT", { message: message, branch: CFG.branch,
       sha: cur.sha, content: dataUrl.replace(/^data:[^,]*,/, "") });
@@ -651,7 +680,7 @@
     function log(s) { lines.push(s); say(lines.slice(-3).join("\n")); }
     try { plan(S.zones, ui.prompt.value, S.refs); }
     catch (e) { return say(e.message, true); }
-    if (!A.gemini) { keysPanel(); return say("вставьте свой ключ Google — окно открылось", true); }
+    if (!A.gemini && !proxy()) { keysPanel(); return say("студия ещё не подключена — см. окно", true); }
     busy(true);
     var t0 = Date.now(), n = +ui.n.value, made = [];
     try {
@@ -699,7 +728,7 @@
 
   async function apply() {
     if (S.pick === null || S.busy) return;
-    if (!LOCAL && !A.github) { keysPanel(); return say("вставьте свой токен GitHub — окно открылось", true); }
+    if (!LOCAL && !A.github && !proxy()) { keysPanel(); return say("студия ещё не подключена — см. окно", true); }
     busy(true, LOCAL ? "Пишем…" : "Коммитим…");
     try {
       var data = await toWebp(S.vars[S.pick], quality(S.src));
@@ -723,43 +752,63 @@
     var v = el("div", "nnv-ed__keys");
     v.innerHTML =
       '<form>' +
-        '<div class="nnv-ed__head"><b>Ключи админа</b></div>' +
-        '<p>Лежат только в этом браузере (localStorage) и уходят только в Google и GitHub. ' +
-        'Заводите отдельный ключ Google с лимитом и fine-grained токен GitHub на репозиторий ' +
-        CFG.repo + ' с правом Contents: read and write.</p>' +
-        '<div><h4>Ключ Google (Gemini)</h4><input type="password" name="g" placeholder="AIza…"></div>' +
-        '<div><h4>Токен GitHub</h4><input type="password" name="h" placeholder="github_pat_…"></div>' +
+        '<div class="nnv-ed__head"><b>Подключение студии</b></div>' +
+        '<p>Чтобы править мог любой гость сайта, ключи должны лежать на сервере, а не в ' +
+        'браузере: поднимите прокси из папки <code>proxy/</code> (пять минут, ' +
+        '<code>npx wrangler deploy</code>) и впишите его адрес — больше никому ничего ' +
+        'вставлять не нужно.<br>Пока прокси нет, править может тот, кто вставил свои ключи: ' +
+        '<a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">ключ Google</a> ' +
+        '(заведите отдельный, с лимитом) и ' +
+        '<a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">' +
+        'fine-grained токен GitHub</a> на ' + CFG.repo + ' с правом Contents: read and write. ' +
+        'Всё это лежит только в этом браузере.</p>' +
+        '<div><h4>Адрес прокси студии</h4><input type="text" name="p" placeholder="https://nnv-studio.…workers.dev" autocomplete="off"></div>' +
+        '<div><h4>Пароль студии (если задан)</h4><input type="password" name="w" placeholder="необязательно" autocomplete="off"></div>' +
+        '<div><h4>Свой ключ Google (без прокси)</h4><input type="password" name="g" placeholder="AIza…" autocomplete="off"></div>' +
+        '<div><h4>Свой токен GitHub (без прокси)</h4><input type="password" name="h" placeholder="github_pat_…" autocomplete="off"></div>' +
         '<div class="nnv-ed__log"></div>' +
         '<div class="nnv-ed__row">' +
           '<button type="button" data-act="check">Проверить</button>' +
           '<button type="button" data-act="save">Сохранить</button>' +
-          '<button type="button" data-act="off" class="muted">Выйти из режима</button>' +
           '<button type="button" data-act="close" class="muted">Закрыть</button>' +
+        '</div>' +
+        '<div class="nnv-ed__row">' +
+          '<button type="button" data-act="off" class="muted">Спрятать карандаши в этом браузере</button>' +
         '</div>' +
       '</form>';
     document.body.appendChild(v);
     var f = v.querySelector("form"), log = v.querySelector(".nnv-ed__log");
     f.g.value = A.gemini || ""; f.h.value = A.github || "";
+    f.p.value = A.proxy || CFG.proxy || ""; f.w.value = A.pass || "";
     v.onclick = function (e) {
       var b = e.target.closest("button"); if (!b) return;
       var act = b.dataset.act;
       if (act === "close") return v.remove();
-      if (act === "off") { localStorage.removeItem(KEY); location.reload(); return; }
-      A.gemini = f.g.value.trim(); A.github = f.h.value.trim(); keep();
+      if (act === "off") { A.off = true; keep(); location.reload(); return; }
+      A.gemini = f.g.value.trim(); A.github = f.h.value.trim();
+      A.proxy = f.p.value.trim(); A.pass = f.w.value.trim(); keep();
       if (act === "save") { log.textContent = "сохранено"; log.className = "nnv-ed__log nnv-ed__ok"; return; }
       log.textContent = "проверяем…"; log.className = "nnv-ed__log";
-      Promise.all([
-        fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + encodeURIComponent(A.gemini))
+      var checks = [];
+      if (proxy())
+        checks.push(fetch(proxy() + "/gen", { method: "OPTIONS" })
+          .then(function (r) { return r.ok || r.status === 405
+            ? "Прокси: отвечает — гостям ключи не нужны" : "Прокси: " + r.status; })
+          .catch(function () { return "Прокси: не отвечает по этому адресу"; }));
+      if (A.gemini)
+        checks.push(fetch("https://generativelanguage.googleapis.com/v1beta/models?key=" + encodeURIComponent(A.gemini))
           .then(function (r) { return r.ok ? "Google: ключ рабочий" : "Google: ключ не принят (" + r.status + ")"; })
-          .catch(function () { return "Google: не достучались"; }),
-        A.github
-          ? gh("", "GET").then(function (j) {
-              return "GitHub: " + j.full_name + (j.permissions && j.permissions.push ? ", запись есть" : ", ЗАПИСИ НЕТ");
-            }).catch(function (e) { return "GitHub: " + e.message; })
-          : Promise.resolve("GitHub: токен не вставлен")
-      ]).then(function (r) {
-        log.textContent = r.join("\n");
-        log.className = "nnv-ed__log" + (r.join(" ").indexOf("рабочий") >= 0 && r.join(" ").indexOf("запись есть") >= 0 ? " nnv-ed__ok" : " nnv-ed__bad");
+          .catch(function () { return "Google: не достучались"; }));
+      if (A.github)
+        checks.push(gh("", "GET").then(function (j) {
+          return "GitHub: " + j.full_name + (j.permissions && j.permissions.push ? ", запись есть" : ", ЗАПИСИ НЕТ");
+        }).catch(function (e) { return "GitHub: " + e.message; }));
+      if (!checks.length) checks.push(Promise.resolve("ничего не задано: впишите адрес прокси или свои ключи"));
+      Promise.all(checks).then(function (r) {
+        var s = r.join("\n");
+        log.textContent = s;
+        log.className = "nnv-ed__log " + (/не отвечает|не принят|не достучались|ЗАПИСИ НЕТ|ничего не задано/.test(s)
+                                          ? "nnv-ed__bad" : "nnv-ed__ok");
       });
     };
   }

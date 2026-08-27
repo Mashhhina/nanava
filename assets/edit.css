@@ -112,13 +112,42 @@
 .nnv-ed__foot { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
 .nnv-ed__foot .muted { background: transparent; border-color: #333; color: #999; }
 
-/* настройки: ключи админа */
-.nnv-ed__keys { position: fixed; inset: 0; z-index: 2147483200; display: flex;
-  align-items: center; justify-content: center; background: rgba(10,10,10,.9); }
+/* окно «Ключи». Живёт отдельно от .nnv-ed, поэтому все стили — свои:
+   к нему не применяется ничего из правил редактора выше. */
+.nnv-ed__keys {
+  position: fixed; inset: 0; z-index: 2147483200; display: flex;
+  align-items: center; justify-content: center; background: rgba(10,10,10,.9);
+  font: 13px/1.45 ui-sans-serif, system-ui, sans-serif; color: #eee;
+}
 .nnv-ed__keys[hidden] { display: none; }
-.nnv-ed__keys form { width: 420px; max-width: 92vw; background: #161616;
-  border: 1px solid #2a2a2a; border-radius: 3px; padding: 20px; display: flex;
-  flex-direction: column; gap: 12px; }
-.nnv-ed__keys p { margin: 0; color: #8a8a8a; font-size: 11px; line-height: 1.5; }
-.nnv-ed__keys a { color: #bbb; }
+.nnv-ed__keys form {
+  width: 430px; max-width: 92vw; background: #161616; color: #eee;
+  border: 1px solid #2a2a2a; border-radius: 3px; padding: 22px;
+  display: flex; flex-direction: column; gap: 13px;
+}
+.nnv-ed__keys b {
+  font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  font-weight: 600; color: #f1f1ef;
+}
+.nnv-ed__keys h4 {
+  margin: 0 0 6px; font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+  color: #9a9a9a; font-weight: 600;
+}
+.nnv-ed__keys p { margin: 0; color: #8a8a8a; font-size: 11.5px; line-height: 1.55; }
+.nnv-ed__keys a { color: #cfcfcf; }
+.nnv-ed__keys input {
+  width: 100%; box-sizing: border-box; background: #1c1c1c; color: #eee;
+  border: 1px solid #3a3a3a; border-radius: 2px; padding: 10px;
+  font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.nnv-ed__keys input:focus { outline: 0; border-color: #7a7a7a; }
+.nnv-ed__keys input::placeholder { color: #5d5d5d; }
+.nnv-ed__keys button {
+  font: 500 11px/1.25 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em;
+  text-transform: uppercase; color: #ddd; background: #242424;
+  border: 1px solid #3a3a3a; border-radius: 2px; padding: 10px 8px; cursor: pointer;
+}
+.nnv-ed__keys button:hover { background: #2e2e2e; color: #fff; }
+.nnv-ed__keys button.muted { background: transparent; color: #999; }
+.nnv-ed__keys .nnv-ed__log { white-space: pre-wrap; color: #9a9a9a; font-size: 11.5px; min-height: 16px; }
 .nnv-ed__ok { color: #7bbf86; } .nnv-ed__bad { color: #e2707a; }
