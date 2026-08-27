@@ -230,7 +230,12 @@ window.NNV_DATA = {
       price: 115, colorGroup: "silver", sku: "NNV0311A",
       lead: "A rock caught halfway into metal.",
       desc: "Sculptural band in silver-tone metal, the top massed like a small hewn boulder — irregular flat facets of different sizes meeting at hard edges, split by deep cut lines running across the surface like cracks. The mass sits low and wide over the finger before tapering into a plain band at the back. Polished faces catch the light at different angles; the cuts read as dark recessed grooves.",
-      image: "img/ring-facet/main.webp", images: ["img/ring-facet/f2.webp", "img/ring-facet/f3.webp", "img/ring-facet/f4.webp"] }
+      image: "img/ring-facet/main.webp", images: ["img/ring-facet/f2.webp", "img/ring-facet/f3.webp", "img/ring-facet/f4.webp"] },
+    { id: "ring-stones", title: "Blackened Eye Band", category: "accessories",
+      price: 130, colorGroup: "silver", sku: "NNV0312A",
+      lead: "A row of eyes kept open in the dark.",
+      desc: "Wide band ring in silver-tone metal. A raised strip runs the full circumference, worked into a repeating plait of elongated pointed ovals; the recesses are blackened to near-black while the raised outlines and both rim edges stay bright and polished. Small round clear stones sit flush in bezel settings, one at the centre of each motif. The inner surface stays smooth and bright.",
+      image: "img/ring-stones/main.webp", images: ["img/ring-stones/f2.webp", "img/ring-stones/f3.webp", "img/ring-stones/f4.webp"] }
   ]
 };
 
