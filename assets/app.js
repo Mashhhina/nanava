@@ -12,6 +12,8 @@
       help: "Help", bag: "Bag", catalog: "Catalog",
       all: "All", clothes: "Clothing", bags: "Bags", accessories: "Accessories", objects: "Objects",
       categories: "Categories", designer: "Designer", sort: "Sort", color: "Color",
+      model: "Model", all_models: "Everyone", no_frames: "no frames yet",
+      empty_model: "No pieces shot with this one yet.", no_model: "Not cast",
       "sort.new": "New in", "sort.priceAsc": "Price low–high", "sort.priceDesc": "Price high–low",
       items: "items", new_in: "New", view_all: "View all",
       shop_look: "Shop by Look", season: "Garderobe Fall Winter 26/27", explore: "Explore the collection",
@@ -52,6 +54,8 @@
       help: "Дапамога", bag: "Кошык", catalog: "Каталог",
       all: "Усе", clothes: "Адзенне", bags: "Сумкі", accessories: "Аксесуары", objects: "Аб'екты",
       categories: "Катэгорыі", designer: "Дызайнер", sort: "Сартаваць", color: "Колер",
+      model: "Мадэль", all_models: "Усе", no_frames: "кадраў яшчэ няма",
+      empty_model: "З гэтым яшчэ нічога не здымалі.", no_model: "Без мадэлі",
       "sort.new": "Спачатку новае", "sort.priceAsc": "Кошт: ад меншага", "sort.priceDesc": "Кошт: ад большага",
       items: "рэчаў", new_in: "Новае", view_all: "Усе рэчы",
       shop_look: "Shop by Look", season: "Гардэроб восень-зіма 26/27", explore: "Глядзець калекцыю",
@@ -136,19 +140,108 @@
   function renderInto(el, items) { el.innerHTML = items.map(cardHTML).join(""); }
 
   /* ---------- каталог ---------- */
-  var state = { cat: "all", color: "all", sort: "new" };
+  var state = { cat: "all", color: "all", sort: "new", model: "all" };
+
+  /* ---------- фильтр по моделям (лица над сеткой) ----------
+     Данные — data/faces.js (собирается scripts/build_models.py из ростера
+     refs/models/registry.json + usage.json). В выпадашке весь ростер, включая
+     Булочку и тех, по кому ещё ничего не сгенерено — по счётчику видно, что
+     кадров нет (PLAYBOOK, «Фильтр по моделям»). */
+  var FACES = (window.NNV_FACES && window.NNV_FACES.models) || [];
+  var modelOf = {};                       // id вещи → имена моделей в кадре
+  FACES.forEach(function (m) {
+    (m.items || []).forEach(function (id) {
+      (modelOf[id] = modelOf[id] || []).push(m.name);
+    });
+  });
+  var unassigned = D.items.filter(function (it) {
+    var names = modelOf[it.id] || [];
+    return !names.some(function (n) {
+      var m = modelById(n); return m && m.kind !== "dog";
+    });
+  }).map(function (it) { return it.id; });
+  function modelById(name) {
+    for (var i = 0; i < FACES.length; i++) if (FACES[i].name === name) return FACES[i];
+    return null;
+  }
+  function shotCount(m) {
+    return (m.items || []).filter(function (id) { return !!byId[id]; }).length;
+  }
+  function faceHTML(m, cls) {
+    return m.face
+      ? '<span class="' + cls + '"><img src="' + m.face + '" alt="" loading="lazy"></span>'
+      : '<span class="' + cls + ' none"></span>';
+  }
+  function renderModelFilter() {
+    var box = document.querySelector("[data-model-filter]");
+    if (!box || !FACES.length) { if (box) box.hidden = true; return; }
+    var btn = box.querySelector("[data-model-btn]");
+    var pop = box.querySelector("[data-model-pop]");
+    var cur = state.model === "all" ? null : modelById(state.model);
+    btn.innerHTML = cur ? faceHTML(cur, "mf-face") + "<span>" + cur.label + "</span>"
+      : '<span>' + t(state.model === "none" ? "no_model" : "all_models") + "</span>";
+    pop.innerHTML =
+      '<button class="mf-item all' + (state.model === "all" ? " on" : "") +
+        '" data-pick-model="all">' + t("all_models") + "</button>" +
+      FACES.map(function (m) {
+        var n = shotCount(m);
+        return '<button class="mf-item' + (state.model === m.name ? " on" : "") +
+          (n ? "" : " empty") + '" data-pick-model="' + m.name + '">' +
+          faceHTML(m, "mf-face") +
+          '<span class="nm">' + m.label + "</span>" +
+          '<span class="ct">' + (n ? n : t("no_frames")) + "</span></button>";
+      }).join("") +
+      (unassigned.length                     // вещи, на которые ещё не выбрана модель
+        ? '<button class="mf-item' + (state.model === "none" ? " on" : "") +
+          '" data-pick-model="none"><span class="mf-face none"></span>' +
+          '<span class="nm">' + t("no_model") + "</span>" +
+          '<span class="ct">' + unassigned.length + "</span></button>"
+        : "");
+  }
+  function setModel(name) {
+    state.model = name;
+    var q = [];
+    if (state.cat !== "all") q.push("cat=" + state.cat);
+    if (state.model !== "all") q.push("model=" + state.model);
+    history.replaceState(null, "", "catalog.html" + (q.length ? "?" + q.join("&") : ""));
+    renderCatalog();
+  }
+  function initModelFilter() {
+    var box = document.querySelector("[data-model-filter]");
+    if (!box) return;
+    var pop = box.querySelector("[data-model-pop]");
+    box.addEventListener("click", function (e) {
+      if (e.target.closest("[data-model-btn]")) { pop.hidden = !pop.hidden; return; }
+      var pick = e.target.closest("[data-pick-model]");
+      if (!pick) return;
+      pop.hidden = true;
+      setModel(pick.getAttribute("data-pick-model"));
+    });
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest("[data-model-filter]")) pop.hidden = true;
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") pop.hidden = true;
+    });
+  }
   function renderCatalog() {
     var grid = document.querySelector("[data-catalog]");
     if (!grid) return;
     var items = D.items.filter(function (it) {
       return (state.cat === "all" || it.category === state.cat) &&
-             (state.color === "all" || it.colorGroup === state.color);
+             (state.color === "all" || it.colorGroup === state.color) &&
+             (state.model === "all" ||
+              (state.model === "none" ? unassigned.indexOf(it.id) >= 0
+                                      : (modelOf[it.id] || []).indexOf(state.model) >= 0));
     });
     if (state.sort === "priceAsc") items = items.slice().sort(function (a, b) { return a.price - b.price; });
     if (state.sort === "priceDesc") items = items.slice().sort(function (a, b) { return b.price - a.price; });
     renderInto(grid, items);
+    if (!items.length && state.model !== "all")
+      grid.innerHTML = '<p class="cat-empty">' + t("empty_model") + "</p>";
     var c = document.querySelector("[data-count]");
     if (c) c.textContent = items.length + " " + t("items");
+    renderModelFilter();
     document.querySelectorAll("[data-cat]").forEach(function (b) {
       b.classList.toggle("on", b.getAttribute("data-cat") === state.cat);
     });
@@ -158,13 +251,19 @@
     if (!grid) return;
     var params = new URLSearchParams(location.search);
     state.cat = params.get("cat") || "all";
+    state.model = params.get("model") || "all";
+    if (state.model !== "all" && state.model !== "none" && !modelById(state.model))
+      state.model = "all";
     document.querySelectorAll("[data-cat]").forEach(function (b) {
       b.addEventListener("click", function () {
         state.cat = b.getAttribute("data-cat");
-        history.replaceState(null, "", state.cat === "all" ? "catalog.html" : "catalog.html?cat=" + state.cat);
+        var q = state.model === "all" ? "" : "?model=" + state.model;
+        if (state.cat !== "all") q = (q ? q + "&" : "?") + "cat=" + state.cat;
+        history.replaceState(null, "", "catalog.html" + q);
         renderCatalog();
       });
     });
+    initModelFilter();
     var colorSel = document.querySelector("[data-color]");
     if (colorSel) {
       var groups = [];

@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 19:21",
+  "generated": "2026-08-27 19:35",
   "unknown": [],
   "models": [
     {
@@ -35,6 +35,7 @@ window.NNV_MODELS = {
         "scarf-organza"
       ],
       "kind": "person",
+      "face": "img/models/katya/face.webp",
       "sheetSrc": "refs/models/katya/character-sheet.png"
     },
     {
@@ -78,6 +79,7 @@ window.NNV_MODELS = {
         "top-organza"
       ],
       "kind": "person",
+      "face": "img/models/alya/face.webp",
       "sheetSrc": "refs/models/alya/character-sheet-candidate.jpg"
     },
     {
@@ -137,6 +139,7 @@ window.NNV_MODELS = {
         "tote-ghost"
       ],
       "kind": "person",
+      "face": "img/models/lina/face.webp",
       "sheetSrc": "refs/models/lina/character-sheet-candidate.jpg"
     },
     {
@@ -177,6 +180,7 @@ window.NNV_MODELS = {
         "tee-riders"
       ],
       "kind": "person",
+      "face": "img/models/nikita/face.webp",
       "sheetSrc": "refs/models/nikita/character-sheet.png"
     },
     {
@@ -224,6 +228,7 @@ window.NNV_MODELS = {
         "jacket-knight"
       ],
       "kind": "person",
+      "face": "img/models/lesha/face.webp",
       "sheetSrc": "refs/models/lesha/character-sheet-candidate.jpg"
     },
     {
@@ -257,6 +262,7 @@ window.NNV_MODELS = {
         "mask-denim"
       ],
       "kind": "person",
+      "face": "img/models/pasha/face.webp",
       "sheetSrc": "refs/models/pasha/character-sheet-candidate.jpg"
     },
     {
@@ -290,7 +296,8 @@ window.NNV_MODELS = {
         "scarf-knight",
         "tote-ghost"
       ],
-      "kind": "dog"
+      "kind": "dog",
+      "face": null
     },
     {
       "name": "anya",
@@ -343,6 +350,7 @@ window.NNV_MODELS = {
         "vest-crown"
       ],
       "kind": "person",
+      "face": "img/models/anya/face.webp",
       "sheetSrc": "refs/models/anya/character-sheet-candidate.jpg"
     }
   ],
@@ -360,10 +368,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/tee-star/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/tee-star/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/tee-star/f3.webp",
@@ -406,10 +420,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/longsleeve-rider/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/longsleeve-rider/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/longsleeve-rider/f3.webp",
@@ -452,10 +472,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/longsleeve-sketch/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/longsleeve-sketch/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/longsleeve-sketch/f3.webp",
@@ -498,10 +524,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/vest-crown/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/vest-crown/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/vest-crown/f3.webp",
@@ -544,10 +576,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/sweater-rider/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/sweater-rider/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/sweater-rider/f3.webp",
@@ -590,10 +628,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/dress-tiedye/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/dress-tiedye/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/dress-tiedye/f3.webp",
@@ -636,10 +680,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/mockneck-dark-rider/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/mockneck-dark-rider/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/mockneck-dark-rider/f3.webp",
@@ -734,10 +784,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/skirt-lace/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/skirt-lace/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/skirt-lace/f3.webp",
@@ -826,10 +882,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/shirt-fangs/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/shirt-fangs/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/shirt-fangs/f3.webp",
@@ -872,10 +934,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/towel-rider/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/towel-rider/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/towel-rider/f3.webp",
@@ -918,10 +986,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/bag-nanava/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/bag-nanava/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/bag-nanava/f3.webp",
@@ -1160,10 +1234,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/cardholder-nanava/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/cardholder-nanava/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/cardholder-nanava/f3.webp",
@@ -1206,10 +1286,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/tote-kitten/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/tote-kitten/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/tote-kitten/f3.webp",
@@ -1252,10 +1338,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/bag-frill/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/bag-frill/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/bag-frill/f3.webp",
@@ -1298,10 +1390,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/bag-frill-yellow/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/bag-frill-yellow/f1.webp",
           "label": "f1",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/bag-frill-yellow/f3.webp",
@@ -1442,10 +1540,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/earcuff-crystal/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/earcuff-crystal/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/earcuff-crystal/f3.webp",
@@ -1584,10 +1688,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/belt-holster/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/belt-holster/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/belt-holster/f3.webp",

@@ -38,6 +38,11 @@
   <main>
     <div class="cat-tools">
       <span class="count" data-count></span>
+      <label data-i18n="model">Model</label>
+      <div class="mfilter" data-model-filter>
+        <button class="mf-btn" data-model-btn aria-haspopup="true" aria-expanded="false"></button>
+        <div class="mf-pop" data-model-pop hidden></div>
+      </div>
       <label data-i18n="color">Color</label>
       <select data-color></select>
       <label data-i18n="sort">Sort</label>
@@ -104,6 +109,7 @@
 </div>
 
 <script src="data/items.js"></script>
+<script src="data/faces.js"></script>
 <script src="assets/app.js"></script>
 <link rel="stylesheet" href="assets/edit.css">
 <script src="assets/edit.js" defer></script>
