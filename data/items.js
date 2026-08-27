@@ -150,6 +150,11 @@ window.NNV_DATA = {
       price: 140, colorGroup: "blue", sku: "NNV0307A",
       lead: "Three veils of colour in one breath of silk.",
       desc: "Long scarf of three overlapping silk-organza panels — ink navy, chocolate brown and pale champagne. Crisp translucent gauze with narrow rolled hems; where the layers cross, the colours blend like watercolour washes. Loop it at the neck or wear it as a sheer head veil.",
-      image: "img/scarf-organza/main.webp", images: ["img/scarf-organza/f2.webp", "img/scarf-organza/f3.webp"] }
+      image: "img/scarf-organza/main.webp", images: ["img/scarf-organza/f2.webp", "img/scarf-organza/f3.webp"] },
+    { id: "mask-denim", title: "Ripped Denim Cap Mask", category: "accessories",
+      price: 110, colorGroup: "red", sku: "NNV0308A",
+      lead: "The cap kept going down.",
+      desc: "Baseball cap and full face mask cut from one piece of heavily washed oxblood denim. The crown runs straight into the face panel: the moulded nose bridge climbs all the way to the underside of the brim, splitting the two crescent eye openings, with an oval mouth cut-out below. Sanded, ripped and frayed across every panel, covered buttons at the temples, raw denim tabs left hanging at the chin.",
+      image: "img/mask-denim/main.webp", images: ["img/mask-denim/f2.webp", "img/mask-denim/f3.webp", "img/mask-denim/f4.webp"] }
   ]
 };
