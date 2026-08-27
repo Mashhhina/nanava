@@ -105,6 +105,11 @@ window.NNV_DATA = {
       price: 110, colorGroup: "silver", sku: "NNV0302A",
       lead: "An icy cluster for the ear.",
       desc: "Full-ear cuff in rhodium-plated silver. Faceted crystal drops with cellular cut gather into a mobile cluster — they move and catch the light as the head turns. No piercing needed.",
-      image: "img/p18.webp", images: ["img/earcuff-crystal/f2.webp", "img/earcuff-crystal/f3.webp", "img/earcuff-crystal/f4.webp", "img/earcuff-crystal/f5.webp", "img/earcuff-crystal/f6.webp"] }
+      image: "img/p18.webp", images: ["img/earcuff-crystal/f2.webp", "img/earcuff-crystal/f3.webp", "img/earcuff-crystal/f4.webp", "img/earcuff-crystal/f5.webp", "img/earcuff-crystal/f6.webp"] },
+    { id: "cap-fangs", title: "Fangs Denim Cap", category: "accessories",
+      price: 95, colorGroup: "teal", sku: "NNV0303A",
+      lead: "Three brims, many teeth.",
+      desc: "Baseball cap in heavily washed sage-teal denim with ripped patches and loose threads. Three stacked visors fan out like a hand of cards, each edged with frayed crochet borders and rows of mint-glazed ceramic fang beads — the same teeth that bite through the Fangs shirt. Weathered metal top button.",
+      image: "img/p20.webp", images: ["img/cap-fangs/f2.webp", "img/cap-fangs/f3.webp"] }
   ]
 };
