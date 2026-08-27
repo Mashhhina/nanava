@@ -48,7 +48,9 @@
   if (A.off) return;
 
   var LOCAL = false;                                  // рядом локальный сервер? тогда пишем в файл
-  fetch("/api/ping").then(function (r) { LOCAL = r.ok; }).catch(function () {});
+  /* Ответ ping ждём промисом: генерация не должна успеть решить, что канала
+     нет, пока сервер ещё отвечает. */
+  var PROBE = fetch("/api/ping").then(function (r) { LOCAL = r.ok; }).catch(function () {});
 
   /* ---------- мелочи ---------- */
   function el(t, c, h) { var e = document.createElement(t); if (c) e.className = c; if (h != null) e.innerHTML = h; return e; }
@@ -682,7 +684,11 @@
     function log(s) { lines.push(s); say(lines.slice(-3).join("\n")); }
     try { plan(S.zones, ui.prompt.value, S.refs); }
     catch (e) { return say(e.message, true); }
-    if (!LOCAL && !A.gemini && !proxy()) { keysPanel(); return say("студия ещё не подключена — см. окно", true); }
+    await PROBE;
+    /* Окно ключей само не лезет: нажали «Сгенерировать» — идёт генерация.
+       Если канала нет вовсе — только строка в статусе, окно открывается
+       кнопкой «Ключи» в шапке. */
+    if (!LOCAL && !A.gemini && !proxy()) return say("нет канала генерации: прокси или свой ключ Google — кнопка «Ключи»", true);
     busy(true);
     var t0 = Date.now(), n = +ui.n.value, made = [];
     try {
@@ -730,7 +736,8 @@
 
   async function apply() {
     if (S.pick === null || S.busy) return;
-    if (!LOCAL && !A.github && !proxy()) { keysPanel(); return say("студия ещё не подключена — см. окно", true); }
+    await PROBE;
+    if (!LOCAL && !A.github && !proxy()) return say("нет канала записи: прокси или свой токен GitHub — кнопка «Ключи»", true);
     busy(true, LOCAL ? "Пишем…" : "Коммитим…");
     try {
       var data = await toWebp(S.vars[S.pick], quality(S.src));
