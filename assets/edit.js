@@ -453,6 +453,7 @@
         '<div class="nnv-ed__varsbox" hidden><h4>Варианты</h4><div class="nnv-ed__vars"></div>' +
           '<div class="nnv-ed__row" style="margin-top:8px">' +
             '<button class="nnv-ed__apply">Применить</button>' +
+            '<button class="nnv-ed__save muted">Скачать</button>' +
             '<button class="nnv-ed__again muted">Ещё варианты</button></div>' +
           '<div class="nnv-ed__cost nnv-ed__where"></div></div>' +
         '<div class="nnv-ed__foot">' +
@@ -468,6 +469,7 @@
            qual: g(".nnv-ed__qual"), n: g(".nnv-ed__n"), go: g(".nnv-ed__go"),
            cost: g(".nnv-ed__cost"), log: g(".nnv-ed__log"), varsBox: g(".nnv-ed__varsbox"),
            vars: g(".nnv-ed__vars"), apply: g(".nnv-ed__apply"), again: g(".nnv-ed__again"),
+           down: g(".nnv-ed__save"),
            where: g(".nnv-ed__where"), keys: g(".nnv-ed__keysbtn"), hint: g(".nnv-ed__tools .hint") };
     ui.ctx = ui.cv.getContext("2d");
     wire();
@@ -673,7 +675,7 @@
   }
   function busy(on, msg) {
     S.busy = on;
-    ui.go.disabled = ui.apply.disabled = ui.again.disabled = on;
+    ui.go.disabled = ui.apply.disabled = ui.again.disabled = ui.down.disabled = on;
     ui.go.textContent = on ? (msg || "Генерим…") : "Сгенерировать";
   }
 
@@ -734,6 +736,19 @@
     ui.cv.classList.remove("hide"); render();
   }
 
+  async function download() {
+    /* Забрать кадр файлом — когда токена GitHub нет, а правку надо отдать
+       тому, кто выкладывает. Имя как у кадра на сайте, чтобы не путаться. */
+    if (S.pick === null || S.busy) return;
+    try {
+      var data = await toWebp(S.vars[S.pick], quality(S.src));
+      var a = el("a");
+      a.href = data; a.download = S.src.split("/").pop();
+      document.body.appendChild(a); a.click(); a.remove();
+      say("скачан " + a.download + " — положите его в site/" + S.src + " и запушьте");
+    } catch (e) { say(e.message, true); }
+  }
+
   async function apply() {
     if (S.pick === null || S.busy) return;
     await PROBE;
@@ -761,20 +776,20 @@
     var v = el("div", "nnv-ed__keys");
     v.innerHTML =
       '<form>' +
-        '<div class="nnv-ed__head"><b>Подключение студии</b></div>' +
-        '<p>Чтобы править мог любой гость сайта, ключи должны лежать на сервере, а не в ' +
-        'браузере: поднимите прокси из папки <code>proxy/</code> (пять минут, ' +
-        '<code>npx wrangler deploy</code>) и впишите его адрес — больше никому ничего ' +
-        'вставлять не нужно.<br>Пока прокси нет, править может тот, кто вставил свои ключи: ' +
-        '<a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">ключ Google</a> ' +
-        '(заведите отдельный, с лимитом) и ' +
+        '<div class="nnv-ed__head"><b>Ваши ключи</b></div>' +
+        '<p><b>Ключ Google</b> — чтобы генерить: ' +
+        '<a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">' +
+        'aistudio.google.com/apikey</a>, заведите отдельный и поставьте лимит.<br>' +
+        '<b>Токен GitHub</b> — только чтобы правка легла на сайт: ' +
         '<a href="https://github.com/settings/personal-access-tokens" target="_blank" rel="noopener">' +
-        'fine-grained токен GitHub</a> на ' + CFG.repo + ' с правом Contents: read and write. ' +
-        'Всё это лежит только в этом браузере.</p>' +
-        '<div><h4>Адрес прокси студии</h4><input type="text" name="p" placeholder="https://nnv-studio.…workers.dev" autocomplete="off"></div>' +
+        'fine-grained</a> на ' + CFG.repo + ', право Contents: read and write. Без него можно ' +
+        'генерить и скачивать кадр кнопкой «Скачать».<br>' +
+        'Вставляются один раз, лежат только в этом браузере (localStorage) и уходят только ' +
+        'в Google и GitHub.</p>' +
+        '<div><h4>Ключ Google</h4><input type="password" name="g" placeholder="AIza…" autocomplete="off"></div>' +
+        '<div><h4>Токен GitHub</h4><input type="password" name="h" placeholder="github_pat_…" autocomplete="off"></div>' +
+        '<div><h4>Общий канал студии (если поднят прокси)</h4><input type="text" name="p" placeholder="https://…workers.dev — тогда ключи не нужны" autocomplete="off"></div>' +
         '<div><h4>Пароль студии (если задан)</h4><input type="password" name="w" placeholder="необязательно" autocomplete="off"></div>' +
-        '<div><h4>Свой ключ Google (без прокси)</h4><input type="password" name="g" placeholder="AIza…" autocomplete="off"></div>' +
-        '<div><h4>Свой токен GitHub (без прокси)</h4><input type="password" name="h" placeholder="github_pat_…" autocomplete="off"></div>' +
         '<div class="nnv-ed__log"></div>' +
         '<div class="nnv-ed__row">' +
           '<button type="button" data-act="check">Проверить</button>' +
@@ -841,6 +856,7 @@
 
     ui.go.onclick = generate;
     ui.apply.onclick = apply;
+    ui.down.onclick = download;
     ui.again.onclick = function () { unpreview(); generate(); };
     ui.keys.onclick = keysPanel;
     ui.root.querySelector(".nnv-ed__close").onclick = close;
