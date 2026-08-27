@@ -155,7 +155,7 @@ window.NNV_DATA = {
       price: 110, colorGroup: "red", sku: "NNV0308A",
       lead: "The cap kept going down.",
       desc: "Baseball cap and full face mask cut from one piece of heavily washed oxblood denim. The crown runs straight into the face panel: the moulded nose bridge climbs all the way to the underside of the brim, splitting the two crescent eye openings, with an oval mouth cut-out below. Sanded, ripped and frayed across every panel, covered buttons at the temples, raw denim tabs left hanging at the chin.",
-      image: "img/mask-denim/main.webp", images: ["img/mask-denim/f2.webp", "img/mask-denim/f3.webp", "img/mask-denim/f4.webp"] }
+      image: "img/mask-denim/main.webp", images: ["img/mask-denim/f2.webp", "img/mask-denim/f3.webp", "img/mask-denim/f4.webp", "img/mask-denim/f5.webp"] }
   ]
 };
 
