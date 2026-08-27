@@ -21,51 +21,135 @@
   </nav>
 </header>
 
-<section class="hero-look">
-  <a href="product.html?id=dress-tiedye"><img src="img/p06.webp" alt=""></a>
-  <a href="product.html?id=mockneck-dark-rider"><img src="img/p07.webp" alt=""></a>
-  <a href="product.html?id=vest-crown"><img src="img/p04.webp" alt=""></a>
-  <div class="mid">
-    <div class="t1" data-i18n="shop_look">Shop by Look</div>
-    <div class="t2" data-i18n="season">Garderobe Fall Winter 26/27</div>
-    <a class="cta" href="catalog.html" data-i18n="explore">Explore the collection</a>
-  </div>
-  <a href="product.html?id=sweater-rider"><img src="img/p05.webp" alt=""></a>
-  <a href="product.html?id=shirt-fangs"><img src="img/p11.webp" alt=""></a>
-  <a href="product.html?id=jacket-knight"><img src="img/p14.webp" alt=""></a>
+<!-- 1. герой на весь экран -->
+<section class="hm-figure hm-figure--hero">
+  <a class="hm-figure__link" href="catalog.html">
+    <img src="img/home/hero.webp" width="2200" height="1238" alt="">
+  </a>
+  <header class="hm-head hm-head--abs hm-head--left">
+    <p class="hm-eyebrow" data-i18n="season_short">FW 26/27</p>
+    <h2 class="hm-title" data-i18n="new_caps">NEW</h2>
+  </header>
+  <a class="hm-arrow hm-arrow--abs" href="catalog.html" data-i18n="shop_now">Shop now</a>
 </section>
 
-<a class="banner" href="catalog.html?cat=objects">
-  <img src="img/p12.webp" alt="">
-  <span class="cap">
-    <span class="b1" style="display:block">Nanava</span>
-    <span class="b2" style="display:block" data-i18n="objects">Objects</span>
-  </span>
+<!-- 2. лента категорий -->
+<section class="hm-slider hm-slider--cats" id="b-cats">
+  <div class="hm-slider__items" data-cat-rail></div>
+  <div class="hm-bar"><span></span></div>
+</section>
+
+<!-- 3. объекты -->
+<section class="hm-figure" id="b-objects">
+  <a class="hm-figure__link" href="catalog.html?cat=objects">
+    <img src="img/home/objects.webp" width="2200" height="1238" alt="" loading="lazy">
+  </a>
+  <header class="hm-head hm-head--abs hm-head--left">
+    <p class="hm-eyebrow">Nanava</p>
+    <h2 class="hm-title" data-i18n="objects_caps">OBJECTS</h2>
+  </header>
+  <a class="hm-arrow hm-arrow--abs" href="catalog.html?cat=objects" data-i18n="shop_now">Shop now</a>
+</section>
+
+<!-- 4. широкая полоса без текста -->
+<a class="hm-figure hm-figure--strip" href="catalog.html?cat=accessories">
+  <img src="img/home/strip.webp" width="2200" height="568" alt="" loading="lazy">
 </a>
 
-<div class="sect-h">
-  <span data-i18n="new_in">New in</span>
-  <a href="catalog.html" data-i18n="view_all">View all</a>
-</div>
-<section class="rail" data-new></section>
+<!-- 5. одежда, заголовок по центру -->
+<section class="hm-figure" id="b-clothes">
+  <a class="hm-figure__link" href="catalog.html?cat=clothes">
+    <img src="img/home/clothes.webp" width="2200" height="1238" alt="" loading="lazy">
+  </a>
+  <header class="hm-head hm-head--abs hm-head--left">
+    <p class="hm-eyebrow" data-i18n="view_all">View all</p>
+    <h2 class="hm-title" data-i18n="clothes_caps">CLOTHING</h2>
+  </header>
+  <a class="hm-arrow hm-arrow--abs" href="catalog.html?cat=clothes" data-i18n="shop_now">Shop now</a>
+</section>
 
-<section class="cats">
-  <a href="catalog.html?cat=clothes">
-    <span class="ph"><img src="img/p04.webp" alt=""></span>
-    <span class="lb" data-i18n="clothes">Clothing</span>
+<!-- 6. shop the look: лента фигур -->
+<section class="hm-look" id="b-look">
+  <header class="hm-head">
+    <p class="hm-eyebrow" data-i18n="new_in">New</p>
+    <h2 class="hm-title" data-i18n="shop_look_caps">SHOP THE LOOK</h2>
+  </header>
+  <div class="hm-slider hm-slider--looks">
+    <div class="hm-slider__items" data-look-rail></div>
+    <div class="hm-bar"><span></span></div>
+  </div>
+</section>
+
+<!-- 7. врезка: принты -->
+<section class="hm-figure hm-figure--inset" id="b-prints">
+  <header class="hm-head">
+    <p class="hm-eyebrow" data-i18n="new_in">New</p>
+    <h2 class="hm-title" data-i18n="prints_caps">PRINTS</h2>
+  </header>
+  <a class="hm-figure__link" href="catalog.html">
+    <img src="img/home/prints.webp" width="2200" height="1238" alt="" loading="lazy">
   </a>
-  <a href="catalog.html?cat=bags">
-    <span class="ph"><img src="img/p17.webp" alt=""></span>
-    <span class="lb" data-i18n="bags">Bags</span>
+  <a class="hm-arrow" href="catalog.html" data-i18n="shop_now">Shop now</a>
+</section>
+
+<!-- 8. сумки -->
+<section class="hm-figure" id="b-bags">
+  <a class="hm-figure__link" href="catalog.html?cat=bags">
+    <img src="img/home/bags.webp" width="2200" height="1238" alt="" loading="lazy">
   </a>
-  <a href="catalog.html?cat=accessories">
-    <span class="ph"><img src="img/p18.webp" alt=""></span>
-    <span class="lb" data-i18n="accessories">Accessories</span>
+  <header class="hm-head hm-head--abs hm-head--center">
+    <p class="hm-eyebrow" data-i18n="view_all">View all</p>
+    <h2 class="hm-title" data-i18n="bags_caps">BAGS</h2>
+  </header>
+  <a class="hm-arrow hm-arrow--abs" href="catalog.html?cat=bags" data-i18n="shop_now">Shop now</a>
+</section>
+
+<!-- 9. украшения, заголовок по центру -->
+<section class="hm-figure" id="b-jewellery">
+  <a class="hm-figure__link" href="catalog.html?cat=accessories">
+    <img src="img/home/jewellery.webp" width="2200" height="1238" alt="" loading="lazy">
   </a>
-  <a href="catalog.html?cat=objects">
-    <span class="ph"><img src="img/p12.webp" alt=""></span>
-    <span class="lb" data-i18n="objects">Objects</span>
-  </a>
+  <header class="hm-head hm-head--abs hm-head--left">
+    <p class="hm-eyebrow" data-i18n="view_all">View all</p>
+    <h2 class="hm-title" data-i18n="jewellery_caps">JEWELLERY</h2>
+  </header>
+  <a class="hm-arrow hm-arrow--abs" href="catalog.html?cat=accessories" data-i18n="shop_now">Shop now</a>
+</section>
+
+<!-- 10. рассылка -->
+<section class="hm-news" id="b-news">
+  <div class="hm-news__in">
+    <h3 data-i18n="news">Newsletter</h3>
+    <form class="hm-news__form" data-open-notice>
+      <input type="email" data-i18n-ph="email" placeholder="Email address">
+      <button type="button" data-open-notice data-i18n="subscribe">Subscribe</button>
+    </form>
+    <p data-i18n="news_p">New pieces and launch dates — first.</p>
+  </div>
+</section>
+
+<!-- 11. текстовый блок -->
+<section class="hm-text">
+  <header class="hm-head">
+    <p class="hm-eyebrow">Nanava</p>
+    <h2 class="hm-title" data-i18n="about_caps">THE PROJECT</h2>
+  </header>
+  <div class="hm-text__body">
+    <p data-i18n="about_bd">NANAVA is an independent project.</p>
+    <a class="hm-arrow" href="#" data-open-notice data-i18n="read_more">Read more</a>
+  </div>
+</section>
+
+<!-- 12. our world: лента вещей -->
+<section class="hm-look" id="b-world">
+  <header class="hm-head">
+    <p class="hm-eyebrow">Nanava</p>
+    <h2 class="hm-title" data-i18n="our_world">OUR WORLD</h2>
+  </header>
+  <div class="hm-slider hm-slider--world">
+    <div class="hm-slider__items" data-world-rail></div>
+    <div class="hm-bar"><span></span></div>
+  </div>
 </section>
 
 <footer>

@@ -13,8 +13,14 @@
       all: "All", clothes: "Clothing", bags: "Bags", accessories: "Accessories", objects: "Objects",
       categories: "Categories", designer: "Designer", sort: "Sort", color: "Color",
       "sort.new": "New in", "sort.priceAsc": "Price low–high", "sort.priceDesc": "Price high–low",
-      items: "items", new_in: "New in", view_all: "View all",
+      items: "items", new_in: "New", view_all: "View all",
       shop_look: "Shop by Look", season: "Garderobe Fall Winter 26/27", explore: "Explore the collection",
+      season_short: "FW 26/27", new_caps: "NEW", shop_now: "Shop now",
+      objects_caps: "OBJECTS", clothes_caps: "CLOTHING", bags_caps: "BAGS",
+      jewellery_caps: "JEWELLERY", prints_caps: "PRINTS", shop_look_caps: "SHOP THE LOOK",
+      our_world: "OUR WORLD", about_caps: "THE PROJECT", read_more: "Read more",
+      dresses: "DRESSES", knitwear: "KNITWEAR", tees: "T-SHIRTS", skirts: "SKIRTS",
+      jewellery: "JEWELLERY",
       add_bag: "Add to bag", added: "Added to bag",
       details: "Details & care", shipping: "Shipping & payment", about_pr: "About the project", need_help: "Need help?",
       details_bd: "Composition is specified per piece. Delicate wash at 30°, iron inside out, do not bleach printed pieces. Satin and lace — dry clean only.",
@@ -46,6 +52,12 @@
       "sort.new": "Спачатку новае", "sort.priceAsc": "Кошт: ад меншага", "sort.priceDesc": "Кошт: ад большага",
       items: "рэчаў", new_in: "Новае", view_all: "Усе рэчы",
       shop_look: "Shop by Look", season: "Гардэроб восень-зіма 26/27", explore: "Глядзець калекцыю",
+      season_short: "ВЗ 26/27", new_caps: "НОВАЕ", shop_now: "Глядзець",
+      objects_caps: "АБ'ЕКТЫ", clothes_caps: "АДЗЕННЕ", bags_caps: "СУМКІ",
+      jewellery_caps: "УПРЫГОЖАННІ", prints_caps: "ПРЫНТЫ", shop_look_caps: "SHOP THE LOOK",
+      our_world: "НАШ СВЕТ", about_caps: "ПРА ПРАЕКТ", read_more: "Чытаць далей",
+      dresses: "СУКЕНКІ", knitwear: "ТРЫКАТАЖ", tees: "ФУТБОЛКІ", skirts: "СПАДНІЦЫ",
+      jewellery: "УПРЫГОЖАННІ",
       add_bag: "Дадаць у кошык", added: "Дададзена ў кошык",
       details: "Склад і догляд", shipping: "Дастаўка і аплата", about_pr: "Пра праект", need_help: "Патрэбна дапамога?",
       details_bd: "Склад удакладняецца для кожнай рэчы. Далікатнае мыццё пры 30°, прасаваць з адваротнага боку, рэчы з прынтам не адбельваць. Атлас і карункі — толькі хімчыстка.",
@@ -160,11 +172,57 @@
     if (sortSel) sortSel.addEventListener("change", function () { state.sort = sortSel.value; renderCatalog(); });
   }
 
-  /* ---------- главная ---------- */
+  /* ---------- главная (композиция bimba y lola) ---------- */
   function renderHome() {
-    var newRow = document.querySelector("[data-new]");
-    if (!newRow) return;
-    renderInto(newRow, ["belt-holster", "longsleeve-smile", "dress-feather", "sweater-rider", "bag-nanava", "hoodie-horns"].map(function (id) { return byId[id]; }));
+    var H = window.NNV_HOME;
+    var cats = document.querySelector("[data-cat-rail]");
+    if (!H || !cats) return;
+
+    cats.innerHTML = H.tiles.map(function (tile) {
+      return '<a class="tile" href="' + tile.href + '">' +
+        '<img src="' + tile.img + '" alt="" loading="lazy">' +
+        '<span class="lb">' + t(tile.key).toUpperCase() + "</span></a>";
+    }).join("");
+
+    var looks = document.querySelector("[data-look-rail]");
+    looks.innerHTML = H.looks.map(function (l, i) {
+      return '<a class="fig" href="product.html?id=' + l.id + '">' +
+        '<img src="' + l.img + '" width="' + l.w + '" height="' + l.h + '"' +
+        ' alt="" loading="' + (i < 3 ? "eager" : "lazy") + '"></a>';
+    }).join("");
+
+    var world = document.querySelector("[data-world-rail]");
+    world.innerHTML = H.world.map(function (id) {
+      var it = byId[id]; if (!it) return "";
+      var t = (H.tileById && H.tileById[id]) || { src: it.image, w: 3, h: 4 };
+      return '<a class="fig" href="product.html?id=' + it.id + '">' +
+        '<img src="' + t.src + '" width="' + t.w + '" height="' + t.h + '"' +
+        ' alt="' + it.title + '" loading="lazy"></a>';
+    }).join("");
+
+    initSliders();
+  }
+
+  /* индикатор прокрутки лент (тонкая полоса под лентой, как у bimba) */
+  function initSliders() {
+    document.querySelectorAll(".hm-slider").forEach(function (sl) {
+      var items = sl.querySelector(".hm-slider__items");
+      var bar = sl.querySelector(".hm-bar");
+      if (!items || !bar || bar.dataset.on) return;
+      bar.dataset.on = "1";
+      var knob = bar.querySelector("span");
+      function upd() {
+        var max = items.scrollWidth - items.clientWidth;
+        var w = bar.clientWidth;
+        var kw = max > 0 ? Math.max(28, w * items.clientWidth / items.scrollWidth) : w;
+        knob.style.width = kw + "px";
+        knob.style.transform = "translateX(" + (max > 0 ? (w - kw) * items.scrollLeft / max : 0) + "px)";
+      }
+      items.addEventListener("scroll", upd, { passive: true });
+      window.addEventListener("resize", upd);
+      setTimeout(upd, 60);
+      upd();
+    });
   }
 
   /* ---------- карточка товара ---------- */

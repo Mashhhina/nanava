@@ -7,6 +7,8 @@
   --muted: #757572;
   --line: #dddcd8;
   --bg: #f1f1ef;      /* молочный — подложка сайта и фон генераций */
+  --pad: clamp(18px, 4.17vw, 60px);      /* поля заголовков лент (1320 из 1440) */
+  --pad-lg: clamp(18px, 8.3vw, 120px);   /* поля заголовков поверх картинок */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -45,41 +47,6 @@ select { cursor: pointer; -webkit-appearance: none; appearance: none; }
 .lang button { color: var(--muted); }
 .lang button.on { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
-/* ---------- главная: баннеры на всю ширину (ushatava) ---------- */
-.hero-look {
-  display: grid; grid-template-columns: 1fr 1fr 1fr .9fr 1fr 1fr 1fr;
-  align-items: end; gap: 0;
-  padding: 42px 0 0; border-bottom: 1px solid var(--line);
-}
-.hero-look a { display: block; position: relative; }
-.hero-look img { width: 100%; height: 52vh; object-fit: contain; object-position: bottom; mix-blend-mode: multiply; }
-.hero-look a:nth-child(2) img, .hero-look a:nth-child(6) img { height: 58vh; }
-.hero-look .mid {
-  align-self: center; text-align: center; padding: 0 10px;
-}
-.hero-look .mid .t1 {
-  font-family: "Times New Roman", Times, serif; font-size: clamp(20px, 2.4vw, 34px);
-  letter-spacing: .08em; white-space: nowrap;
-}
-.hero-look .mid .t2 { margin-top: 10px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .14em; }
-.hero-look .mid .cta { display: inline-block; margin-top: 16px; font-size: 11px; text-transform: uppercase; letter-spacing: .12em; border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
-@media (max-width: 900px) {
-  .hero-look { grid-template-columns: 1fr 1fr 1.2fr 1fr 1fr; }
-  .hero-look a:nth-child(1), .hero-look a:nth-child(7) { display: none; }
-  .hero-look img { height: 34vh; }
-  .hero-look a:nth-child(2) img, .hero-look a:nth-child(6) img { height: 38vh; }
-}
-
-.banner {
-  position: relative; display: grid; place-items: center;
-  border-bottom: 1px solid var(--line); overflow: hidden;
-  padding: 40px 18px;
-}
-.banner img { max-height: 64vh; mix-blend-mode: multiply; }
-.banner .cap { position: absolute; left: 24px; bottom: 20px; }
-.banner .cap .b1 { font-family: "Times New Roman", Times, serif; font-size: 22px; letter-spacing: .06em; }
-.banner .cap .b2 { margin-top: 6px; font-size: 11px; text-transform: uppercase; color: var(--muted); letter-spacing: .12em; }
-
 .sect-h {
   display: flex; justify-content: space-between; align-items: center;
   padding: 26px 18px 14px;
@@ -97,13 +64,115 @@ select { cursor: pointer; -webkit-appearance: none; appearance: none; }
 .rail .card { flex: 0 0 24%; min-width: 210px; scroll-snap-align: start; }
 @media (max-width: 760px) { .rail .card { flex-basis: 46%; min-width: 160px; } }
 
-.cats { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
-@media (max-width: 760px) { .cats { grid-template-columns: repeat(2, 1fr); } }
-.cats a { padding: 8px 0 16px; }
-.cats .ph { display: block; aspect-ratio: 1 / 1; position: relative; overflow: hidden; }
-.cats .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 12%; mix-blend-mode: multiply; }
-.cats .lb { display: block; padding: 4px 14px 0; font-size: 11px; text-transform: uppercase; }
-.cats a:hover .lb { text-decoration: underline; text-underline-offset: 3px; }
+/* ---------- ГЛАВНАЯ: блоки по композиции bimba y lola ----------
+   Порядок и пропорции блоков сняты с их главной (27.08):
+   герой 16:9 → лента категорий → полноширинный блок → узкая полоса 3.9:1 →
+   блок с центральным заголовком → SHOP THE LOOK → врезка 1200px →
+   блок сумок → блок украшений → рассылка → текст → лента our world. */
+
+
+/* заголовок блока: курсивный серифный надзаголовок + жирный гротеск */
+.hm-head { padding: clamp(26px, 3.3vw, 48px) var(--pad) 0; }
+.hm-eyebrow {
+  font-family: "Times New Roman", Times, georgia, serif;
+  font-style: italic; font-weight: 600;
+  font-size: clamp(17px, 1.9vw, 27px); line-height: 1.1;
+}
+.hm-title {
+  margin-top: 2px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900; font-size: clamp(26px, 3.45vw, 50px);
+  line-height: 1.05; letter-spacing: .022em;
+}
+.hm-head--abs { position: absolute; top: 0; left: 0; z-index: 2; padding: clamp(20px, 3.3vw, 48px) var(--pad-lg) 0; }
+.hm-head--center { width: 100%; text-align: center; padding-left: var(--pad); padding-right: var(--pad); }
+
+.hm-arrow {
+  display: inline-block; font-weight: 700; font-size: clamp(12px, 1.1vw, 16px);
+  text-decoration: underline; text-underline-offset: 3px;
+}
+.hm-arrow::before { content: "> "; }
+.hm-arrow--abs { position: absolute; z-index: 2; left: var(--pad-lg); bottom: clamp(18px, 2.8vw, 40px); }
+
+/* полноширинный блок с картинкой 16:9 */
+.hm-figure { position: relative; display: block; }
+.hm-figure__link { display: block; }
+/* multiply: фон генераций выровнен в белый, так он садится ровно на #F1F1EF
+   и границ блока не видно (правило «бесшовно», созвон 21.08) */
+.hm-figure img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover;
+  mix-blend-mode: multiply; }
+.hm-figure--strip img { aspect-ratio: 1440 / 372; }
+.hm-figure--hero { margin-top: 0; }
+.hm-figure--strip { margin: 0; }
+.hm-figure--inset { padding-bottom: clamp(18px, 2.4vw, 34px); }
+.hm-figure--inset .hm-figure__link { max-width: 1200px; margin: clamp(14px, 1.7vw, 24px) auto 0; padding: 0 var(--pad); }
+.hm-figure--inset .hm-arrow { margin: 14px 0 0 var(--pad); }
+
+/* ленты: горизонтальный скролл + тонкий индикатор под ним */
+.hm-slider { position: relative; padding-bottom: clamp(20px, 2.6vw, 38px); }
+.hm-slider__items {
+  display: flex; align-items: flex-end; overflow-x: auto;
+  scrollbar-width: none; -ms-overflow-style: none;
+  scroll-snap-type: x proximity;
+}
+.hm-slider__items::-webkit-scrollbar { display: none; }
+.hm-slider__items > * { flex: 0 0 auto; scroll-snap-align: center; }
+.hm-bar { width: min(772px, 54vw); height: 3px; margin: clamp(14px, 1.8vw, 26px) auto 0; background: #e2e1dd; }
+.hm-bar span { display: block; height: 3px; width: 8px; background: var(--ink); transition: transform .12s linear; }
+
+/* лента категорий: плитка 296×474, картинка 2:3, крупная подпись поверх */
+.hm-slider--cats { padding-top: clamp(20px, 2.6vw, 38px); }
+.hm-slider--cats .hm-slider__items { padding-left: clamp(18px, 13.85vw, 200px); }
+.hm-slider--cats .tile { position: relative; width: clamp(190px, 20.5vw, 296px); }
+.hm-slider--cats .tile img { width: 100%; aspect-ratio: 293 / 440; object-fit: contain; padding: 6% 8%; mix-blend-mode: multiply; }
+.hm-slider--cats .tile .lb {
+  position: absolute; left: 8%; bottom: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900; font-size: clamp(15px, 1.55vw, 22px); letter-spacing: .01em;
+}
+.hm-slider--cats .tile:hover .lb { text-decoration: underline; text-underline-offset: 3px; }
+
+/* SHOP THE LOOK: фигуры в рост, единая линия пола, разная ширина кадра */
+.hm-look { padding-bottom: clamp(10px, 1.4vw, 20px); }
+.hm-slider--looks .hm-slider__items { padding: clamp(16px, 2.2vw, 32px) var(--pad) 0; }
+.hm-slider--looks .fig { display: block; }
+.hm-slider--looks .fig img { height: clamp(360px, 46.9vw, 675px); width: auto; mix-blend-mode: multiply; }
+
+/* our world: вещи-вырезки в ряд */
+.hm-slider--world .hm-slider__items { padding: clamp(14px, 1.8vw, 26px) var(--pad) 0; gap: clamp(10px, 1.4vw, 20px); }
+.hm-slider--world .fig img { height: clamp(240px, 30.5vw, 440px); width: auto; object-fit: contain; mix-blend-mode: multiply; }
+
+/* рассылка */
+.hm-news { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.hm-news__in { max-width: 1200px; margin: 0 auto; padding: clamp(28px, 3.6vw, 52px) var(--pad); text-align: center; }
+.hm-news__in h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 900; font-size: clamp(18px, 1.8vw, 26px); letter-spacing: .02em;
+}
+.hm-news__form { display: flex; justify-content: center; gap: 0; margin: 16px 0 10px; }
+.hm-news__form input { width: min(420px, 62vw); height: 38px; border: 1px solid var(--ink); background: #fff; padding: 0 12px; font-size: 12px; }
+.hm-news__form button { height: 38px; padding: 0 22px; background: var(--ink); color: #fff; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+.hm-news__in p { font-size: 11px; color: var(--muted); }
+
+/* текстовый блок */
+.hm-text {
+  display: grid; grid-template-columns: 1fr minmax(260px, 420px);
+  gap: clamp(20px, 3vw, 60px); align-items: end;
+  padding-bottom: clamp(28px, 3.4vw, 48px);
+}
+.hm-text .hm-head { padding-bottom: 0; }
+.hm-text__body { padding: 0 var(--pad) 0 0; font-size: 12px; line-height: 1.7; color: #333; }
+.hm-text__body .hm-arrow { margin-top: 12px; color: var(--ink); }
+@media (max-width: 760px) {
+  /* на телефоне 16:9 герой слишком низкий — режем в портрет, держим модель
+     справа, текст ложится на пустую левую часть (как у bimba отдельный
+     мобильный кадр) */
+  .hm-figure--hero img { aspect-ratio: 3 / 4; object-position: 74% 50%; }
+  .hm-text { grid-template-columns: 1fr; align-items: start; }
+  .hm-text__body { padding: 12px var(--pad) 0; }
+  .hm-head--abs { padding-top: 16px; }
+  .hm-arrow--abs { bottom: 12px; }
+}
 
 /* ---------- карточка вещи в сетке (бесшовно, без рамок) ---------- */
 .card { display: block; }

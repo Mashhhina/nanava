@@ -158,3 +158,48 @@ window.NNV_DATA = {
       image: "img/mask-denim/main.webp", images: ["img/mask-denim/f2.webp", "img/mask-denim/f3.webp", "img/mask-denim/f4.webp"] }
   ]
 };
+
+// Главная (композиция bimba y lola): ленты категорий, образов и «our world».
+// looks — кадры из scripts/out/home, приведённые к одной высоте и одной
+// линии пола скриптом scripts/build_home_assets.py.
+window.NNV_HOME = {
+  tiles: [
+    { key: "new_in",      href: "catalog.html",                    img: "img/home/t-p19.webp" },
+    { key: "clothes",     href: "catalog.html?cat=clothes",        img: "img/home/t-p04.webp" },
+    { key: "bags",        href: "catalog.html?cat=bags",           img: "img/home/t-p17.webp" },
+    { key: "accessories", href: "catalog.html?cat=accessories",    img: "img/home/t-p25.webp" },
+    { key: "objects",     href: "catalog.html?cat=objects",        img: "img/home/t-p12.webp" },
+    { key: "dresses",     href: "catalog.html?cat=clothes",        img: "img/home/t-p06.webp" },
+    { key: "knitwear",    href: "catalog.html?cat=clothes",        img: "img/home/t-p05.webp" },
+    { key: "tees",        href: "catalog.html?cat=clothes",        img: "img/home/t-p10.webp" },
+    { key: "skirts",      href: "catalog.html?cat=clothes",        img: "img/home/t-skirt-lace.webp" },
+    { key: "jewellery",   href: "catalog.html?cat=accessories",    img: "img/home/t-p22.webp" },
+    { key: "all",         href: "catalog.html",                    img: "img/home/t-p13.webp" }
+  ],
+  looks: [
+    { id: "dress-feather",      img: "img/home/look-01.webp", w: 418, h: 1442 },
+    { id: "sweater-rider",      img: "img/home/look-02.webp", w: 454, h: 1442 },
+    { id: "tee-star",           img: "img/home/look-03.webp", w: 425, h: 1442 },
+    { id: "skirt-dipdye",       img: "img/home/look-04.webp", w: 417, h: 1442 },
+    { id: "dress-tiedye",       img: "img/home/look-05.webp", w: 468, h: 1442 },
+    { id: "shirt-fangs",        img: "img/home/look-06.webp", w: 453, h: 1442 },
+    { id: "vest-crown",         img: "img/home/look-07.webp", w: 385, h: 1442 },
+    { id: "longsleeve-smile",   img: "img/home/look-08.webp", w: 490, h: 1442 },
+    { id: "tee-riders",         img: "img/home/look-09.webp", w: 527, h: 1442 },
+    { id: "hoodie-horns",       img: "img/home/look-10.webp", w: 437, h: 1442 },
+    { id: "jacket-knight",      img: "img/home/look-11.webp", w: 490, h: 1442 }
+  ],
+  world: ["tee-star", "shirt-fangs", "jacket-knight", "cap-fangs",
+          "earcuff-spine", "tote-kitten", "cardholder-nanava", "scarf-organza"],
+  // для лент берём кадры с выровненным фоном (иначе видно прямоугольник картинки)
+  tileById: {
+    "tee-star": { src: "img/home/t-p01.webp", w: 900, h: 900 },
+    "shirt-fangs": { src: "img/home/t-p11.webp", w: 900, h: 1385 },
+    "jacket-knight": { src: "img/home/t-p14.webp", w: 900, h: 1117 },
+    "cap-fangs": { src: "img/home/t-p20.webp", w: 896, h: 1200 },
+    "earcuff-spine": { src: "img/home/t-p23.webp", w: 896, h: 1200 },
+    "tote-kitten": { src: "img/home/t-p16.webp", w: 900, h: 1200 },
+    "cardholder-nanava": { src: "img/home/t-p15.webp", w: 900, h: 1016 },
+    "scarf-organza": { src: "img/home/t-scarf-organza.webp", w: 896, h: 1200 }
+  }
+};
