@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 17:19",
+  "generated": "2026-08-27 17:39",
   "unknown": [],
   "models": [
     {
@@ -1468,6 +1468,12 @@ window.NNV_MODELS = {
         {
           "path": "img/mask-denim/f4.webp",
           "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/mask-denim/f5.webp",
+          "label": "f5",
           "exists": true,
           "ref": false
         }
