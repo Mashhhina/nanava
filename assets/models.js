@@ -139,6 +139,14 @@
         'Перетащить фото сюда или нажать, чтобы выбрать (jpg, png, webp)' +
         '<input type="file" multiple accept="image/*" data-file></div>' +
       '<div class="picks" data-picks></div>' +
+      '<h3>Промпт генерации' +
+        (m.promptCustom ? ' <span class="badge candidate">свой</span>' : '') +
+        ' <button class="lnk" data-base>вернуть базовый</button></h3>' +
+      '<textarea class="prompt" data-prompt rows="8"' + (LIVE ? "" : " disabled") + '>' + esc(m.prompt) + '</textarea>' +
+      '<p class="hint">Уходит в Nano Banana как есть — вместе с отмеченными выше фото. ' +
+        'Сохраняется в реестре модели: этот же текст возьмёт и ' +
+        '<code>scripts/gen_character_sheet.py</code>. Пусто или базовый текст — ' +
+        'модель вернётся к общему шаблону.</p>' +
       '<div class="row" style="margin-top:14px">' +
         '<div style="width:120px"><label>Вариантов</label>' +
           '<input type="number" min="1" max="4" value="3" data-variants></div>' +
@@ -169,6 +177,9 @@
     }
     modal.querySelector("[data-variants]").oninput = drawCost;
     drawCost();
+    modal.querySelector("[data-base]").onclick = function () {
+      modal.querySelector("[data-prompt]").value = m.promptBase;
+    };
 
     function drawPicks() {
       var all = m.photos.map(function (p) { return { file: p.file, url: p.url }; })
@@ -235,7 +246,8 @@
       api("models/" + m.name + "/meta", {
         height: h ? +h : null,
         build_ru: modal.querySelector("[data-build]").value.trim(),
-        note_ru: modal.querySelector("[data-note]").value.trim()
+        note_ru: modal.querySelector("[data-note]").value.trim(),
+        prompt: modal.querySelector("[data-prompt]").value
       }).then(function (j) {
         applyState(j.state);
         log.innerHTML = "<b>сохранено</b> в refs/models/registry.json";
@@ -251,7 +263,10 @@
       log.innerHTML = "<b>генерю " + n + " вариант(а)</b> по фото: " + picked.map(esc).join(", ") +
         "\nэто ~" + (n * 40) + " сек, окно не закрывать…";
       varsBox.innerHTML = "";
-      api("models/" + m.name + "/regen", { refs: picked, variants: n })
+      api("models/" + m.name + "/regen", {
+        refs: picked, variants: n,
+        prompt: modal.querySelector("[data-prompt]").value
+      })
         .then(function (j) {
           log.innerHTML = "<b>готово.</b> Выберите лучший вариант и нажмите «Сделать каноном».\n" +
             esc(j.log || "");
