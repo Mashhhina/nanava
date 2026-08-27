@@ -191,7 +191,12 @@ window.NNV_DATA = {
       price: 290, colorGroup: "grey", sku: "NNV0117A",
       lead: "Weightless armour cut from organza.",
       desc: "Cropped top in crisp silk organza, smoky graphite grey shading to a paler warm grey toward the corners. A short ribbed mock neck sits in a wide round neckline; the body is a boxy square cape with sharply squared shoulders and no sleeves — the arms come out from beneath the shoulder edge. Several superimposed organza panels, each finished with a fine dark rolled hem, build a vest-shaped inner layer under a square outer one; where the layers cross the grey deepens into a fine moire. The straight hem is a stack of parallel layer edges finishing at the waist. Worn over a knit or a slip.",
-      image: "img/top-organza/main.webp", images: ["img/top-organza/f2.webp", "img/top-organza/f3.webp", "img/top-organza/f4.webp", "img/top-organza/f5.webp", "img/top-organza/f6.webp"] }
+      image: "img/top-organza/main.webp", images: ["img/top-organza/f2.webp", "img/top-organza/f3.webp", "img/top-organza/f4.webp", "img/top-organza/f5.webp", "img/top-organza/f6.webp"] },
+    { id: "dress-moon", title: "Moon Organza Gown", category: "clothes",
+      price: 380, colorGroup: "grey", sku: "NNV0118A",
+      lead: "Moonlight cut raw.",
+      desc: "Floor-length gown in graphite silk organza. Corset bodice with raw-cut slash openings backed with silver satin, pointed basque, slim sheer sleeves under floor-length cape panels. Every edge is left raw — frayed organza, loose threads, no trim.",
+      image: "img/dress-moon/main.webp", images: ["img/dress-moon/f2.webp", "img/dress-moon/f3.webp", "img/dress-moon/f4.webp", "img/dress-moon/f5.webp", "img/dress-moon/f6.webp"] }
   ]
 };
 
