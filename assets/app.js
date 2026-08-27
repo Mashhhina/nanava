@@ -8,7 +8,7 @@
   /* ---------- i18n ---------- */
   var STR = {
     en: {
-      womenswear: "Womenswear", menswear: "Menswear", collections: "Collections",
+      collections: "Collections",
       help: "Help", bag: "Bag", catalog: "Catalog",
       all: "All", clothes: "Clothing", bags: "Bags", accessories: "Accessories", objects: "Objects",
       categories: "Categories", designer: "Designer", sort: "Sort", color: "Color",
@@ -39,7 +39,7 @@
       ok: "OK"
     },
     be: {
-      womenswear: "Жаночае", menswear: "Мужчынскае", collections: "Калекцыі",
+      collections: "Калекцыі",
       help: "Дапамога", bag: "Кошык", catalog: "Каталог",
       all: "Усе", clothes: "Адзенне", bags: "Сумкі", accessories: "Аксесуары", objects: "Аб'екты",
       categories: "Катэгорыі", designer: "Дызайнер", sort: "Сартаваць", color: "Колер",
