@@ -4,11 +4,12 @@
 
 .nnv-ed-btn {
   position: fixed; z-index: 2147483000; display: none;
-  font: 500 11px/1 ui-sans-serif, system-ui, sans-serif; letter-spacing: .04em;
-  text-transform: uppercase; color: #fff; background: rgba(18,18,18,.86);
-  border: 0; border-radius: 2px; padding: 7px 10px; cursor: pointer;
-  backdrop-filter: blur(6px); transition: background .12s;
+  width: 30px; height: 30px; padding: 0; line-height: 30px; text-align: center;
+  font: 15px/30px ui-sans-serif, system-ui, sans-serif; color: #fff;
+  background: rgba(18,18,18,.82); border: 0; border-radius: 50%; cursor: pointer;
+  backdrop-filter: blur(6px); transition: background .12s, transform .12s;
 }
+.nnv-ed-btn:hover { transform: scale(1.08); }
 .nnv-ed-btn:hover { background: #121212; }
 .nnv-ed-btn.on { display: block; }
 

@@ -1,10 +1,13 @@
-/* NANAVA — редактор картинок на живом сайте (админский режим).
+/* NANAVA — редактор картинок на живом сайте. Открыт всем, кто зашёл: правит
+   тот, у кого есть свои ключи (кнопка «Ключи» в шапке редактора).
+   Спрятать карандаши в своём браузере: nanava.store/?nnv-studio=0 , вернуть — =1.
 
-   Обычный посетитель этого кода не видит: скрипт выходит первой строкой,
-   пока в localStorage нет админского флага. Включается один раз ссылкой
-   nanava.store/?nnv-studio=1 , выключается ?nnv-studio=0.
+   Общий ключ в коде сайта не зашит намеренно: файл лежит в публичном
+   репозитории, то есть ключ Google утечёт вместе с ним (а токен GitHub
+   гитхаб сам отзовёт своим сканером секретов). Поэтому каждый вставляет
+   свой — один раз на браузер.
 
-   Что умеет: ховер по любой картинке → «Править» → обводим зоны мышкой
+   Что умеет: ховер по любой картинке → карандаш → обводим зоны мышкой
    (прямоугольник или кисть), пишем текст ко всей правке или к отдельной
    зоне, кидаем туда же картинки-референсы. Генерация уходит НАПРЯМУЮ в
    Google (Nano Banana) с ключом, который админ один раз вставил в
@@ -34,10 +37,10 @@
   var A = load();
 
   var q = new URLSearchParams(location.search).get(CFG.param);
-  if (q === "1") { A.on = true; keep(); }
-  if (q === "0") { localStorage.removeItem(KEY); A = {}; }
+  if (q === "0") { A.off = true; keep(); }            // спрятать карандаши в этом браузере
+  if (q === "1") { A.off = false; keep(); }
   if (q !== null) history.replaceState(null, "", location.pathname + location.hash);
-  if (!A.on) return;                                  // обычный посетитель — дальше кода нет
+  if (A.off) return;
 
   var LOCAL = false;                                  // рядом локальный сервер? тогда пишем в файл
   fetch("/api/ping").then(function (r) { LOCAL = r.ok; }).catch(function () {});
@@ -314,7 +317,8 @@
   }
 
   /* ---------- кнопка на ховере ---------- */
-  var btn = el("button", "nnv-ed-btn"); btn.textContent = "Править";
+  var btn = el("button", "nnv-ed-btn"); btn.textContent = "✎";
+  btn.title = "Править картинку";
   function mount() { if (document.body && !btn.parentNode) document.body.appendChild(btn); }
   mount(); document.addEventListener("DOMContentLoaded", mount);
 
@@ -647,6 +651,7 @@
     function log(s) { lines.push(s); say(lines.slice(-3).join("\n")); }
     try { plan(S.zones, ui.prompt.value, S.refs); }
     catch (e) { return say(e.message, true); }
+    if (!A.gemini) { keysPanel(); return say("вставьте свой ключ Google — окно открылось", true); }
     busy(true);
     var t0 = Date.now(), n = +ui.n.value, made = [];
     try {
@@ -694,6 +699,7 @@
 
   async function apply() {
     if (S.pick === null || S.busy) return;
+    if (!LOCAL && !A.github) { keysPanel(); return say("вставьте свой токен GitHub — окно открылось", true); }
     busy(true, LOCAL ? "Пишем…" : "Коммитим…");
     try {
       var data = await toWebp(S.vars[S.pick], quality(S.src));
