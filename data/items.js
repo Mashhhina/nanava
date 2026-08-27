@@ -235,7 +235,12 @@ window.NNV_DATA = {
       price: 130, colorGroup: "silver", sku: "NNV0312A",
       lead: "A row of eyes kept open in the dark.",
       desc: "Wide band ring in silver-tone metal. A raised strip runs the full circumference, worked into a repeating plait of elongated pointed ovals; the recesses are blackened to near-black while the raised outlines and both rim edges stay bright and polished. Small round clear stones sit flush in bezel settings, one at the centre of each motif. The inner surface stays smooth and bright.",
-      image: "img/ring-stones/main.webp", images: ["img/ring-stones/f2.webp", "img/ring-stones/f3.webp", "img/ring-stones/f4.webp"] }
+      image: "img/ring-stones/main.webp", images: ["img/ring-stones/f2.webp", "img/ring-stones/f3.webp", "img/ring-stones/f4.webp"] },
+    { id: "ring-letters", title: "Graffiti Letter Signet Ring", category: "accessories",
+      price: 125, colorGroup: "silver", sku: "NNV0313A",
+      lead: "A tag cast in metal, not sprayed.",
+      desc: "Signet ring in silver-tone metal whose entire top is built from chunky three-dimensional block letters in a graffiti hand — flat tops, sharp bevelled sides, deep shadowed gaps between them and pointed spikes breaking out of the letterforms. The band below is plain with a flat angular shoulder. Brushed satin on the tops, polished bevels.",
+      image: "img/ring-letters/main.webp", images: ["img/ring-letters/f2.webp", "img/ring-letters/f3.webp", "img/ring-letters/f4.webp"] }
   ]
 };
 
