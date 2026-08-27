@@ -185,7 +185,12 @@ window.NNV_DATA = {
       price: 150, colorGroup: "blue", sku: "NNV0309A",
       lead: "A rider printed in negative.",
       desc: "Square 90 x 90 cm scarf in silk twill with a hand-rolled hem. The archive knight on a galloping horse is printed as a solarised negative — flat patches of periwinkle and lilac held by white contour lines on a deep black field. Cornflower-blue border with a white pinstripe and a lilac band. Wear it knotted at the neck or tied over the head.",
-      image: "img/scarf-knight/main.webp", images: ["img/scarf-knight/f2.webp", "img/scarf-knight/f3.webp"] }
+      image: "img/scarf-knight/main.webp", images: ["img/scarf-knight/f2.webp", "img/scarf-knight/f3.webp"] },
+    { id: "top-organza", title: "Layered Organza Top Grey", category: "clothes",
+      price: 290, colorGroup: "grey", sku: "NNV0117A",
+      lead: "Weightless armour cut from organza.",
+      desc: "Cropped top in crisp silk organza, smoky graphite grey shading to a paler warm grey toward the corners. A short ribbed mock neck sits in a wide round neckline; the body is a boxy square cape with sharply squared shoulders and no sleeves — the arms come out from beneath the shoulder edge. Several superimposed organza panels, each finished with a fine dark rolled hem, build a vest-shaped inner layer under a square outer one; where the layers cross the grey deepens into a fine moire. The straight hem is a stack of parallel layer edges finishing at the waist. Worn over a knit or a slip.",
+      image: "img/top-organza/main.webp", images: ["img/top-organza/f2.webp", "img/top-organza/f3.webp", "img/top-organza/f4.webp", "img/top-organza/f5.webp", "img/top-organza/f6.webp"] }
   ]
 };
 
