@@ -116,11 +116,6 @@ window.NNV_DATA = {
       lead: "The same strict shape, dipped in mustard.",
       desc: "Structured trapeze bag in mustard-yellow patent leather, straight from the original sketch. Flap with sculpted frills, cast padlock, two handles. Fully monochrome hardware moulded in the body colour; dark lining with an inner zip divider.",
       image: "img/bag-frill-yellow/main.webp", images: ["img/bag-frill-yellow/f1.webp", "img/bag-frill-yellow/f3.webp", "img/bag-frill-yellow/f4.webp", "img/bag-frill-yellow/f5.webp", "img/bag-frill-yellow/f6.webp"] },
-    { id: "bag-crystal", title: "Crystal Arch Bag", category: "bags",
-      price: 360, colorGroup: "silver", sku: "NNV0206A",
-      lead: "A bag cut from light itself.",
-      desc: "Rigid bracelet-clutch moulded in clear acrylic: a rounded arch with an oval opening that doubles as the handle. Large faceted crystals are embedded inside the transparent walls and refract light with a prismatic flare; two rows of polished silver ball studs follow the rims. Clear acrylic clasp block at the base. Carried in the hand or on the forearm.",
-      image: "img/bag-crystal/main.webp", images: ["img/bag-crystal/f1.webp", "img/bag-crystal/f2.webp", "img/bag-crystal/f3.webp", "img/bag-crystal/f4.webp", "img/bag-crystal/f5.webp", "img/bag-crystal/f6.webp"] },
     { id: "bag-crown", title: "Crown Engraved Bag", category: "bags",
       price: 320, colorGroup: "green", sku: "NNV0204A",
       lead: "A crown scratched in gold.",
@@ -160,7 +155,12 @@ window.NNV_DATA = {
       price: 110, colorGroup: "red", sku: "NNV0308A",
       lead: "The cap kept going down.",
       desc: "Baseball cap and full face mask cut from one piece of heavily washed oxblood denim. The crown runs straight into the face panel: the moulded nose bridge climbs all the way to the underside of the brim, splitting the two crescent eye openings, with an oval mouth cut-out below. Sanded, ripped and frayed across every panel, covered buttons at the temples, raw denim tabs left hanging at the chin.",
-      image: "img/mask-denim/main.webp", images: ["img/mask-denim/f2.webp", "img/mask-denim/f3.webp", "img/mask-denim/f4.webp", "img/mask-denim/f5.webp"] }
+      image: "img/mask-denim/main.webp", images: ["img/mask-denim/f2.webp", "img/mask-denim/f3.webp", "img/mask-denim/f4.webp", "img/mask-denim/f5.webp"] },
+    { id: "sweater-shadow", title: "Shadow Turtleneck Grey", category: "clothes",
+      price: 260, colorGroup: "grey", sku: "NNV0116A",
+      lead: "A hand-shadow caught in the knit.",
+      desc: "Oversized turtleneck in grey melange wool: a wide folded funnel collar, dropped shoulders, long sleeves with deep ribbed cuffs and a ribbed hem with side slits. The graphics are knitted tone-on-tone and read like a real shadow on a wall — the NNV letters and the shadow of a hand folded into the head of a dog, with one thin shadow falling from the shoulder across the collar.",
+      image: "img/sweater-shadow/main.webp", images: ["img/sweater-shadow/f2.webp", "img/sweater-shadow/f3.webp", "img/sweater-shadow/f4.webp", "img/sweater-shadow/f5.webp", "img/sweater-shadow/f6.webp", "img/sweater-shadow/process.webp"] }
   ]
 };
 
