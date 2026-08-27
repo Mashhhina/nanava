@@ -37,12 +37,18 @@
                    draft: "черновик из sheets/", none: "нет раскадровки" };
 
   /* ---------- отрисовка ---------- */
-  function thing(id) {
+  /* кадр, на котором в этой вещи лежит Булочка: id вещи → слот (f7, f4, …) */
+  var DOG_FRAME = {};
+  (ST.items || []).forEach(function (it) { if (it.dog) DOG_FRAME[it.id] = it.dog; });
+
+  function thing(id, dogFrame) {
     var it = ITEMS[id];
     if (!it) return '<span class="miss"><span class="ph"><span>' + esc(id) +
                     '</span></span><span class="t">нет в каталоге</span></span>';
+    /* в карточке Булочки показываем именно ЕЁ кадр, а не главный кадр вещи */
+    var src = dogFrame ? 'img/' + id + '/' + dogFrame + '.webp' : it.image;
     return '<a href="product.html?id=' + esc(id) + '"><span class="ph"><img src="' +
-      esc(it.image) + '" alt=""></span><span class="t">' + esc(it.title) + '</span></a>';
+      esc(src) + '" alt=""></span><span class="t">' + esc(it.title) + '</span></a>';
   }
 
   function block(m) {
@@ -81,7 +87,9 @@
         '<div class="col"><h3>Живые фото и референсы</h3><div class="refs">' + refs + '</div>' +
           (m.note ? '<p class="note">' + esc(m.note) + '</p>' : '') + '</div>' +
         '<div class="col"><h3>' + (m.gender === "dog" ? "Вещи, где она в кадре" : "Вещи на этой модели") + '</h3>' +
-          (m.items.length ? '<div class="things">' + m.items.map(thing).join("") + '</div>'
+          (m.items.length ? '<div class="things">' + m.items.map(function (id) {
+                              return thing(id, m.gender === "dog" ? DOG_FRAME[id] : "");
+                            }).join("") + '</div>'
                           : '<p class="empty-note">пока ничего — назначается через ' +
                             (m.gender === "dog" ? 'scripts/bulochka.py &lt;id&gt; --set'
                                                 : 'scripts/pick_model.py &lt;f|m&gt; --item &lt;id&gt;') + '</p>') +
