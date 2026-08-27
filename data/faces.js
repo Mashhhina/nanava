@@ -1,7 +1,7 @@
 // Модели для фильтра в каталоге. НЕ ПРАВИТЬ РУКАМИ:
 //     python3 scripts/build_models.py
 window.NNV_FACES = {
-  "generated": "2026-08-27 19:35",
+  "generated": "2026-08-27 21:56",
   "models": [
     {
       "name": "katya",
@@ -48,9 +48,7 @@ window.NNV_FACES = {
       "face": "img/models/nikita/face.webp",
       "items": [
         "bag-crystal",
-        "longsleeve-smile",
-        "sweater-shadow",
-        "tee-riders"
+        "longsleeve-smile"
       ]
     },
     {
@@ -60,7 +58,6 @@ window.NNV_FACES = {
       "kind": "person",
       "face": "img/models/lesha/face.webp",
       "items": [
-        "hoodie-horns",
         "jacket-knight"
       ]
     },
@@ -75,11 +72,23 @@ window.NNV_FACES = {
       ]
     },
     {
+      "name": "kolya",
+      "label": "Kolya",
+      "ru": "Коля",
+      "kind": "person",
+      "face": "img/models/kolya/face.webp",
+      "items": [
+        "hoodie-horns",
+        "sweater-shadow",
+        "tee-riders"
+      ]
+    },
+    {
       "name": "bulochka",
       "label": "Bulochka",
       "ru": "Булочка",
       "kind": "dog",
-      "face": null,
+      "face": "img/models/bulochka/face.webp",
       "items": [
         "bag-crystal",
         "bag-frill",

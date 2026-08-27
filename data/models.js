@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 21:41",
+  "generated": "2026-08-27 21:56",
   "unknown": [],
   "models": [
     {
@@ -175,9 +175,7 @@ window.NNV_MODELS = {
       "promptCustom": false,
       "items": [
         "bag-crystal",
-        "longsleeve-smile",
-        "sweater-shadow",
-        "tee-riders"
+        "longsleeve-smile"
       ],
       "kind": "person",
       "face": "img/models/nikita/face.webp",
@@ -224,7 +222,6 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, dark brown straight chin-length hair (soft bob parted near the middle, strands often tucked behind the ears), warm hazel-brown eyes, medium dark eyebrows, soft oval face with a gentle jawline, light skin with a warm undertone, a small silver SEPTUM RING in the nose and a small silver hoop earring in each ear (keep the septum ring and hoops in every view). Canonical look is CLEAN-SHAVEN: one reference photo shows light chin stubble — ignore it. Keep the facial identity identical to the reference photos. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
-        "hoodie-horns",
         "jacket-knight"
       ],
       "kind": "person",
@@ -266,12 +263,48 @@ window.NNV_MODELS = {
       "sheetSrc": "refs/models/pasha/character-sheet-candidate.jpg"
     },
     {
+      "name": "kolya",
+      "ru": "Коля",
+      "gender": "m",
+      "height": null,
+      "build": "плотное, крупное: широкие плечи, полная шея, крупные руки",
+      "note": "Новая мужская модель, добавлена 27.08 по фото от Алексея (ужин у моря, Турция). Канон: короткая стрижка с прямой чёлкой, гладко выбрит, плотное телосложение. Исходник один и с тёплым закатным светом — сверка кандидата обязательна. Рост уточнить у Алексея.",
+      "desc": "young man in his early twenties, short mid-brown hair cut as a crop: a straight textured fringe falling over the forehead, short tapered sides and back; light grey-blue eyes with slightly hooded lids, straight medium-thick dark brows, a broad face with full rounded cheeks and a wide soft jaw, short straight nose with a rounded tip, medium lips with a slightly downturned mouth, fair skin with a warm undertone, completely clean-shaven with no stubble, thick neck, broad shoulders and a solid sturdy build",
+      "sheetStatus": "candidate",
+      "sheet": "img/models/kolya/sheet.webp",
+      "photos": [
+        {
+          "file": "face-photo-crop.jpg",
+          "url": "img/models/kolya/photo-01.webp"
+        },
+        {
+          "file": "photo-01-cafe.jpg",
+          "url": "img/models/kolya/photo-02.webp"
+        }
+      ],
+      "refs": [
+        "face-photo-crop.jpg",
+        "photo-01-cafe.jpg"
+      ],
+      "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young man in his early twenties, short mid-brown hair cut as a crop: a straight textured fringe falling over the forehead, short tapered sides and back; light grey-blue eyes with slightly hooded lids, straight medium-thick dark brows, a broad face with full rounded cheeks and a wide soft jaw, short straight nose with a rounded tip, medium lips with a slightly downturned mouth, fair skin with a warm undertone, completely clean-shaven with no stubble, thick neck, broad shoulders and a solid sturdy build. The reference is a warm sunset phone photo taken at a three-quarter angle with strong orange lamp light on the face: reconstruct the SAME real person faithfully in clean neutral studio light, neutralize the warm colour cast, do not idealize, do not slim — keep the full cheeks, the wide jaw and the heavy build. Keep him clean-shaven and keep the fringe over the forehead in every view. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man in his early twenties, short mid-brown hair cut as a crop: a straight textured fringe falling over the forehead, short tapered sides and back; light grey-blue eyes with slightly hooded lids, straight medium-thick dark brows, a broad face with full rounded cheeks and a wide soft jaw, short straight nose with a rounded tip, medium lips with a slightly downturned mouth, fair skin with a warm undertone, completely clean-shaven with no stubble, thick neck, broad shoulders and a solid sturdy build. The reference is a warm sunset phone photo taken at a three-quarter angle with strong orange lamp light on the face: reconstruct the SAME real person faithfully in clean neutral studio light, neutralize the warm colour cast, do not idealize, do not slim — keep the full cheeks, the wide jaw and the heavy build. Keep him clean-shaven and keep the fringe over the forehead in every view. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptCustom": false,
+      "items": [
+        "hoodie-horns",
+        "sweater-shadow",
+        "tee-riders"
+      ],
+      "kind": "person",
+      "face": "img/models/kolya/face.webp",
+      "sheetSrc": "refs/models/kolya/character-sheet-candidate.jpg"
+    },
+    {
       "name": "bulochka",
       "ru": "Булочка",
       "gender": "dog",
       "height": null,
       "build": "бордер-колли, среднего размера, поджарая; в кадре всегда лежит",
-      "note": "Наша собака и фишка каталога: ровно на каждой третьей вещи один кадр карточки — с Булочкой (PLAYBOOK, «Булочка в кадре»; кому досталась — python3 scripts/bulochka.py). В кадре она ЛЕЖИТ и без ошейника: аксессуары в кадре бывают только наши. Живое фото от Алексея 27.08 (photo-01-sofa.jpg — стоит на диване у окна, Варшава-Муранув; face-photo-crop.jpg — кроп морды с него). Фото только одно и стоя, лежачей позы в референсах нет — если лежачий ракурс поедет, просить у Алексея кадр лёжа.",
+      "note": "Наша собака и фишка каталога: ровно на каждой третьей вещи один кадр карточки — с Булочкой (PLAYBOOK, «Булочка в кадре»; кому досталась — python3 scripts/bulochka.py). В кадре она ЛЕЖИТ и без ошейника: аксессуары в кадре бывают только наши. Живое фото от Алексея 27.08 (photo-01-sofa.jpg — стоит на диване у окна, Варшава-Муранув; face-photo-crop.jpg — кроп морды с него). Фото только одно и стоя, лежачей позы в референсах нет — если лежачий ракурс поедет, просить у Алексея кадр лёжа. Второе живое фото — photo-02-tv.jpg (27.08, сидит перед телевизором, на экране наш каталог): ушло лайфстайл-баннером на главную (site/img/home/bulochka-tv.webp), в промпты не даём — кадр тёмный.",
       "desc": "a young border collie named Bulochka: medium-sized, slim athletic build, semi-long soft double coat in warm LIVER CHOCOLATE BROWN (never black), classic collie markings — a narrow white blaze running up the muzzle between the eyes, white muzzle and chin, a wide white ruff on the chest, white front legs and paws, brown mask over both eyes and cheeks, brown semi-erect ears folded at the tips, light amber-hazel eyes, brown liver nose and eye rims, feathered brown tail",
       "sheetStatus": "canon",
       "sheet": "img/models/bulochka/sheet.webp",
@@ -283,6 +316,10 @@ window.NNV_MODELS = {
         {
           "file": "photo-01-sofa.jpg",
           "url": "img/models/bulochka/photo-02.webp"
+        },
+        {
+          "file": "photo-02-tv.jpg",
+          "url": "img/models/bulochka/photo-03.webp"
         }
       ],
       "refs": [
@@ -673,6 +710,12 @@ window.NNV_MODELS = {
           "label": "f6",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/dress-tiedye/f7.webp",
+          "label": "f7",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f7",
@@ -725,6 +768,12 @@ window.NNV_MODELS = {
           "label": "f6",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/mockneck-dark-rider/f7.webp",
+          "label": "f7",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f7",
@@ -734,7 +783,7 @@ window.NNV_MODELS = {
       "id": "hoodie-horns",
       "title": "Horns Hoodie Grey",
       "category": "clothes",
-      "model": "lesha",
+      "model": "kolya",
       "frames": [
         {
           "path": "img/p08.webp",
@@ -743,10 +792,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/hoodie-horns/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/hoodie-horns/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/hoodie-horns/f3.webp",
@@ -775,6 +830,12 @@ window.NNV_MODELS = {
         {
           "path": "img/hoodie-horns/process.webp",
           "label": "process",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/hoodie-horns/f7.webp",
+          "label": "f7",
           "exists": true,
           "ref": false
         }
@@ -838,7 +899,7 @@ window.NNV_MODELS = {
       "id": "tee-riders",
       "title": "Riders Oversized T-Shirt",
       "category": "clothes",
-      "model": "nikita",
+      "model": "kolya",
       "frames": [
         {
           "path": "img/p10.webp",
@@ -847,10 +908,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/tee-riders/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/tee-riders/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/tee-riders/f3.webp",
@@ -1279,6 +1346,12 @@ window.NNV_MODELS = {
           "label": "f6",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/cardholder-nanava/f7.webp",
+          "label": "f7",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f7",
@@ -1383,6 +1456,12 @@ window.NNV_MODELS = {
           "label": "f6",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/bag-frill/f7.webp",
+          "label": "f7",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f7",
@@ -1435,6 +1514,12 @@ window.NNV_MODELS = {
           "label": "f6",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/bag-frill-yellow/f7.webp",
+          "label": "f7",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f7",
@@ -1485,6 +1570,12 @@ window.NNV_MODELS = {
         {
           "path": "img/bag-crystal/f6.webp",
           "label": "f6",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crystal/f7.webp",
+          "label": "f7",
           "exists": true,
           "ref": false
         }
@@ -1613,6 +1704,12 @@ window.NNV_MODELS = {
           "label": "f3",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/cap-fangs/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f4",
@@ -1679,6 +1776,12 @@ window.NNV_MODELS = {
         {
           "path": "img/earrings-cameo/f3.webp",
           "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/earrings-cameo/f4.webp",
+          "label": "f4",
           "exists": true,
           "ref": false
         }
@@ -1783,6 +1886,12 @@ window.NNV_MODELS = {
           "label": "f5",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/mask-denim/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f6",
@@ -1829,6 +1938,12 @@ window.NNV_MODELS = {
           "label": "f6",
           "exists": true,
           "ref": false
+        },
+        {
+          "path": "img/tote-ghost/f7.webp",
+          "label": "f7",
+          "exists": true,
+          "ref": false
         }
       ],
       "dog": "f7",
@@ -1838,7 +1953,7 @@ window.NNV_MODELS = {
       "id": "sweater-shadow",
       "title": "Shadow Turtleneck Grey",
       "category": "clothes",
-      "model": "nikita",
+      "model": "kolya",
       "frames": [
         {
           "path": "img/sweater-shadow/main.webp",
@@ -1847,10 +1962,16 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
+          "path": "img/sweater-shadow/m1.webp",
+          "label": "m1",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/sweater-shadow/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/sweater-shadow/f3.webp",
@@ -1901,6 +2022,12 @@ window.NNV_MODELS = {
         {
           "path": "img/scarf-knight/f3.webp",
           "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/scarf-knight/f4.webp",
+          "label": "f4",
           "exists": true,
           "ref": false
         }
