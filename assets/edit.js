@@ -95,10 +95,12 @@
   }
 
   async function ask(prompt, parts, aspect, size) {
-    var P = proxy();
+    var P = proxy(), body = { prompt: prompt, parts: parts, aspect: aspect, size: size };
+    if (LOCAL) {                                      // локальный сервер: ключ у питона, из .env
+      return loadImg("data:image/jpeg;base64," + (await viaProxy("/api/img/gen", body)).data);
+    }
     if (!A.gemini && P) {                             // общий канал: гость ничего не вставляет
-      var js = await viaProxy(P + "/gen", { prompt: prompt, parts: parts, aspect: aspect, size: size });
-      return loadImg("data:image/jpeg;base64," + js.data);
+      return loadImg("data:image/jpeg;base64," + (await viaProxy(P + "/gen", body)).data);
     }
     if (!A.gemini) throw new Error("студия не подключена: нужен прокси (proxy/README.md) или свой ключ Google — кнопка «Ключи»");
     var r = await fetch(CFG.api, {
@@ -680,7 +682,7 @@
     function log(s) { lines.push(s); say(lines.slice(-3).join("\n")); }
     try { plan(S.zones, ui.prompt.value, S.refs); }
     catch (e) { return say(e.message, true); }
-    if (!A.gemini && !proxy()) { keysPanel(); return say("студия ещё не подключена — см. окно", true); }
+    if (!LOCAL && !A.gemini && !proxy()) { keysPanel(); return say("студия ещё не подключена — см. окно", true); }
     busy(true);
     var t0 = Date.now(), n = +ui.n.value, made = [];
     try {
