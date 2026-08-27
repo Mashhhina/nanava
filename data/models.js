@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 19:14",
+  "generated": "2026-08-27 19:21",
   "unknown": [],
   "models": [
     {
@@ -32,8 +32,7 @@ window.NNV_MODELS = {
         "dress-feather",
         "earcuff-spine",
         "earrings-cameo",
-        "scarf-organza",
-        "sweater-rider"
+        "scarf-organza"
       ],
       "kind": "person",
       "sheetSrc": "refs/models/katya/character-sheet.png"
@@ -75,9 +74,7 @@ window.NNV_MODELS = {
       "promptCustom": false,
       "items": [
         "dress-moon",
-        "dress-tiedye",
         "scarf-knight",
-        "tee-star",
         "top-organza"
       ],
       "kind": "person",
@@ -136,10 +133,8 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, short dark brown hair cut as a chin-length bob with a short blunt fringe, light green-grey eyes, thick straight dark eyebrows, very full lips with a prominent lower lip, oval face with a defined jaw and high cheekbones, light freckles across the nose and cheeks, pale light skin, no makeup. The reference photos show her with different hair (braids, curls, pixie): use ONLY the short dark brown bob with blunt fringe, and keep the facial identity identical across all references. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
-        "shirt-fangs",
         "skirt-dipdye",
-        "tote-ghost",
-        "vest-crown"
+        "tote-ghost"
       ],
       "kind": "person",
       "sheetSrc": "refs/models/lina/character-sheet-candidate.jpg"
@@ -329,15 +324,23 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, shoulder-length natural curly light chestnut-brown hair (soft ringlets, shorter layered curls at the crown and around the face, high forehead), light grey-green eyes, straight medium-thin brows, long narrow face with a defined jaw and a slightly pointed chin, straight nose with a rounded tip, medium lips with a defined cupid's bow, pale fair skin, very feminine adult face, professional editorial makeup: even skin tone, sculpted cheekbones, defined brows, mascara, shaped lips; small gold hoop earrings in both ears, slim build with narrow shoulders and thin arms. The references are candid phone photos in flat daylight: reconstruct the SAME real person faithfully in clean studio light, do not idealize or invent a different face; keep the natural curl pattern of the hair and the gold hoops in every view. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
-        "bag-crown",
         "bag-frill",
         "bag-frill-yellow",
         "bag-nanava",
+        "belt-holster",
+        "cardholder-nanava",
+        "dress-tiedye",
+        "earcuff-crystal",
         "longsleeve-rider",
         "longsleeve-sketch",
         "mockneck-dark-rider",
+        "shirt-fangs",
         "skirt-lace",
-        "tote-kitten"
+        "sweater-rider",
+        "tee-star",
+        "tote-kitten",
+        "towel-rider",
+        "vest-crown"
       ],
       "kind": "person",
       "sheetSrc": "refs/models/anya/character-sheet-candidate.jpg"
@@ -348,7 +351,7 @@ window.NNV_MODELS = {
       "id": "tee-star",
       "title": "Star Oversized T-Shirt",
       "category": "clothes",
-      "model": "alya",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p01.webp",
@@ -486,7 +489,7 @@ window.NNV_MODELS = {
       "id": "vest-crown",
       "title": "Crown Wool Vest",
       "category": "clothes",
-      "model": "lina",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p04.webp",
@@ -532,7 +535,7 @@ window.NNV_MODELS = {
       "id": "sweater-rider",
       "title": "Rider Sweater Red",
       "category": "clothes",
-      "model": "katya",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p05.webp",
@@ -578,7 +581,7 @@ window.NNV_MODELS = {
       "id": "dress-tiedye",
       "title": "Tie-Dye Chiffon Dress",
       "category": "clothes",
-      "model": "alya",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p06.webp",
@@ -814,7 +817,7 @@ window.NNV_MODELS = {
       "id": "shirt-fangs",
       "title": "Fangs Shirt Pink",
       "category": "clothes",
-      "model": "lina",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p11.webp",
@@ -860,7 +863,7 @@ window.NNV_MODELS = {
       "id": "towel-rider",
       "title": "Rider Towel",
       "category": "objects",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p12.webp",
@@ -1148,7 +1151,7 @@ window.NNV_MODELS = {
       "id": "cardholder-nanava",
       "title": "NANAVA Cardholder",
       "category": "accessories",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p15.webp",
@@ -1384,7 +1387,7 @@ window.NNV_MODELS = {
       "id": "bag-crown",
       "title": "Crown Engraved Bag",
       "category": "bags",
-      "model": "anya",
+      "model": "",
       "frames": [
         {
           "path": "img/p21.webp",
@@ -1430,7 +1433,7 @@ window.NNV_MODELS = {
       "id": "earcuff-crystal",
       "title": "Crystal Ear Cuff",
       "category": "accessories",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p18.webp",
@@ -1572,7 +1575,7 @@ window.NNV_MODELS = {
       "id": "belt-holster",
       "title": "Holster Velvet Belt",
       "category": "accessories",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p25.webp",
