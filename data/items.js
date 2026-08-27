@@ -53,9 +53,9 @@ window.NNV_DATA = {
       image: "img/p08.webp", images: ["img/hoodie-horns/f2.webp", "img/hoodie-horns/f3.webp", "img/hoodie-horns/f4.webp", "img/hoodie-horns/f5.webp", "img/hoodie-horns/f6.webp", "img/hoodie-horns/process.webp"] },
     { id: "skirt-lace", title: "Satin Lace Skirt", category: "clothes",
       price: 220, colorGroup: "silver", sku: "NNV0109A",
-      lead: "Steel and lemon lace.",
-      desc: "Midi skirt in steel satin with a lemon lace appliqué shaped like a jagged crown. Lace border along the hem, concealed zip at the waist. The appliqué is sewn on by hand.",
-      image: "img/p09.webp", images: ["img/skirt-lace/f2.webp", "img/skirt-lace/f3.webp", "img/skirt-lace/f4.webp", "img/skirt-lace/f5.webp", "img/skirt-lace/f6.webp"] },
+      lead: "A beaded bolt on steel satin.",
+      desc: "Midi slip skirt in steel satin. The jagged crown appliqué is embroidered in pearl-white beads and edged with navy piping, sewn on by hand. White Chantilly lace along the hem, narrow lace trim at the waist, concealed zip.",
+      image: "img/skirt-lace/main.webp", images: ["img/skirt-lace/f2.webp", "img/skirt-lace/f3.webp", "img/skirt-lace/f4.webp", "img/skirt-lace/f5.webp", "img/skirt-lace/f6.webp"] },
     { id: "tee-riders", title: "Riders Oversized T-Shirt", category: "clothes",
       price: 120, colorGroup: "brown", sku: "NNV0110A",
       lead: "Two riders through a zigzag.",
@@ -111,6 +111,11 @@ window.NNV_DATA = {
       lead: "Strict shape, frills along the edge.",
       desc: "Structured trapeze bag in powder patent leather. Flap with sculpted frills, cast padlock, two handles. Fully monochrome hardware moulded in the body colour.",
       image: "img/p17.webp", images: ["img/bag-frill/f2.webp", "img/bag-frill/f3.webp", "img/bag-frill/f4.webp", "img/bag-frill/f5.webp", "img/bag-frill/f6.webp"] },
+    { id: "bag-frill-yellow", title: "Frill Patent Bag Yellow", category: "bags",
+      price: 290, colorGroup: "yellow", sku: "NNV0205A",
+      lead: "The same strict shape, dipped in mustard.",
+      desc: "Structured trapeze bag in mustard-yellow patent leather, straight from the original sketch. Flap with sculpted frills, cast padlock, two handles. Fully monochrome hardware moulded in the body colour; dark lining with an inner zip divider.",
+      image: "img/bag-frill-yellow/main.webp", images: ["img/bag-frill-yellow/f1.webp", "img/bag-frill-yellow/f3.webp", "img/bag-frill-yellow/f4.webp", "img/bag-frill-yellow/f5.webp", "img/bag-frill-yellow/f6.webp"] },
     { id: "bag-crown", title: "Crown Engraved Bag", category: "bags",
       price: 320, colorGroup: "green", sku: "NNV0204A",
       lead: "A crown scratched in gold.",
@@ -135,6 +140,11 @@ window.NNV_DATA = {
       price: 130, colorGroup: "pink", sku: "NNV0305A",
       lead: "Relics carved in dusty pink.",
       desc: "Statement drop earrings cast in one piece: an oval cameo held by rib-like wings and a spiked crest, then a shield-cut faceted crystal ringed with crescent horns and thorns. Monochrome dusty-rose lacquer, glossy porcelain finish; the pair is mirrored. A spare crescent bead comes in the box — wear it on the tongue.",
-      image: "img/p22.webp", images: ["img/earrings-cameo/f2.webp", "img/earrings-cameo/f3.webp"] }
+      image: "img/p22.webp", images: ["img/earrings-cameo/f2.webp", "img/earrings-cameo/f3.webp"] },
+    { id: "belt-holster", title: "Holster Velvet Belt", category: "accessories",
+      price: 160, colorGroup: "pink", sku: "NNV0306A",
+      lead: "A western in dusty-rose velvet.",
+      desc: "Double-strap belt fully flocked in pale dusty-rose cotton velvet — every element moulded in the same colour: the pistol-shaped buckle plate with an oval cabochon, the woven bramble frame with NNV letters, the ornate sun brooch, tooth and claw charms and a tiny turtle stud. Tone-on-tone pressed-velvet zigzag inlays run along the straps; one end curls into a horn, the other feathers out like a wing.",
+      image: "img/p25.webp", images: ["img/belt-holster/f2.webp", "img/belt-holster/f3.webp"] }
   ]
 };

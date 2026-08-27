@@ -164,7 +164,7 @@
   function renderHome() {
     var newRow = document.querySelector("[data-new]");
     if (!newRow) return;
-    renderInto(newRow, ["longsleeve-smile", "dress-feather", "sweater-rider", "bag-nanava", "hoodie-horns", "bag-frill"].map(function (id) { return byId[id]; }));
+    renderInto(newRow, ["belt-holster", "longsleeve-smile", "dress-feather", "sweater-rider", "bag-nanava", "hoodie-horns"].map(function (id) { return byId[id]; }));
   }
 
   /* ---------- карточка товара ---------- */
