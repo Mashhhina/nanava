@@ -145,6 +145,11 @@ window.NNV_DATA = {
       price: 160, colorGroup: "pink", sku: "NNV0306A",
       lead: "A western in dusty-rose velvet.",
       desc: "Double-strap belt fully flocked in pale dusty-rose cotton velvet — every element moulded in the same colour: the pistol-shaped buckle plate with an oval cabochon, the woven bramble frame with NNV letters, the ornate sun brooch, tooth and claw charms and a tiny turtle stud. Tone-on-tone pressed-velvet zigzag inlays run along the straps; one end curls into a horn, the other feathers out like a wing.",
-      image: "img/p25.webp", images: ["img/belt-holster/f2.webp", "img/belt-holster/f3.webp"] }
+      image: "img/p25.webp", images: ["img/belt-holster/f2.webp", "img/belt-holster/f3.webp"] },
+    { id: "scarf-organza", title: "Layered Organza Scarf", category: "accessories",
+      price: 140, colorGroup: "blue", sku: "NNV0307A",
+      lead: "Three veils of colour in one breath of silk.",
+      desc: "Long scarf of three overlapping silk-organza panels — ink navy, chocolate brown and pale champagne. Crisp translucent gauze with narrow rolled hems; where the layers cross, the colours blend like watercolour washes. Loop it at the neck or wear it as a sheer head veil.",
+      image: "img/scarf-organza/main.webp", images: ["img/scarf-organza/f2.webp", "img/scarf-organza/f3.webp"] }
   ]
 };
