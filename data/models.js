@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 17:39",
+  "generated": "2026-08-27 18:54",
   "unknown": [],
   "models": [
     {
@@ -28,6 +28,7 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, short dark chestnut wavy bob with a choppy fringe, light hazel eyes, freckles across the nose and cheeks, natural skin with no makeup, narrow shoulders, long neck, slim petite build. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
+        "cap-fangs",
         "dress-feather",
         "earcuff-spine",
         "earrings-cameo",
@@ -72,8 +73,11 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, long dark blonde hair falling well below the shoulders in soft loose waves, thin wispy curtain-style bangs over the forehead, light grey-blue eyes, pale skin, no makeup, soft rounded face with a gently pointed chin. The reference is a night street photo: reconstruct the SAME real person faithfully in clean studio light, do not idealize or invent a different face. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
+        "dress-moon",
         "dress-tiedye",
-        "tee-star"
+        "scarf-knight",
+        "tee-star",
+        "top-organza"
       ],
       "sheetSrc": "refs/models/alya/character-sheet-candidate.jpg"
     },
@@ -132,6 +136,7 @@ window.NNV_MODELS = {
       "items": [
         "shirt-fangs",
         "skirt-dipdye",
+        "tote-ghost",
         "vest-crown"
       ],
       "sheetSrc": "refs/models/lina/character-sheet-candidate.jpg"
@@ -142,9 +147,9 @@ window.NNV_MODELS = {
       "gender": "m",
       "height": null,
       "build": "худощавое, узкие плечи, тонкие руки",
-      "note": "Реальный Никита из команды.",
+      "note": "Реальный Никита из команды. Канон сверен Алексеем 27.08 (по кадру bag-crystal f2).",
       "desc": "young man, fully shaved bald head (smooth, no stubble), very pale light skin, light grey-blue eyes, thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks",
-      "sheetStatus": "candidate",
+      "sheetStatus": "canon",
       "sheet": "img/models/nikita/sheet.webp",
       "photos": [
         {
@@ -168,10 +173,12 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, fully shaved bald head (smooth, no stubble), very pale light skin, light grey-blue eyes, thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
+        "bag-crystal",
         "longsleeve-smile",
+        "sweater-shadow",
         "tee-riders"
       ],
-      "sheetSrc": "refs/models/nikita/character-sheet-candidate.jpg"
+      "sheetSrc": "refs/models/nikita/character-sheet.png"
     },
     {
       "name": "lesha",
@@ -801,13 +808,13 @@ window.NNV_MODELS = {
     },
     {
       "id": "bag-nanava",
-      "title": "NANAVA Raffia Bag",
+      "title": "NANAVA Faces Bag",
       "category": "bags",
       "model": "",
       "frames": [
         {
-          "path": "img/p13.webp",
-          "label": "p13",
+          "path": "img/bag-nanava/main.webp",
+          "label": "main",
           "exists": true,
           "ref": true
         },
@@ -1217,6 +1224,57 @@ window.NNV_MODELS = {
       "refsCustom": false
     },
     {
+      "id": "bag-crystal",
+      "title": "Crystal Arch Bag",
+      "category": "bags",
+      "model": "nikita",
+      "frames": [
+        {
+          "path": "img/bag-crystal/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-crystal/f1.webp",
+          "label": "f1",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bag-crystal/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crystal/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crystal/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crystal/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bag-crystal/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
       "id": "bag-crown",
       "title": "Crown Engraved Bag",
       "category": "bags",
@@ -1310,11 +1368,11 @@ window.NNV_MODELS = {
       "id": "cap-fangs",
       "title": "Fangs Denim Cap",
       "category": "accessories",
-      "model": "",
+      "model": "katya",
       "frames": [
         {
-          "path": "img/p20.webp",
-          "label": "p20",
+          "path": "img/cap-fangs/main.webp",
+          "label": "main",
           "exists": true,
           "ref": true
         },
@@ -1340,20 +1398,32 @@ window.NNV_MODELS = {
       "model": "katya",
       "frames": [
         {
+          "path": "img/earcuff-spine/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
           "path": "img/p23.webp",
           "label": "p23",
           "exists": true,
           "ref": true
         },
         {
+          "path": "img/earcuff-spine/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
           "path": "img/earcuff-spine/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
-          "path": "img/earcuff-spine/f3.webp",
-          "label": "f3",
+          "path": "img/earcuff-spine/f4.webp",
+          "label": "f4",
           "exists": true,
           "ref": false
         }
@@ -1474,6 +1544,213 @@ window.NNV_MODELS = {
         {
           "path": "img/mask-denim/f5.webp",
           "label": "f5",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "tote-ghost",
+      "title": "Ghost Patent Tote",
+      "category": "bags",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "img/tote-ghost/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tote-ghost/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tote-ghost/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tote-ghost/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tote-ghost/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tote-ghost/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "sweater-shadow",
+      "title": "Shadow Turtleneck Grey",
+      "category": "clothes",
+      "model": "nikita",
+      "frames": [
+        {
+          "path": "img/sweater-shadow/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/sweater-shadow/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/sweater-shadow/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-shadow/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-shadow/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-shadow/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "scarf-knight",
+      "title": "Knight Twill Silk Scarf",
+      "category": "accessories",
+      "model": "alya",
+      "frames": [
+        {
+          "path": "img/scarf-knight/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/scarf-knight/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/scarf-knight/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "top-organza",
+      "title": "Layered Organza Top Grey",
+      "category": "clothes",
+      "model": "alya",
+      "frames": [
+        {
+          "path": "img/top-organza/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/top-organza/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/top-organza/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/top-organza/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/top-organza/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/top-organza/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "refsCustom": false
+    },
+    {
+      "id": "dress-moon",
+      "title": "Moon Organza Gown",
+      "category": "clothes",
+      "model": "alya",
+      "frames": [
+        {
+          "path": "img/dress-moon/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-moon/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-moon/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-moon/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-moon/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-moon/f6.webp",
+          "label": "f6",
           "exists": true,
           "ref": false
         }
