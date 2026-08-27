@@ -134,7 +134,7 @@ window.NNV_DATA = {
     { id: "earrings-cameo", title: "Bone Cameo Drop Earrings", category: "accessories",
       price: 130, colorGroup: "pink", sku: "NNV0305A",
       lead: "Relics carved in dusty pink.",
-      desc: "Statement drop earrings cast in one piece: an oval cameo held by rib-like wings and a spiked crest, then a shield-cut faceted crystal ringed with crescent horns and thorns. Monochrome dusty-rose lacquer, glossy porcelain finish; the pair is mirrored. A spare crescent bead comes in the box \u2014 wear it on the tongue.",
+      desc: "Statement drop earrings cast in one piece: an oval cameo held by rib-like wings and a spiked crest, then a shield-cut faceted crystal ringed with crescent horns and thorns. Monochrome dusty-rose lacquer, glossy porcelain finish; the pair is mirrored. A spare crescent bead comes in the box — wear it on the tongue.",
       image: "img/p22.webp", images: ["img/earrings-cameo/f2.webp", "img/earrings-cameo/f3.webp"] }
   ]
 };
