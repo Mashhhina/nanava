@@ -220,7 +220,12 @@ window.NNV_DATA = {
       lead: "Moonlight cut raw.",
       desc: "Floor-length gown in graphite silk organza. Corset bodice with raw-cut slash openings backed with silver satin, pointed basque, slim sheer sleeves under floor-length cape panels. Every edge is left raw — frayed organza, loose threads, no trim.",
       image: "img/dress-moon/main.webp", images: ["img/dress-moon/f2.webp", "img/dress-moon/f3.webp", "img/dress-moon/f4.webp", "img/dress-moon/f5.webp", "img/dress-moon/f6.webp"],
-      process: [{ src: "img/process/lineup-01.webp", cap: "Season line-up FW 26/27 — the looks this piece was drawn into" }] }
+      process: [{ src: "img/process/lineup-01.webp", cap: "Season line-up FW 26/27 — the looks this piece was drawn into" }] },
+    { id: "ring-cross", title: "Cross Signet Ring", category: "accessories",
+      price: 120, colorGroup: "silver", sku: "NNV0310A",
+      lead: "A chapel roof, worn on one finger.",
+      desc: "Heavy signet ring in silver-tone metal. A broad square top plate with softened corners carries a raised latin cross standing proud of the surface, its arms reaching almost to the edges of the plate; the shoulders fall away in two flat facets into a plain band. Brushed satin across the plate and cross, brighter polish along the band edges.",
+      image: "img/ring-cross/main.webp", images: ["img/ring-cross/f2.webp", "img/ring-cross/f3.webp", "img/ring-cross/f4.webp"] }
   ]
 };
 
