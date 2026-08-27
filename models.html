@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NANAVA — модели</title>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/models.css">
+</head>
+<body class="kit">
+
+<header class="topbar">
+  <nav>
+    <a href="index.html">← Сайт</a>
+    <a href="catalog.html">Каталог</a>
+  </nav>
+  <a class="logo" href="models.html">Nanava</a>
+  <nav class="right">
+    <span class="kit-tag">UI kit · модели</span>
+  </nav>
+</header>
+
+<section class="kit-head">
+  <h1>Модели</h1>
+  <p class="kit-sub">
+    Раскадровка (character sheet), постоянные параметры и все вещи, на которых
+    стоит человек. Источник — <code>refs/models/registry.json</code> +
+    <code>usage.json</code>; страница пересобирается командой
+    <code>python3 scripts/build_models.py</code>.
+  </p>
+  <div class="kit-bar" data-bar></div>
+  <div class="kit-mode" data-mode></div>
+</section>
+
+<main data-models></main>
+
+<footer class="kit-foot">
+  <span data-generated></span>
+  <span>refs/models/ → site/models.html</span>
+</footer>
+
+<div class="veil kit-veil" data-veil hidden>
+  <div class="kit-modal" data-modal></div>
+</div>
+
+<script src="data/items.js"></script>
+<script src="data/models.js"></script>
+<script src="assets/models.js"></script>
+</body>
+</html>

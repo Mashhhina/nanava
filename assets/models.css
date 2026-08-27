@@ -1,0 +1,128 @@
+/* Внутренняя страница команды: витрина моделей (models.html).
+   Тот же молочный фон и типографика сайта, но плотнее и с рабочими
+   подписями — это UI kit, а не витрина покупателю. */
+
+.kit .kit-tag { font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); }
+.kit .topbar nav a { text-transform: none; font-size: 11px; }
+
+.kit-head { padding: 30px 18px 16px; border-bottom: 1px solid var(--line); }
+.kit-head h1 { font-family: "Times New Roman", Times, serif; font-size: 26px; font-weight: 400; letter-spacing: .06em; }
+.kit-sub { margin-top: 8px; max-width: 760px; color: var(--muted); line-height: 1.7; }
+.kit code { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--ink); }
+
+.kit-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.kit-bar a {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  padding: 5px 10px; border: 1px solid var(--line);
+  font-size: 11px; text-transform: uppercase; letter-spacing: .08em;
+}
+.kit-bar a:hover { border-color: var(--ink); }
+.kit-bar a b { font-weight: 400; }
+.kit-bar a span { color: var(--muted); }
+
+.kit-mode { margin-top: 12px; font-size: 11px; color: var(--muted); line-height: 1.7; }
+.kit-mode.live { color: var(--ink); }
+.kit-mode .dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--muted); margin-right: 6px; vertical-align: 1px; }
+.kit-mode.live .dot { background: #2f7d4f; }
+
+/* ---------- блок модели ---------- */
+.mdl { border-bottom: 1px solid var(--line); padding: 26px 18px 30px; }
+.mdl-head { display: flex; align-items: flex-start; gap: 18px; flex-wrap: wrap; }
+.mdl-name { font-family: "Times New Roman", Times, serif; font-size: 22px; letter-spacing: .06em; }
+.mdl-name em { font-style: normal; font-family: inherit; font-size: 12px; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; margin-left: 10px; }
+.mdl-facts { display: flex; gap: 26px; flex-wrap: wrap; margin-top: 6px; }
+.mdl-facts div { font-size: 11px; }
+.mdl-facts .k { display: block; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; font-size: 10px; margin-bottom: 3px; }
+.mdl-facts .v.empty { color: #b23; }
+.mdl-head .sp { flex: 1 1 40px; }
+.mdl-actions { display: flex; gap: 8px; align-items: center; }
+
+.badge { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; padding: 3px 7px; border: 1px solid var(--line); color: var(--muted); }
+.badge.canon { border-color: #2f7d4f; color: #2f7d4f; }
+.badge.candidate { border-color: #a8791f; color: #a8791f; }
+.badge.draft, .badge.none { border-color: #b23; color: #b23; }
+
+.btn {
+  height: 30px; padding: 0 14px; border: 1px solid var(--ink);
+  font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+}
+.btn:hover { background: var(--ink); color: #fff; }
+.btn.ghost { border-color: var(--line); color: var(--muted); }
+.btn.ghost:hover { background: none; border-color: var(--ink); color: var(--ink); }
+.btn[disabled] { opacity: .4; pointer-events: none; }
+
+.sheet { margin-top: 16px; border: 1px solid var(--line); background: var(--bg); }
+.sheet img { width: 100%; max-height: 46vh; object-fit: contain; margin: 0 auto; }
+.sheet.none { padding: 40px; text-align: center; color: #b23; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; }
+
+.mdl-cols { display: grid; grid-template-columns: 260px 1fr; gap: 26px; margin-top: 18px; align-items: start; }
+@media (max-width: 900px) { .mdl-cols { grid-template-columns: 1fr; } }
+.col h3 { font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin-bottom: 8px; }
+.col .note { font-size: 11px; line-height: 1.7; color: #444; margin-top: 10px; }
+
+.refs { display: flex; gap: 6px; flex-wrap: wrap; }
+.refs figure { width: 58px; }
+.refs img { width: 58px; height: 74px; object-fit: cover; border: 1px solid var(--line); }
+.refs figure.used img { border-color: var(--ink); }
+.refs figcaption { font-size: 9px; color: var(--muted); margin-top: 3px; word-break: break-all; line-height: 1.3; }
+
+.things { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
+@media (max-width: 1100px) { .things { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 700px) { .things { grid-template-columns: repeat(3, 1fr); } }
+.things a { display: block; }
+.things .ph { display: block; position: relative; aspect-ratio: 3 / 4; }
+.things .ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 6%; mix-blend-mode: multiply; }
+.things .t { display: block; font-size: 10px; line-height: 1.4; padding: 2px 4px 8px; }
+.things a:hover .t { text-decoration: underline; text-underline-offset: 3px; }
+.things .miss .ph { display: grid; place-items: center; border: 1px dashed var(--line); }
+.things .miss .ph span { font-size: 10px; color: var(--muted); }
+.empty-note { font-size: 11px; color: var(--muted); }
+
+/* ---------- модалка «Редактировать» ---------- */
+.kit-veil { position: fixed; inset: 0; z-index: 100; background: rgba(20,20,20,.35); display: grid; place-items: center; padding: 20px; }
+.kit-veil[hidden] { display: none; }
+.kit-modal {
+  background: var(--bg); border: 1px solid var(--ink);
+  width: min(920px, 100%); max-height: 90vh; overflow: auto; padding: 22px;
+}
+.kit-modal h2 { font-family: "Times New Roman", Times, serif; font-size: 20px; font-weight: 400; letter-spacing: .05em; }
+.kit-modal h3 { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 20px 0 8px; font-weight: 400; }
+.kit-modal .row { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+.kit-modal label { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 4px; }
+.kit-modal input[type=text], .kit-modal input[type=number], .kit-modal textarea {
+  border: 1px solid var(--line); background: #fff; padding: 7px 8px; font-size: 12px; width: 100%;
+}
+.kit-modal textarea { min-height: 56px; resize: vertical; }
+.kit-modal .f-h { width: 110px; }
+.kit-modal .f-b { flex: 1 1 260px; }
+.kit-modal .close { position: sticky; top: 0; float: right; font-size: 18px; line-height: 1; color: var(--muted); }
+.drop {
+  border: 1px dashed var(--line); padding: 20px; text-align: center;
+  font-size: 11px; color: var(--muted); cursor: pointer;
+}
+.drop.over { border-color: var(--ink); color: var(--ink); }
+.drop input { display: none; }
+.picks { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.picks figure { width: 82px; }
+.picks img { width: 82px; height: 100px; object-fit: cover; border: 1px solid var(--line); }
+.picks figcaption { font-size: 9px; color: var(--muted); margin-top: 3px; word-break: break-all; }
+.pickable { cursor: pointer; }
+.pickable.on img { border-color: var(--ink); border-width: 2px; }
+.pickable .mark { font-size: 9px; text-transform: uppercase; letter-spacing: .08em; }
+.pickable.on .mark { color: var(--ink); }
+.pickable:not(.on) .mark { color: var(--muted); }
+.kit-modal .log { margin-top: 12px; font-size: 11px; color: var(--muted); white-space: pre-wrap; line-height: 1.6; }
+.kit-modal .log b { color: var(--ink); font-weight: 400; }
+.kit-modal .cmd {
+  margin-top: 10px; padding: 10px; background: #fff; border: 1px solid var(--line);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px;
+  white-space: pre-wrap; word-break: break-all; line-height: 1.6;
+}
+.variants { display: grid; gap: 10px; margin-top: 10px; }
+.variants figure { border: 1px solid var(--line); cursor: pointer; }
+.variants figure.on { border-color: var(--ink); }
+.variants img { width: 100%; }
+.variants figcaption { font-size: 10px; padding: 5px 7px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); display: flex; justify-content: space-between; }
+.variants figure.on figcaption { color: var(--ink); }
+
+.kit-foot { display: flex; justify-content: space-between; padding: 18px; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; }
