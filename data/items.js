@@ -241,12 +241,17 @@ window.NNV_HOME = {
     { key: "jewellery",   href: "catalog.html?cat=accessories",    img: "img/home/t-p22.webp" },
     { key: "all",         href: "catalog.html",                    img: "img/home/t-bag-nanava.webp" }
   ],
+  // порядок ленты = порядок в этом списке (имя файла — просто номер кадра):
+  // держим моделей вперемешку, чтобы в первом экране были разные лица
   looks: [
     { id: "dress-feather",      img: "img/home/look-01.webp", w: 418, h: 1442 },
+    { id: "dress-moon",         img: "img/home/look-12.webp", w: 573, h: 1442 },
     { id: "sweater-rider",      img: "img/home/look-02.webp", w: 454, h: 1442 },
     { id: "tee-star",           img: "img/home/look-03.webp", w: 425, h: 1442 },
+    { id: "mask-denim",         img: "img/home/look-13.webp", w: 682, h: 1442 },
     { id: "skirt-dipdye",       img: "img/home/look-04.webp", w: 417, h: 1442 },
     { id: "dress-tiedye",       img: "img/home/look-05.webp", w: 468, h: 1442 },
+    { id: "tote-ghost",         img: "img/home/look-14.webp", w: 794, h: 1442 },
     { id: "shirt-fangs",        img: "img/home/look-06.webp", w: 453, h: 1442 },
     { id: "vest-crown",         img: "img/home/look-07.webp", w: 385, h: 1442 },
     { id: "longsleeve-smile",   img: "img/home/look-08.webp", w: 490, h: 1442 },
