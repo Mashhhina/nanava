@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 18:54",
+  "generated": "2026-08-27 19:07",
   "unknown": [],
   "models": [
     {
@@ -35,6 +35,7 @@ window.NNV_MODELS = {
         "scarf-organza",
         "sweater-rider"
       ],
+      "kind": "person",
       "sheetSrc": "refs/models/katya/character-sheet.png"
     },
     {
@@ -79,6 +80,7 @@ window.NNV_MODELS = {
         "tee-star",
         "top-organza"
       ],
+      "kind": "person",
       "sheetSrc": "refs/models/alya/character-sheet-candidate.jpg"
     },
     {
@@ -139,6 +141,7 @@ window.NNV_MODELS = {
         "tote-ghost",
         "vest-crown"
       ],
+      "kind": "person",
       "sheetSrc": "refs/models/lina/character-sheet-candidate.jpg"
     },
     {
@@ -147,8 +150,8 @@ window.NNV_MODELS = {
       "gender": "m",
       "height": null,
       "build": "худощавое, узкие плечи, тонкие руки",
-      "note": "Реальный Никита из команды. Канон сверен Алексеем 27.08 (по кадру bag-crystal f2).",
-      "desc": "young man, fully shaved bald head (smooth, no stubble), very pale light skin, light grey-blue eyes, thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks",
+      "note": "Реальный Никита из команды. Канон сверен Алексеем 27.08 (по кадру bag-crystal f2). Красные глаза — правило от 27.08 (PLAYBOOK, «Никита — всегда с красными глазами»): канон с серо-голубыми глазами устарел, пересобрать и сверить.",
+      "desc": "young man, fully shaved bald head (smooth, no stubble), very pale light skin, vivid red irises (clearly red eyes), thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks",
       "sheetStatus": "canon",
       "sheet": "img/models/nikita/sheet.webp",
       "photos": [
@@ -169,8 +172,8 @@ window.NNV_MODELS = {
         "face-photo-crop.jpg",
         "photo-02-front.jpg"
       ],
-      "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, fully shaved bald head (smooth, no stubble), very pale light skin, light grey-blue eyes, thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
-      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, fully shaved bald head (smooth, no stubble), very pale light skin, light grey-blue eyes, thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, fully shaved bald head (smooth, no stubble), very pale light skin, vivid red irises (clearly red eyes), thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young man, fully shaved bald head (smooth, no stubble), very pale light skin, vivid red irises (clearly red eyes), thin light eyebrows, narrow elongated face with high cheekbones and slightly hollow cheeks. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
         "bag-crystal",
@@ -178,6 +181,7 @@ window.NNV_MODELS = {
         "sweater-shadow",
         "tee-riders"
       ],
+      "kind": "person",
       "sheetSrc": "refs/models/nikita/character-sheet.png"
     },
     {
@@ -224,6 +228,7 @@ window.NNV_MODELS = {
         "hoodie-horns",
         "jacket-knight"
       ],
+      "kind": "person",
       "sheetSrc": "refs/models/lesha/character-sheet-candidate.jpg"
     },
     {
@@ -256,7 +261,86 @@ window.NNV_MODELS = {
       "items": [
         "mask-denim"
       ],
+      "kind": "person",
       "sheetSrc": "refs/models/pasha/character-sheet-candidate.jpg"
+    },
+    {
+      "name": "bulochka",
+      "ru": "Булочка",
+      "gender": "dog",
+      "height": null,
+      "build": "бордер-колли, среднего размера, поджарая; в кадре всегда лежит",
+      "note": "Наша собака и фишка каталога: ровно на каждой третьей вещи один кадр карточки — с Булочкой (PLAYBOOK, «Булочка в кадре»; кому досталась — python3 scripts/bulochka.py). В кадре она ЛЕЖИТ и без ошейника: аксессуары в кадре бывают только наши. Ждём живое фото — положить в refs/models/bulochka/photo-01-sofa.jpg, канона пока нет.",
+      "desc": "a young border collie named Bulochka: medium-sized, slim athletic build, semi-long soft double coat in warm LIVER CHOCOLATE BROWN (never black), classic collie markings — a narrow white blaze running up the muzzle between the eyes, white muzzle and chin, a wide white ruff on the chest, white front legs and paws, brown mask over both eyes and cheeks, brown semi-erect ears folded at the tips, light amber-hazel eyes, brown liver nose and eye rims, feathered brown tail",
+      "sheetStatus": "none",
+      "sheet": null,
+      "photos": [],
+      "refs": [
+        "photo-01-sofa.jpg"
+      ],
+      "prompt": "Character reference sheet of the EXACT same dog as in the reference photo(s): a young border collie named Bulochka: medium-sized, slim athletic build, semi-long soft double coat in warm LIVER CHOCOLATE BROWN (never black), classic collie markings — a narrow white blaze running up the muzzle between the eyes, white muzzle and chin, a wide white ruff on the chest, white front legs and paws, brown mask over both eyes and cheeks, brown semi-erect ears folded at the tips, light amber-hazel eyes, brown liver nose and eye rims, feathered brown tail. This is a REAL dog and always the SAME dog: keep her markings and proportions identical in every frame, do not restyle her into a black-and-white collie, do not make her a puppy or a cartoon. NO COLLAR, no harness, no leash, no tag, no dog toys or bowls in the frame. One horizontal row of FIVE studio views of this same dog, left to right: (1) left profile standing, (2) left three-quarter standing, (3) frontal standing, (4) right three-quarter standing, (5) LYING DOWN in profile with front paws stretched forward and head up — the pose she is photographed in for the catalogue. EXACT same head shape, muzzle, ear set, eye colour and white markings in every view; preserve her identity, do not idealize her, do not change the markings, keep natural fur texture. Calm neutral expression, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent body size and eye level across all five views. No collar, no leash, no text, no labels, no watermarks.",
+      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): a young border collie named Bulochka: medium-sized, slim athletic build, semi-long soft double coat in warm LIVER CHOCOLATE BROWN (never black), classic collie markings — a narrow white blaze running up the muzzle between the eyes, white muzzle and chin, a wide white ruff on the chest, white front legs and paws, brown mask over both eyes and cheeks, brown semi-erect ears folded at the tips, light amber-hazel eyes, brown liver nose and eye rims, feathered brown tail. This is a REAL dog and always the SAME dog: keep her markings and proportions identical in every frame, do not restyle her into a black-and-white collie, do not make her a puppy or a cartoon. NO COLLAR, no harness, no leash, no tag, no dog toys or bowls in the frame. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptCustom": true,
+      "items": [
+        "bag-crystal",
+        "bag-frill",
+        "bag-frill-yellow",
+        "cap-fangs",
+        "cardholder-nanava",
+        "dress-tiedye",
+        "earrings-cameo",
+        "hoodie-horns",
+        "mask-denim",
+        "mockneck-dark-rider",
+        "scarf-knight",
+        "tote-ghost"
+      ],
+      "kind": "dog"
+    },
+    {
+      "name": "anya",
+      "ru": "Аня",
+      "gender": "f",
+      "height": null,
+      "build": "худощавое, узкие плечи, тонкие руки",
+      "note": "Реальная Аня, фото от 27.08 (зонт + кухня). Постоянная деталь — маленькие золотые кольца в обоих ушах, в каждом кадре. Канон: натуральные кудри до плеч, не выпрямлять. Рост и телосложение — уточнить у Алексея.",
+      "desc": "young woman, shoulder-length natural curly light chestnut-brown hair (soft ringlets, shorter layered curls at the crown and around the face, high forehead), light grey-green eyes, straight medium-thin brows, long narrow face with a defined jaw and a slightly pointed chin, straight nose with a rounded tip, medium lips with a defined cupid's bow, pale fair skin, very feminine adult face, professional editorial makeup: even skin tone, sculpted cheekbones, defined brows, mascara, shaped lips; small gold hoop earrings in both ears, slim build with narrow shoulders and thin arms",
+      "sheetStatus": "candidate",
+      "sheet": "img/models/anya/sheet.webp",
+      "photos": [
+        {
+          "file": "face-photo-crop.jpg",
+          "url": "img/models/anya/photo-01.webp"
+        },
+        {
+          "file": "photo-01-umbrella.jpg",
+          "url": "img/models/anya/photo-02.webp"
+        },
+        {
+          "file": "photo-02-kitchen.jpg",
+          "url": "img/models/anya/photo-03.webp"
+        }
+      ],
+      "refs": [
+        "face-photo-crop.jpg",
+        "photo-01-umbrella.jpg"
+      ],
+      "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, shoulder-length natural curly light chestnut-brown hair (soft ringlets, shorter layered curls at the crown and around the face, high forehead), light grey-green eyes, straight medium-thin brows, long narrow face with a defined jaw and a slightly pointed chin, straight nose with a rounded tip, medium lips with a defined cupid's bow, pale fair skin, very feminine adult face, professional editorial makeup: even skin tone, sculpted cheekbones, defined brows, mascara, shaped lips; small gold hoop earrings in both ears, slim build with narrow shoulders and thin arms. The references are candid phone photos in flat daylight: reconstruct the SAME real person faithfully in clean studio light, do not idealize or invent a different face; keep the natural curl pattern of the hair and the gold hoops in every view. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, shoulder-length natural curly light chestnut-brown hair (soft ringlets, shorter layered curls at the crown and around the face, high forehead), light grey-green eyes, straight medium-thin brows, long narrow face with a defined jaw and a slightly pointed chin, straight nose with a rounded tip, medium lips with a defined cupid's bow, pale fair skin, very feminine adult face, professional editorial makeup: even skin tone, sculpted cheekbones, defined brows, mascara, shaped lips; small gold hoop earrings in both ears, slim build with narrow shoulders and thin arms. The references are candid phone photos in flat daylight: reconstruct the SAME real person faithfully in clean studio light, do not idealize or invent a different face; keep the natural curl pattern of the hair and the gold hoops in every view. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptCustom": false,
+      "items": [
+        "bag-crown",
+        "bag-frill",
+        "bag-frill-yellow",
+        "bag-nanava",
+        "longsleeve-rider",
+        "longsleeve-sketch",
+        "mockneck-dark-rider",
+        "skirt-lace",
+        "tote-kitten"
+      ],
+      "kind": "person",
+      "sheetSrc": "refs/models/anya/character-sheet-candidate.jpg"
     }
   ],
   "items": [
@@ -303,13 +387,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
       "id": "longsleeve-rider",
       "title": "Rider Layered Longsleeve",
       "category": "clothes",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p02.webp",
@@ -348,13 +433,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
       "id": "longsleeve-sketch",
       "title": "Sketch Longsleeve Cream",
       "category": "clothes",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p03.webp",
@@ -393,6 +479,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -438,6 +525,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -483,6 +571,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -528,13 +617,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
       "id": "mockneck-dark-rider",
       "title": "Dark Rider Satin Mockneck",
       "category": "clothes",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p07.webp",
@@ -573,6 +663,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
@@ -624,13 +715,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
       "id": "skirt-lace",
       "title": "Satin Lace Skirt",
       "category": "clothes",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/skirt-lace/main.webp",
@@ -669,6 +761,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -714,6 +807,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -759,6 +853,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -804,13 +899,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
       "id": "bag-nanava",
       "title": "NANAVA Faces Bag",
       "category": "bags",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/bag-nanava/main.webp",
@@ -849,6 +945,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -894,6 +991,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -945,6 +1043,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -990,6 +1089,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1041,6 +1141,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1086,13 +1187,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
       "id": "tote-kitten",
       "title": "Kitten Mesh Tote",
       "category": "bags",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p16.webp",
@@ -1131,13 +1233,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
       "id": "bag-frill",
       "title": "Frill Patent Bag",
       "category": "bags",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p17.webp",
@@ -1176,13 +1279,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
       "id": "bag-frill-yellow",
       "title": "Frill Patent Bag Yellow",
       "category": "bags",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/bag-frill-yellow/main.webp",
@@ -1221,6 +1325,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
@@ -1272,13 +1377,14 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
       "id": "bag-crown",
       "title": "Crown Engraved Bag",
       "category": "bags",
-      "model": "",
+      "model": "anya",
       "frames": [
         {
           "path": "img/p21.webp",
@@ -1317,6 +1423,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1362,6 +1469,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1389,6 +1497,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f4",
       "refsCustom": false
     },
     {
@@ -1428,6 +1537,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1455,6 +1565,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f4",
       "refsCustom": false
     },
     {
@@ -1482,6 +1593,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1509,6 +1621,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1548,6 +1661,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f6",
       "refsCustom": false
     },
     {
@@ -1593,6 +1707,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f7",
       "refsCustom": false
     },
     {
@@ -1638,6 +1753,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1665,6 +1781,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "f4",
       "refsCustom": false
     },
     {
@@ -1710,6 +1827,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
+      "dog": "",
       "refsCustom": false
     },
     {
@@ -1755,171 +1873,7 @@ window.NNV_MODELS = {
           "ref": false
         }
       ],
-      "refsCustom": false
-    },
-    {
-      "id": "dress-feather",
-      "title": "",
-      "category": "",
-      "model": "katya",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "sweater-rider",
-      "title": "",
-      "category": "",
-      "model": "katya",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "tee-star",
-      "title": "",
-      "category": "",
-      "model": "alya",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "skirt-dipdye",
-      "title": "",
-      "category": "",
-      "model": "lina",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "dress-tiedye",
-      "title": "",
-      "category": "",
-      "model": "alya",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "shirt-fangs",
-      "title": "",
-      "category": "",
-      "model": "lina",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "vest-crown",
-      "title": "",
-      "category": "",
-      "model": "lina",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "longsleeve-smile",
-      "title": "",
-      "category": "",
-      "model": "nikita",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "tee-riders",
-      "title": "",
-      "category": "",
-      "model": "nikita",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "hoodie-horns",
-      "title": "",
-      "category": "",
-      "model": "lesha",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
-      "refsCustom": false
-    },
-    {
-      "id": "jacket-knight",
-      "title": "",
-      "category": "",
-      "model": "lesha",
-      "frames": [
-        {
-          "path": "",
-          "label": "",
-          "exists": true,
-          "ref": false
-        }
-      ],
+      "dog": "",
       "refsCustom": false
     }
   ]

@@ -52,8 +52,9 @@
       '<div><span class="k">Телосложение</span><span class="v' + (m.build && m.build !== "уточнить у Алексея" ? '' : ' empty') + '">' +
         esc(m.build || "не задано") + '</span></div>' +
       '<div><span class="k">Категория</span><span class="v">' +
-        (m.gender === "m" ? "мужская" : "женская") + '</span></div>' +
-      '<div><span class="k">Вещей на сайте</span><span class="v">' + m.items.length + '</span></div>';
+        (m.gender === "m" ? "мужская" : m.gender === "dog" ? "камео (собака)" : "женская") + '</span></div>' +
+      '<div><span class="k">' + (m.gender === "dog" ? "Кадров с ней" : "Вещей на сайте") +
+        '</span><span class="v">' + m.items.length + '</span></div>';
 
     var refs = m.photos.map(function (p) {
       var used = m.refs.indexOf(p.file) >= 0;
@@ -79,10 +80,11 @@
       '<div class="mdl-cols">' +
         '<div class="col"><h3>Живые фото и референсы</h3><div class="refs">' + refs + '</div>' +
           (m.note ? '<p class="note">' + esc(m.note) + '</p>' : '') + '</div>' +
-        '<div class="col"><h3>Вещи на этой модели</h3>' +
+        '<div class="col"><h3>' + (m.gender === "dog" ? "Вещи, где она в кадре" : "Вещи на этой модели") + '</h3>' +
           (m.items.length ? '<div class="things">' + m.items.map(thing).join("") + '</div>'
                           : '<p class="empty-note">пока ничего — назначается через ' +
-                            'scripts/pick_model.py &lt;f|m&gt; --item &lt;id&gt;</p>') +
+                            (m.gender === "dog" ? 'scripts/bulochka.py &lt;id&gt; --set'
+                                                : 'scripts/pick_model.py &lt;f|m&gt; --item &lt;id&gt;') + '</p>') +
         '</div>' +
       '</div>' +
       '</section>');
@@ -118,6 +120,7 @@
         '<span class="badge' + (it.model ? "" : " draft") + '">' +
           (it.model ? "в кадре: " + esc(ruModel(it.model)) : "модель не назначена") + '</span>' +
         '<span class="badge' + (it.refsCustom ? " canon" : "") + '">эталон: ' + refs + ' из ' + it.frames.length + '</span>' +
+        (it.dog ? '<span class="badge canon">Булочка: ' + esc(it.dog) + '</span>' : '') +
         '<a class="btn ghost" href="product.html?id=' + esc(it.id) + '" target="_blank">карточка</a>' +
         '<button class="btn" data-item="' + esc(it.id) + '">Редактировать</button>' +
       '</div>' +
@@ -164,7 +167,8 @@
     } else {
       bar.innerHTML = ST.models.map(function (m) {
         return '<a href="#' + esc(m.name) + '"><b>' + esc(m.ru) + '</b><span>' +
-          (m.gender === "m" ? "м" : "ж") + " · " + m.items.length + " вещ." + '</span></a>';
+          (m.gender === "m" ? "м" : m.gender === "dog" ? "пёс" : "ж") +
+          " · " + m.items.length + " вещ." + '</span></a>';
       }).join("");
     }
   }
@@ -185,7 +189,10 @@
         'генерацию</b> (их берут скрипты через <code>scripts/item_refs.py</code>). ' +
         'Источник — <code>site/data/items.js</code> + <code>refs/items/refs.json</code>.'
       : 'Раскадровка (character sheet), постоянные параметры и все вещи, на ' +
-        'которых стоит человек. Источник — <code>refs/models/registry.json</code> + ' +
+        'которых стоит человек. Отдельная карточка — <b>Булочка</b>: она не носит ' +
+        'вещи, а лежит в кадре на каждой третьей вещи каталога ' +
+        '(<code>python3 scripts/bulochka.py</code>). Источник — ' +
+        '<code>refs/models/registry.json</code> + ' +
         '<code>usage.json</code>; пересборка — <code>python3 scripts/build_models.py</code>.';
   }
 
