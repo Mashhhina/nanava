@@ -130,12 +130,14 @@ window.NNV_DATA = {
       lead: "Strict shape, frills along the edge.",
       desc: "Structured trapeze bag in powder patent leather. Flap with sculpted frills, cast padlock, two handles. Fully monochrome hardware moulded in the body colour.",
       image: "img/p17.webp", images: ["img/bag-frill/m1.webp", "img/bag-frill/f2.webp", "img/bag-frill/f3.webp", "img/bag-frill/f4.webp", "img/bag-frill/f5.webp", "img/bag-frill/f6.webp", "img/bag-frill/f7.webp"],
+      colors: [{ id: "powder", label: "Powder pink", swatch: "#D9BEC0", item: "bag-frill", image: "img/p17.webp" }, { id: "mustard", label: "Mustard", swatch: "#E8B45C", item: "bag-frill-yellow", image: "img/bag-frill-yellow/main.webp" }],
       process: [{ src: "img/process/lineup-01.webp", cap: "Season line-up FW 26/27 — the looks this piece was drawn into" }] },
     { id: "bag-frill-yellow", title: "Frill Patent Bag Yellow", category: "bags",
       price: 290, colorGroup: "yellow", sku: "NNV0205A",
       lead: "The same strict shape, dipped in mustard.",
       desc: "Structured trapeze bag in mustard-yellow patent leather, straight from the original sketch. Flap with sculpted frills, cast padlock, two handles. Fully monochrome hardware moulded in the body colour; dark lining with an inner zip divider.",
       image: "img/bag-frill-yellow/main.webp", images: ["img/bag-frill-yellow/m1.webp", "img/bag-frill-yellow/f1.webp", "img/bag-frill-yellow/f3.webp", "img/bag-frill-yellow/f4.webp", "img/bag-frill-yellow/f5.webp", "img/bag-frill-yellow/f6.webp", "img/bag-frill-yellow/f7.webp"],
+      colors: [{ id: "powder", label: "Powder pink", swatch: "#D9BEC0", item: "bag-frill", image: "img/p17.webp" }, { id: "mustard", label: "Mustard", swatch: "#E8B45C", item: "bag-frill-yellow", image: "img/bag-frill-yellow/main.webp" }],
       process: [{ src: "img/process/lineup-01.webp", cap: "Season line-up FW 26/27 — the looks this piece was drawn into" }] },
     { id: "bag-crystal", title: "Crystal Arch Bag", category: "bags",
       price: 360, colorGroup: "silver", sku: "NNV0206A",
@@ -160,6 +162,7 @@ window.NNV_DATA = {
       lead: "Three brims, many teeth.",
       desc: "Baseball cap in heavily washed sage-mint denim, destroyed all over — open holes, abraded patches, loose threads. Three soft visors fan out from the front like a hand of cards; every visor edge and the lower edge of the crown carry a dense row of mint-turquoise ceramic pebble-fangs sewn over frayed denim fringe and knotted yarn — the same teeth that bite through the Fangs shirt. Self-covered button on top, small metal snap-hook at the back seam.",
       image: "img/cap-fangs/main.webp", images: ["img/cap-fangs/f2.webp", "img/cap-fangs/f3.webp", "img/cap-fangs/f4.webp"],
+      colors: [{ id: "sage", label: "Sage denim", swatch: "#6E8C7D", item: "cap-fangs", image: "img/cap-fangs/main.webp" }, { id: "brick", label: "Brick red", swatch: "#8A2733", item: "cap-rider", image: "img/cap-rider/main.webp" }],
       process: [{ src: "img/process/board-rider-red.webp", cap: "Red rider sweater: standard shoulder line, sleeve and front placement; the monogram bag, the cardholder and the studded cap on the same sheet" }] },
     { id: "earcuff-spine", title: "Spine Ear Cuff", category: "accessories",
       price: 120, colorGroup: "pink", sku: "NNV0304A",
@@ -247,6 +250,7 @@ window.NNV_DATA = {
       lead: "The rider rides on the side.",
       desc: "Six-panel baseball cap rebuilt from patches of over-washed brick-red twill: raw whiskered seams, torn holes on the visor, a strip of faded khaki twill over the crown and a small embossed NANAVA leather tag on top. The archive rider is embroidered on the side panel in cornflower blue satin stitch; a dense row of aged silver dome studs runs along the visor seam. Metal buckle strap at the back.",
       image: "img/cap-rider/main.webp", images: ["img/cap-rider/f2.webp", "img/cap-rider/f3.webp"],
+      colors: [{ id: "sage", label: "Sage denim", swatch: "#6E8C7D", item: "cap-fangs", image: "img/cap-fangs/main.webp" }, { id: "brick", label: "Brick red", swatch: "#8A2733", item: "cap-rider", image: "img/cap-rider/main.webp" }],
       process: [{ src: "img/process/board-rider-red.webp", cap: "Red rider sweater: standard shoulder line, sleeve and front placement; the monogram bag, the cardholder and the studded cap on the same sheet" }] }
   ]
 };

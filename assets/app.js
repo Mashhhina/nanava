@@ -136,7 +136,8 @@
     var cs = it.colors || [];
     if (cs.length < 2) return "";
     return '<span class="sw">' + cs.map(function (c, i) {
-      return '<span class="sw__b' + (i ? "" : " on") + '" data-sw="' + i + '" role="button" tabindex="0" ' +
+      var own = c.item ? c.item === it.id : i === 0;
+      return '<span class="sw__b' + (own ? " on" : "") + '" data-sw="' + i + '" role="button" tabindex="0" ' +
              'title="' + c.label + '" aria-label="' + c.label + '" style="background:' + c.swatch + '"></span>';
     }).join("") + '</span>';
   }
@@ -165,7 +166,8 @@
     if (img) img.src = c.image;
     card.querySelectorAll("[data-sw]").forEach(function (x) { x.classList.remove("on"); });
     b.classList.add("on");
-    card.setAttribute("href", "product.html?id=" + it.id + "&color=" + c.id);
+    // расцветка живёт своей карточкой (c.item) — ссылка ведёт туда
+    card.setAttribute("href", "product.html?id=" + (c.item || it.id) + "&color=" + c.id);
   });
 
   /* ---------- каталог ---------- */
@@ -389,19 +391,37 @@
                  '"><i style="background:' + c.swatch + '"></i></button>';
         }).join("") + '<span class="pdp-colors__name"></span>';
         var name = cw.querySelector(".pdp-colors__name");
-        cw.querySelectorAll("[data-color]").forEach(function (b) {
+        var btns = cw.querySelectorAll("[data-color]");
+        function show(i) {                                  // показать расцветку этой же вещи
+          var c = colors[i];
+          btns.forEach(function (x) { x.classList.remove("on"); });
+          btns[i].classList.add("on");
+          name.textContent = c.label;
+          // свои кадры у расцветки заданы полем images (пустое — значит кадр один);
+          // если поля нет, расцветка снята кадрами самой вещи
+          gallery(c.image || it.image, "images" in c ? c.images : it.images);
+        }
+        btns.forEach(function (b, i) {
           b.onclick = function () {
-            var c = colors[+b.dataset.color];
-            cw.querySelectorAll("[data-color]").forEach(function (x) { x.classList.remove("on"); });
-            b.classList.add("on");
-            name.textContent = c.label;
-            gallery(c.image, c.images);
+            var c = colors[i];
+            // расцветка снята отдельной карточкой (своя цена и свой артикул) —
+            // уходим на неё; иначе просто меняем кадры здесь
+            if (c.item && c.item !== it.id) {
+              location.href = "product.html?id=" + c.item + "&color=" + c.id;
+              return;
+            }
+            show(i);
           };
         });
         var want = new URLSearchParams(location.search).get("color");
         var start = 0;
-        colors.forEach(function (c, i) { if (c.id === want) start = i; });
-        cw.querySelectorAll("[data-color]")[start].click();   // цвет из ссылки, иначе первый
+        colors.forEach(function (c, i) {                    // сначала — расцветка этой вещи
+          if (c.item === it.id) start = i;
+        });
+        colors.forEach(function (c, i) {                    // затем — то, что просили ссылкой
+          if (c.id === want && (!c.item || c.item === it.id)) start = i;
+        });
+        show(start);
       }
     }
     document.querySelector("[data-title]").textContent = it.title;
