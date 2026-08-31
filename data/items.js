@@ -303,7 +303,6 @@ window.NNV_HOME = {
   // держим моделей вперемешку, чтобы в первом экране были разные лица
   looks: [
     { id: "dress-feather",      img: "img/home/look-01.webp", w: 418, h: 1442 },
-    { id: "dress-moon",         img: "img/home/look-12.webp", w: 573, h: 1442 },
     { id: "sweater-rider",      img: "img/home/look-02.webp", w: 454, h: 1442 },
     { id: "tee-star",           img: "img/home/look-03.webp", w: 425, h: 1442 },
     { id: "mask-denim",         img: "img/home/look-13.webp", w: 682, h: 1442 },
