@@ -293,7 +293,12 @@ window.NNV_DATA = {
       price: 145, colorGroup: "silver", sku: "NNV0318A",
       lead: "A whole disco on the head.",
       desc: "Slouchy beret covered edge to edge in a dense grid of square-cut clear crystals set on a fine silver base. The crown is wide and pillowy, billowing up and back well above the head; the closed band sits low across the forehead. No lining shows and no seams break the grid — the stones follow the curve of the crown in unbroken rows.",
-      image: "img/beret-crystal/main.webp", images: ["img/beret-crystal/f2.webp", "img/beret-crystal/f3.webp"] }
+      image: "img/beret-crystal/main.webp", images: ["img/beret-crystal/f2.webp", "img/beret-crystal/f3.webp"] },
+    { id: "skirt-pleat", title: "Open-Pleat Tailored Skirt", category: "clothes",
+      price: 290, colorGroup: "brown", sku: "NNV0122A",
+      lead: "A trouser waist over four flying panels.",
+      desc: "Floor-length skirt in heavy tobacco wool suiting. The top is built like tailored trousers: flat waistband, exposed zip fly, a pressed crease down the front. Below, deep knife pleats are stitched flat and then left open — three slits, four panels, each hem cut to a sharp point. Matte black inner layer shows through the openings.",
+      image: "img/skirt-pleat/main.webp", images: ["img/skirt-pleat/f2.webp", "img/skirt-pleat/f3.webp", "img/skirt-pleat/f4.webp", "img/skirt-pleat/f5.webp", "img/skirt-pleat/f6.webp"] }
   ]
 };
 
