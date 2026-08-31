@@ -288,7 +288,12 @@ window.NNV_DATA = {
       price: 85, colorGroup: "lilac", sku: "NNV0317A",
       lead: "A glass bird with its own keys.",
       desc: "Bag charm on a lavender velvet ribbon tied into a loose bow with two burgundy pompoms. A hand-blown glass bird with a milky frosted core wears a tiny clear crown; beside it hang a mustard leather tag, a brass key and a small gold coin. Gold swivel clasp, clips to any handle.",
-      image: "img/charm-bird/main.webp", images: [] }
+      image: "img/charm-bird/main.webp", images: [] },
+    { id: "beret-crystal", title: "Crystal Beret", category: "accessories",
+      price: 145, colorGroup: "silver", sku: "NNV0318A",
+      lead: "A whole disco on the head.",
+      desc: "Slouchy beret covered edge to edge in a dense grid of square-cut clear crystals set on a fine silver base. The crown is wide and pillowy, billowing up and back well above the head; the closed band sits low across the forehead. No lining shows and no seams break the grid — the stones follow the curve of the crown in unbroken rows.",
+      image: "img/beret-crystal/main.webp", images: ["img/beret-crystal/f2.webp", "img/beret-crystal/f3.webp"] }
   ]
 };
 
