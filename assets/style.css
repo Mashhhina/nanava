@@ -399,3 +399,38 @@ footer { border-top: 1px solid var(--line); margin-top: 20px; }
 /* полоса лайн-апа на главной */
 .hm-figure--sketch img { width: 100%; height: auto; background: #fff; }
 .hm-figure--sketch .hm-head { padding-bottom: 10px; }
+
+/* ==================================================================
+   ВРЕМЕННО (31.08): все кадры на сайте вдвое ниже.
+   Рабочее решение, чтобы на экран влезало больше страницы —
+   не дизайн. Блок целиком удаляется одним куском, ничего выше
+   не переписано.
+   Принцип: где кадр обрезной (cover) — вдвое уменьшена высота рамки
+   и кадр кропается; где вписанный (contain) — вещь просто садится
+   вдвое мельче и видна целиком.
+   ================================================================== */
+
+/* главная: герой и полоса-баннер (cover) */
+.hm-figure img            { aspect-ratio: 32 / 9; }
+.hm-figure--strip img     { aspect-ratio: 1440 / 186; }
+/* лайн-ап сезона: не режем, вписываем целиком вдвое мельче */
+.hm-figure--sketch img    { aspect-ratio: 1800 / 363; object-fit: contain; }
+
+/* ленты на главной */
+.hm-slider--cats .tile img  { aspect-ratio: 293 / 220; }
+.hm-slider--looks .fig img  { height: clamp(180px, 23.45vw, 338px); }
+.hm-slider--world .fig img  { height: clamp(120px, 15.25vw, 220px); }
+
+/* каталог: карточка в сетке */
+.card .ph { aspect-ratio: 3 / 2; }
+
+/* карточка товара: кадры галереи */
+.pdp-imgs .fr { aspect-ratio: 8 / 5; }
+
+/* корзина: превью вещи */
+.bag-item .im { aspect-ratio: 3 / 2; }
+
+/* мобилка: герой был портретным 3/4 */
+@media (max-width: 760px) {
+  .hm-figure--hero img { aspect-ratio: 3 / 2; }
+}
