@@ -338,11 +338,38 @@
     var id = new URLSearchParams(location.search).get("id");
     var it = byId[id] || D.items[0];
     document.title = it.title + " — " + D.brand;
-    var frames = [it.image].concat(it.images || []);
-    document.querySelector("[data-gallery]").innerHTML = frames.map(function (src, i) {
-      // без пролёток: второй кадр — автозум-деталь из эталона
-      return '<div class="fr"><img src="' + src + '" alt="' + (i ? "" : it.title) + '" loading="lazy"></div>';
-    }).join("") + (frames.length === 1 ? '<div class="fr zoom"><img src="' + it.image + '" alt="" aria-hidden="true"></div>' : "");
+    /* Галерея. Если у вещи есть разновидности цвета (it.colors), кадры берём
+       у выбранной: сама вещь одна, карточка одна, меняется только расцветка. */
+    function gallery(main, rest) {
+      var frames = [main].concat(rest || []);
+      document.querySelector("[data-gallery]").innerHTML = frames.map(function (src, i) {
+        // без пролёток: второй кадр — автозум-деталь из эталона
+        return '<div class="fr"><img src="' + src + '" alt="' + (i ? "" : it.title) + '" loading="lazy"></div>';
+      }).join("") + (frames.length === 1 ? '<div class="fr zoom"><img src="' + main + '" alt="" aria-hidden="true"></div>' : "");
+    }
+    gallery(it.image, it.images);
+
+    var colors = it.colors || [], cw = document.querySelector("[data-colors]");
+    if (cw) {
+      cw.hidden = colors.length < 2;
+      if (!cw.hidden) {
+        cw.innerHTML = colors.map(function (c, i) {
+          return '<button type="button" data-color="' + i + '" title="' + c.label + '" aria-label="' + c.label +
+                 '"><i style="background:' + c.swatch + '"></i></button>';
+        }).join("") + '<span class="pdp-colors__name"></span>';
+        var name = cw.querySelector(".pdp-colors__name");
+        cw.querySelectorAll("[data-color]").forEach(function (b) {
+          b.onclick = function () {
+            var c = colors[+b.dataset.color];
+            cw.querySelectorAll("[data-color]").forEach(function (x) { x.classList.remove("on"); });
+            b.classList.add("on");
+            name.textContent = c.label;
+            gallery(c.image, c.images);
+          };
+        });
+        cw.querySelector("[data-color]").click();          // первый цвет — как на витрине
+      }
+    }
     document.querySelector("[data-title]").textContent = it.title;
     document.querySelector("[data-price]").textContent = eur(it.price);
     document.querySelector("[data-lead]").textContent = it.lead;
