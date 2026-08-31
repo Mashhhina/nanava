@@ -127,17 +127,46 @@
   }
   function eur(n) { return "€" + n; }
 
-  /* ---------- карточка сетки ---------- */
+  /* ---------- карточка сетки ----------
+     У вещи с расцветками (it.colors) под ценой — ряд квадратиков: клик прямо
+     в сетке меняет кадр плитки и запоминается в ссылке (?color=…), чтобы
+     карточка товара открылась на выбранном цвете. Внутри <a> кнопок нет:
+     квадратики — это span'ы, клик по ним перехватывается делегатом ниже. */
+  function swatchHTML(it) {
+    var cs = it.colors || [];
+    if (cs.length < 2) return "";
+    return '<span class="sw">' + cs.map(function (c, i) {
+      return '<span class="sw__b' + (i ? "" : " on") + '" data-sw="' + i + '" role="button" tabindex="0" ' +
+             'title="' + c.label + '" aria-label="' + c.label + '" style="background:' + c.swatch + '"></span>';
+    }).join("") + '</span>';
+  }
   function cardHTML(it) {
     return (
-      '<a class="card" href="product.html?id=' + it.id + '">' +
+      '<a class="card" href="product.html?id=' + it.id + '" data-card="' + it.id + '">' +
         '<span class="ph"><img src="' + it.image + '" alt="' + it.title + '" loading="lazy"></span>' +
         '<span class="info"><span class="t">' + it.title + '</span>' +
-        '<span class="p" style="display:block">' + eur(it.price) + '</span></span>' +
+        '<span class="p" style="display:block">' + eur(it.price) + '</span>' +
+        swatchHTML(it) + '</span>' +
       '</a>'
     );
   }
   function renderInto(el, items) { el.innerHTML = items.map(cardHTML).join(""); }
+
+  /* Клик по квадратику в сетке: не уходим по ссылке, а показываем этот цвет. */
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-sw]") : null;
+    if (!b) return;
+    var card = b.closest("[data-card]");
+    if (!card) return;
+    e.preventDefault();
+    var it = byId[card.dataset.card], c = (it && it.colors || [])[+b.dataset.sw];
+    if (!c) return;
+    var img = card.querySelector(".ph img");
+    if (img) img.src = c.image;
+    card.querySelectorAll("[data-sw]").forEach(function (x) { x.classList.remove("on"); });
+    b.classList.add("on");
+    card.setAttribute("href", "product.html?id=" + it.id + "&color=" + c.id);
+  });
 
   /* ---------- каталог ---------- */
   var state = { cat: "all", color: "all", sort: "new", model: "all" };
@@ -367,7 +396,10 @@
             gallery(c.image, c.images);
           };
         });
-        cw.querySelector("[data-color]").click();          // первый цвет — как на витрине
+        var want = new URLSearchParams(location.search).get("color");
+        var start = 0;
+        colors.forEach(function (c, i) { if (c.id === want) start = i; });
+        cw.querySelectorAll("[data-color]")[start].click();   // цвет из ссылки, иначе первый
       }
     }
     document.querySelector("[data-title]").textContent = it.title;
