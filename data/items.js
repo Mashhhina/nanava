@@ -223,7 +223,7 @@ window.NNV_DATA = {
     { id: "dress-moon", title: "Moon Organza Gown", category: "clothes",
       price: 380, colorGroup: "grey", sku: "NNV0118A",
       lead: "Moonlight cut raw.",
-      desc: "Floor-length gown in graphite silk organza. Corset bodice with raw-cut slash openings backed with silver satin, pointed basque, slim sheer sleeves under floor-length cape panels. Every edge is left raw — frayed organza, loose threads, no trim.",
+      desc: "Floor-length gown in graphite silk organza — sheer all the way through, the depth built from layers and not from lining. Corset bodice with panel seams and true open cut-outs: narrow curved slits under the bust and at the hips, cut clean through the fabric with nothing behind them. Deep pointed basque, wide scooped neckline, slim sheer sleeves under cape panels that fall past the hem. Every edge is left raw — cut organza, no binding, no trim.",
       image: "img/dress-moon/main.webp", images: ["img/dress-moon/f2.webp", "img/dress-moon/f3.webp", "img/dress-moon/f4.webp", "img/dress-moon/f5.webp", "img/dress-moon/f6.webp"],
       process: [{ src: "img/process/lineup-01.webp", cap: "Season line-up FW 26/27 — the looks this piece was drawn into" }] },
     { id: "ring-cross", title: "Cross Signet Ring", category: "accessories",
@@ -262,7 +262,12 @@ window.NNV_DATA = {
       price: 380, colorGroup: "black", sku: "NNV0120A",
       lead: "A wing you can see through.",
       desc: "Cropped bomber in sheer black silk organza: a single layer is see-through, so the far side of the jacket and the zip tape read softly through the front. A pointed organza collar falls over a short matte ribbed stand, an exposed gunmetal zip runs the full length, raglan seams curve from the neck to the underarm. Voluminous blouson sleeves gather into wide ribbed cuffs. The hem is left raw — the organza is simply cut and frays, loose threads hanging, no waistband. Across the chest, shoulders and sleeves runs a symmetrical wing of dense cord embroidery: elongated feather outlines in raised black satin cord, smallest at the centre front and lengthening as they spread outward.",
-      image: "img/bomber-wing/main.webp", images: ["img/bomber-wing/f2.webp", "img/bomber-wing/f3.webp", "img/bomber-wing/f4.webp", "img/bomber-wing/f5.webp", "img/bomber-wing/f6.webp"] }
+      image: "img/bomber-wing/main.webp", images: ["img/bomber-wing/f2.webp", "img/bomber-wing/f3.webp", "img/bomber-wing/f4.webp", "img/bomber-wing/f5.webp", "img/bomber-wing/f6.webp"] },
+    { id: "gloves-carabiner", title: "Carabiner Leather Gloves", category: "accessories",
+      price: 180, colorGroup: "red", sku: "NNV0315A",
+      lead: "A pocket on the back of your hand.",
+      desc: "Full-finger gloves in oxblood leather with a long standing gauntlet cuff. On the back of the hand — a flap pocket outlined in pale pink topstitching; across the wrist a webbing strap with a tone-on-tone quick-release buckle and a burgundy carabiner on a leather loop. Matte nubuck panels next to smoother satin leather on the cuff and flap, contrast stitching on every seam.",
+      image: "img/gloves-carabiner/main.webp", images: ["img/gloves-carabiner/f2.webp", "img/gloves-carabiner/f3.webp"] }
   ]
 };
 
