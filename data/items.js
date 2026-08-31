@@ -257,7 +257,12 @@ window.NNV_DATA = {
       price: 290, colorGroup: "silver", sku: "NNV0119A",
       lead: "A body cast in crystal.",
       desc: "Sleeveless bodysuit in dense crystal mesh — thousands of small stones set on a fine silver net and moulded over a sculpted torso shell, so the bust, sternum and ribs read as relief. High round neckline, wide cut armholes with small metal hardware at the shoulders, high-cut legs and a deep V at the front hem.",
-      image: "img/body-crystal/main.webp", images: ["img/body-crystal/f2.webp", "img/body-crystal/f3.webp", "img/body-crystal/f4.webp", "img/body-crystal/f5.webp", "img/body-crystal/f6.webp"] }
+      image: "img/body-crystal/main.webp", images: ["img/body-crystal/f2.webp", "img/body-crystal/f3.webp", "img/body-crystal/f4.webp", "img/body-crystal/f5.webp", "img/body-crystal/f6.webp"] },
+    { id: "bomber-wing", title: "Wing Organza Bomber Black", category: "clothes",
+      price: 380, colorGroup: "black", sku: "NNV0120A",
+      lead: "A wing you can see through.",
+      desc: "Cropped bomber in sheer black silk organza: a single layer is see-through, so the far side of the jacket and the zip tape read softly through the front. A pointed organza collar falls over a short matte ribbed stand, an exposed gunmetal zip runs the full length, raglan seams curve from the neck to the underarm. Voluminous blouson sleeves gather into wide ribbed cuffs. The hem is left raw — the organza is simply cut and frays, loose threads hanging, no waistband. Across the chest, shoulders and sleeves runs a symmetrical wing of dense cord embroidery: elongated feather outlines in raised black satin cord, smallest at the centre front and lengthening as they spread outward.",
+      image: "img/bomber-wing/main.webp", images: ["img/bomber-wing/f2.webp", "img/bomber-wing/f3.webp", "img/bomber-wing/f4.webp", "img/bomber-wing/f5.webp", "img/bomber-wing/f6.webp"] }
   ]
 };
 
