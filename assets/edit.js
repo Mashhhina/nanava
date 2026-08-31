@@ -1,23 +1,16 @@
-/* NANAVA — редактор картинок на живом сайте. Открыт всем, кто зашёл: правит
-   тот, у кого есть свои ключи (кнопка «Ключи» в шапке редактора).
+/* NANAVA — редактор картинок на живом сайте. Открыт всем, кто зашёл: навёл
+   на картинку → карандаш → обвёл зону → написал, что поменять → «Сохранить».
    Спрятать карандаши в своём браузере: nanava.store/?nnv-studio=0 , вернуть — =1.
 
-   Общий ключ в коде сайта не зашит намеренно: файл лежит в публичном
-   репозитории, то есть ключ Google утечёт вместе с ним (а токен GitHub
-   гитхаб сам отзовёт своим сканером секретов). Поэтому каждый вставляет
-   свой — один раз на браузер.
+   Генерация и запись идут через студийный прокси (proxy/worker.js): ключ
+   Google и токен GitHub лежат на нём, в браузер не попадают, гостю вставлять
+   нечего. Общий ключ в самом файле сайта не зашит намеренно — файл публичный.
+   Свои ключи (кнопка «Ключи») — запасной путь, если прокси недоступен.
 
-   Что умеет: ховер по любой картинке → карандаш → обводим зоны мышкой
-   (прямоугольник или кисть), пишем текст ко всей правке или к отдельной
-   зоне, кидаем туда же картинки-референсы. Генерация уходит НАПРЯМУЮ в
-   Google (Nano Banana) с ключом, который админ один раз вставил в
-   настройках; результат вклеивается только внутрь зоны и коммитится в
-   репозиторий сайта через GitHub API — то есть правка сразу на проде.
-
-   Ключи лежат в localStorage этого браузера и никуда больше не уходят:
-   запросы идут только на generativelanguage.googleapis.com и api.github.com.
-   Заводите отдельный ключ Google с лимитом и fine-grained токен GitHub
-   только на этот репозиторий (Contents: read and write). */
+   Зона правки настоящая: её координаты уходят в модель и словами, и кадром
+   с розовой обводкой, а ответ вклеивается только внутрь зоны — вне её кадр
+   остаётся прежним. Каждая генерация ложится в архив браузера и, после
+   «Сохранить», в img/<вещь>/_gen/ — это галерея версий кадра. */
 (function () {
   var CFG = {
     param: "nnv-studio",
@@ -309,6 +302,13 @@
   }
 
   /* ---------- сохранение: GitHub (прод) или файл (локальный сервер) ---------- */
+  function toBlob(canvas, q) {
+    return new Promise(function (ok, no) {
+      canvas.toBlob(function (b) {
+        b ? ok(b) : no(new Error("браузер не умеет webp — нужен Chrome"));
+      }, "image/webp", q);
+    });
+  }
   function toWebp(canvas, q) {
     return new Promise(function (ok, no) {
       canvas.toBlob(function (b) {
@@ -409,7 +409,6 @@
     ui.path.textContent = S.src;
     ui.size.textContent = img.naturalWidth + "×" + img.naturalHeight;
     ui.prompt.value = ""; say(""); ui.vars.innerHTML = ""; ui.varsBox.hidden = true;
-    ui.where.textContent = LOCAL ? "запись в файл (локальный сервер)" : "коммит в " + CFG.repo;
     paintRefs(); paintZones(); cost(); loadGallery();
   }
   function close() { ui.root.hidden = true; S = null; }
@@ -445,28 +444,17 @@
           '<div class="nnv-ed__drop" data-drop="all">перетащите, вставьте (⌘V) или нажмите</div>' +
           '<div class="nnv-ed__thumbs" data-thumbs="all"></div></div>' +
         '<div class="nnv-ed__zones"></div>' +
-        '<div class="nnv-ed__row">' +
-          '<select class="nnv-ed__mode">' +
-            '<option value="auto">режим: авто</option>' +
-            '<option value="crop">точно по зоне</option>' +
-            '<option value="full">весь кадр в контексте</option></select>' +
-          '<select class="nnv-ed__qual">' +
-            '<option value="auto">размер: авто</option>' +
-            '<option value="1K">1K дёшево</option>' +
-            '<option value="2K">2K</option></select>' +
-          '<select class="nnv-ed__n"><option selected>1</option><option>2</option><option>3</option><option>4</option></select>' +
-        '</div>' +
         '<button class="nnv-ed__go">Сгенерировать</button>' +
         '<button class="nnv-ed__erase muted">Убрать из кадра</button>' +
         '<div class="nnv-ed__cost"></div>' +
         '<div class="nnv-ed__spend"></div>' +
         '<div class="nnv-ed__log"></div>' +
-        '<div class="nnv-ed__varsbox" hidden><h4>Варианты</h4><div class="nnv-ed__vars"></div>' +
+        '<div class="nnv-ed__varsbox" hidden>' +
+          '<div class="nnv-ed__vars"></div>' +
           '<div class="nnv-ed__row" style="margin-top:8px">' +
             '<button class="nnv-ed__apply">Применить</button>' +
             '<button class="nnv-ed__save muted">Скачать</button>' +
-            '<button class="nnv-ed__again muted">Ещё варианты</button></div>' +
-          '<div class="nnv-ed__cost nnv-ed__where"></div></div>' +
+            '<button class="nnv-ed__again muted">Ещё раз</button></div></div>' +
         '<div class="nnv-ed__galbox" hidden><h4>Версии этого кадра</h4>' +
           '<div class="nnv-ed__gal"></div>' +
           '<button class="nnv-ed__use muted" hidden>Поставить на сайт</button></div>' +
@@ -480,14 +468,13 @@
            split: g(".nnv-ed__split"), tagA: root.querySelectorAll(".nnv-ed__tag")[0],
            tagB: root.querySelectorAll(".nnv-ed__tag")[1], cv: g(".nnv-ed__cv"),
            tools: g(".nnv-ed__tools"), path: g(".nnv-ed__path"), size: g(".nnv-ed__size"),
-           prompt: g(".nnv-ed__prompt"), zones: g(".nnv-ed__zones"), mode: g(".nnv-ed__mode"),
-           qual: g(".nnv-ed__qual"), n: g(".nnv-ed__n"), go: g(".nnv-ed__go"),
+           prompt: g(".nnv-ed__prompt"), zones: g(".nnv-ed__zones"), go: g(".nnv-ed__go"),
            erase: g(".nnv-ed__erase"),
            cost: g(".nnv-ed__cost"), spend: g(".nnv-ed__spend"),
            log: g(".nnv-ed__log"), varsBox: g(".nnv-ed__varsbox"),
            vars: g(".nnv-ed__vars"), apply: g(".nnv-ed__apply"), again: g(".nnv-ed__again"),
            down: g(".nnv-ed__save"),
-           where: g(".nnv-ed__where"), keys: g(".nnv-ed__keysbtn"), hint: g(".nnv-ed__tools .hint"),
+           keys: g(".nnv-ed__keysbtn"), hint: g(".nnv-ed__tools .hint"),
            galBox: g(".nnv-ed__galbox"), gal: g(".nnv-ed__gal"), use: g(".nnv-ed__use"),
            keep: g(".nnv-ed__keep") };
     ui.ctx = ui.cv.getContext("2d");
@@ -689,7 +676,6 @@
   function autoSize(w, h) { return Math.max(w, h) <= 1400 ? "1K" : "2K"; }
 
   function planSize() {
-    if (ui.qual.value !== "auto") return ui.qual.value;
     if (!S.zones.length) return "2K";                 // правим весь кадр — не мельчим
     var W = S.img.naturalWidth, H = S.img.naturalHeight;
     var x0 = 1, y0 = 1, x1 = 0, y1 = 0;
@@ -699,14 +685,14 @@
     });
     var b = [x0 * W, y0 * H, (x1 - x0) * W, (y1 - y0) * H];
     var area = (b[2] / W) * (b[3] / H);
-    if (ui.mode.value === "full" || (ui.mode.value === "auto" && area >= CFG.cropLimit)) return "2K";
+    if (area >= CFG.cropLimit) return "2K";        // зона почти во весь кадр
     var box = cropBox(b, W, H);
     return autoSize(box[2], box[3]);
   }
 
   function cost() {
     if (!S) return;
-    var p = passes(), n = +ui.n.value, size = planSize();
+    var p = passes(), n = 1, size = planSize();
     ui.cost.textContent = "~$" + (p * n * CFG.price[size]).toFixed(2) + " · " + p +
       (p === 1 ? " проход" : " прохода") + " × " + n + " вар. · " + size;
     paintSpend();
@@ -778,13 +764,13 @@
        кнопкой «Ключи» в шапке. */
     if (!LOCAL && !A.gemini && !proxy()) return say("нет канала генерации: прокси или свой ключ Google — кнопка «Ключи»", true);
     busy(true);
-    var t0 = Date.now(), n = +ui.n.value, made = [];
+    var t0 = Date.now(), n = 1, made = [];        // всегда один вариант, так дешевле
     var usedSize = planSize(), jobs = plan(zones, task, refs).length;   // для счётчика расхода
     try {
       for (var v = 1; v <= n; v++) {
         log("вариант " + v + "/" + n);
         made.push(await edit(S.img, zones, task, refs,
-                             ui.mode.value, ui.qual.value, log));
+                             zones.length ? "crop" : "auto", "auto", log));
       }
     } catch (e) {
       busy(false);
@@ -792,6 +778,10 @@
     }
     busy(false);
     S.vars = made;
+    for (var k = 0; k < made.length; k++) {           // в архив браузера — сразу
+      try { await dbAdd(S.src, await toBlob(made[k], quality(S.src))); } catch (e) {}
+    }
+    loadGallery();
     var spent = jobs * made.length * CFG.price[usedSize];
     addSpend(S.src, spent);
     say("готово за " + Math.round((Date.now() - t0) / 1000) + " с · $" + spent.toFixed(2) +
@@ -829,6 +819,45 @@
      Каждое сохранение кладёт копию в img/<вещь>/_gen/. Список читается из
      репозитория без токена (репозиторий публичный), так что версии видят
      все — можно вернуть любую в один клик. */
+  /* Свой архив генераций в браузере (IndexedDB): версии видно сразу, ещё
+     до того, как они уехали в репозиторий. Репозиторий — общая память на
+     всех, этот архив — личная, чтобы ничего не терялось между заходами. */
+  var DB = null;
+  function db() {
+    if (DB) return DB;
+    DB = new Promise(function (ok, no) {
+      var rq = indexedDB.open("nnv-studio", 1);
+      rq.onupgradeneeded = function () {
+        var s = rq.result.createObjectStore("gen", { keyPath: "id", autoIncrement: true });
+        s.createIndex("src", "src");
+      };
+      rq.onsuccess = function () { ok(rq.result); };
+      rq.onerror = function () { no(rq.error); };
+    });
+    return DB;
+  }
+  async function dbAdd(src, blob) {
+    try {
+      var d = await db();
+      d.transaction("gen", "readwrite").objectStore("gen").add({ src: src, at: Date.now(), blob: blob });
+    } catch (e) { /* приватный режим — просто без архива */ }
+  }
+  async function dbList(src) {
+    try {
+      var d = await db();
+      return await new Promise(function (ok) {
+        var out = [];
+        var rq = d.transaction("gen").objectStore("gen").index("src").openCursor(IDBKeyRange.only(src));
+        rq.onsuccess = function () {
+          var c = rq.result;
+          if (!c) return ok(out.sort(function (a, b) { return b.at - a.at; }));
+          out.push(c.value); c.continue();
+        };
+        rq.onerror = function () { ok(out); };
+      });
+    } catch (e) { return []; }
+  }
+
   function genDir(rel) { return rel.replace(/\/[^/]+$/, "") + "/_gen"; }
   function stampName() {
     var d = new Date(), p = function (v) { return String(v).padStart(2, "0"); };
@@ -839,45 +868,59 @@
   async function loadGallery() {
     ui.gal.innerHTML = ""; ui.galBox.hidden = true; ui.use.hidden = true;
     S.ver = null;
-    try {
-      var r = await fetch("https://api.github.com/repos/" + CFG.repo + "/contents/" +
-                          genDir(S.src) + "?ref=" + CFG.branch);
-      if (!r.ok) return;                              // папки ещё нет — норма
-      var list = (await r.json()).filter(function (f) { return /\.webp$/i.test(f.name); })
-                   .sort(function (a, b) { return b.name.localeCompare(a.name); });
-      if (!list.length) return;
-      ui.galBox.hidden = false;
-      list.slice(0, 24).forEach(function (f) {
-        var im = el("img");
-        im.src = f.download_url; im.title = f.name.replace(".webp", "");
-        im.onclick = function () { showVersion(f, im); };
-        ui.gal.appendChild(im);
-      });
-    } catch (e) { /* нет сети до GitHub — просто нет галереи */ }
+    var items = [];
+    (await dbList(S.src)).forEach(function (r) {      // свои, из браузера
+      items.push({ url: URL.createObjectURL(r.blob), name: when(r.at), blob: r.blob });
+    });
+    try {                                             // общие, из репозитория
+      var r2 = await fetch("https://api.github.com/repos/" + CFG.repo + "/contents/" +
+                           genDir(S.src) + "?ref=" + CFG.branch);
+      if (r2.ok) {
+        (await r2.json()).filter(function (f) { return /\.webp$/i.test(f.name); })
+          .sort(function (a, b) { return b.name.localeCompare(a.name); })
+          .forEach(function (f) {
+            items.push({ url: f.download_url, name: f.name.replace(".webp", ""), repo: true });
+          });
+      }
+    } catch (e) { /* нет сети до GitHub — покажем хотя бы свои */ }
+    if (!items.length) return;
+    ui.galBox.hidden = false;
+    items.slice(0, 30).forEach(function (f) {
+      var im = el("img");
+      im.src = f.url;
+      im.title = (f.repo ? "на сайте: " : "у меня: ") + f.name;
+      im.onclick = function () { showVersion(f, im); };
+      ui.gal.appendChild(im);
+    });
+  }
+
+  function when(ms) {
+    var d = new Date(ms), p = function (v) { return String(v).padStart(2, "0"); };
+    return p(d.getDate()) + "." + p(d.getMonth() + 1) + " " + p(d.getHours()) + ":" + p(d.getMinutes());
   }
 
   function showVersion(f, im) {
     S.ver = f; S.pick = null;
     Array.prototype.forEach.call(ui.gal.children, function (t) { t.classList.toggle("on", t === im); });
-    ui.after.src = f.download_url; ui.after.hidden = false;
+    ui.after.src = f.url; ui.after.hidden = false;
     ui.split.hidden = false; ui.tagA.hidden = ui.tagB.hidden = false;
     ui.cv.classList.add("hide"); setSplit(.5); render();
     ui.use.hidden = false;
-    say("версия " + f.name.replace(".webp", "") + " — «Поставить на сайт», если берём её");
+    say("версия " + f.name + " — «Поставить на сайт», если берём её");
   }
 
   async function useVersion() {
     if (!S.ver || S.busy) return;
     busy(true, "Ставим…");
     try {
-      var blob = await (await fetch(S.ver.download_url)).blob();
+      var blob = S.ver.blob || await (await fetch(S.ver.url)).blob();
       var data = await new Promise(function (ok, no) {
         var r = new FileReader(); r.onload = function () { ok(r.result); }; r.onerror = no;
         r.readAsDataURL(blob);
       });
       var res = await put(S.src, data, "вернул версию " + S.ver.name + " для " + S.src);
       busy(false); bust(S.src); say(res);
-    } catch (e) { busy(false); say(e.message, true); }
+    } catch (e) { busy(false); saveErr(e); }
   }
 
   async function download() {
@@ -902,6 +945,16 @@
     });
   }
 
+  function saveErr(e) {
+    /* Самая частая причина — в воркере студии нет токена GitHub. Пишем
+       прямо в карточке, что делать, а не голый код ошибки. */
+    var m = e.message || String(e);
+    if (/GitHub 40[13]|Bad credentials|not accessible|token/i.test(m))
+      m += "\n→ в студии нет токена GitHub. Один раз в терминале:\n" +
+           "cd proxy && npx wrangler secret put GH_TOKEN";
+    say(m, true);
+  }
+
   async function apply() {
     if (S.ver) return useVersion();                   // выбрана готовая версия из галереи
     if (S.pick === null || S.busy) return say("сначала выберите вариант", true);
@@ -922,7 +975,7 @@
       say(res);
       loadGallery();
       setTimeout(close, 1400);
-    } catch (e) { busy(false); say(e.message, true); }
+    } catch (e) { busy(false); saveErr(e); }
   }
 
   /* ---------- ключи ---------- */
@@ -1020,7 +1073,6 @@
     };
     ui.keys.onclick = keysPanel;
     ui.root.querySelector(".nnv-ed__close").onclick = close;
-    ui.n.onchange = ui.qual.onchange = cost;
     ui.prompt.oninput = cost;
 
     var sp = false;
@@ -1035,7 +1087,7 @@
     addEventListener("keydown", function (e) {
       if (!S || ui.root.hidden) return;
       var typing = /INPUT|TEXTAREA|SELECT/.test(e.target.tagName);
-      if (e.key === "Escape") { S.pick !== null ? unpreview() : close(); }
+      if (e.key === "Escape") close();            // Esc всегда выходит из режима
       else if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) generate();
       else if (!typing && (e.key === "Backspace" || e.key === "Delete") && S.sel) {
         S.zones = S.zones.filter(function (t) { return t !== S.sel; });
