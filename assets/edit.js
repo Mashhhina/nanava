@@ -448,6 +448,7 @@
           '<select class="nnv-ed__n"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>' +
         '</div>' +
         '<button class="nnv-ed__go">Сгенерировать</button>' +
+        '<button class="nnv-ed__erase muted">Убрать из кадра</button>' +
         '<div class="nnv-ed__cost"></div>' +
         '<div class="nnv-ed__log"></div>' +
         '<div class="nnv-ed__varsbox" hidden><h4>Варианты</h4><div class="nnv-ed__vars"></div>' +
@@ -467,6 +468,7 @@
            tools: g(".nnv-ed__tools"), path: g(".nnv-ed__path"), size: g(".nnv-ed__size"),
            prompt: g(".nnv-ed__prompt"), zones: g(".nnv-ed__zones"), mode: g(".nnv-ed__mode"),
            qual: g(".nnv-ed__qual"), n: g(".nnv-ed__n"), go: g(".nnv-ed__go"),
+           erase: g(".nnv-ed__erase"),
            cost: g(".nnv-ed__cost"), log: g(".nnv-ed__log"), varsBox: g(".nnv-ed__varsbox"),
            vars: g(".nnv-ed__vars"), apply: g(".nnv-ed__apply"), again: g(".nnv-ed__again"),
            down: g(".nnv-ed__save"),
@@ -675,16 +677,37 @@
   }
   function busy(on, msg) {
     S.busy = on;
-    ui.go.disabled = ui.apply.disabled = ui.again.disabled = ui.down.disabled = on;
+    ui.go.disabled = ui.apply.disabled = ui.again.disabled = ui.down.disabled =
+      ui.erase.disabled = on;
     ui.go.textContent = on ? (msg || "Генерим…") : "Сгенерировать";
   }
 
   /* ---------- генерация ---------- */
-  async function generate() {
+  /* «Убрать» — самая частая правка: обвели лишнее (блик, складку, предмет,
+     чужой логотип) и стёрли, а модель достраивает то, что было за ним.
+     Тексты зон и референсы в этом режиме не участвуют. */
+  var ERASE = "Remove completely everything inside the marked area and reconstruct " +
+    "what is behind it: continue the background, the floor, the fabric or the body " +
+    "that the removed thing was covering. No trace of it, no ghost outline, no blur, " +
+    "no smudge, no flat patch of colour — the area must look like the object was " +
+    "never there.";
+
+  function erase() {
+    if (!S.zones.length) return say("сначала обведите то, что убрать", true);
+    generate(S.zones.map(function (z) {
+      return { mask: z.mask, rect: z.rect, prompt: "", refs: [] };   // только геометрия
+    }), ERASE, []);
+  }
+
+  async function generate(zonesArg, taskArg, refsArg) {
     if (S.busy) return;
+    var zones = zonesArg || S.zones;
+    var task = taskArg != null ? taskArg : ui.prompt.value;
+    var refs = refsArg || S.refs;
+    S.last = [zones, task, refs];                     // «Ещё варианты» повторяет то же
     var lines = [];
     function log(s) { lines.push(s); say(lines.slice(-3).join("\n")); }
-    try { plan(S.zones, ui.prompt.value, S.refs); }
+    try { plan(zones, task, refs); }
     catch (e) { return say(e.message, true); }
     await PROBE;
     /* Окно ключей само не лезет: нажали «Сгенерировать» — идёт генерация.
@@ -696,7 +719,7 @@
     try {
       for (var v = 1; v <= n; v++) {
         log("вариант " + v + "/" + n);
-        made.push(await edit(S.img, S.zones, ui.prompt.value, S.refs,
+        made.push(await edit(S.img, zones, task, refs,
                              ui.mode.value, ui.qual.value, log));
       }
     } catch (e) {
@@ -854,10 +877,14 @@
       ui.cv.style.cursor = S.tool === "rect" ? "crosshair" : "cell";
     });
 
-    ui.go.onclick = generate;
+    ui.go.onclick = function () { generate(); };
+    ui.erase.onclick = erase;
     ui.apply.onclick = apply;
     ui.down.onclick = download;
-    ui.again.onclick = function () { unpreview(); generate(); };
+    ui.again.onclick = function () {
+      unpreview();
+      generate.apply(null, (S && S.last) || []);
+    };
     ui.keys.onclick = keysPanel;
     ui.root.querySelector(".nnv-ed__close").onclick = close;
     ui.n.onchange = ui.qual.onchange = cost;
