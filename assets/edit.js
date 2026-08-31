@@ -25,7 +25,7 @@
        только тот, кто вставил свои ключи кнопкой «Ключи». Как задеплоите
        воркер — впишите сюда его адрес, и генерация с сохранением заработают
        у любого гостя, без ключей. */
-    proxy: "",
+    proxy: "https://nnv-studio.zakharevich-alexey.workers.dev",
     repo: "Mashhhina/nanava",
     branch: "main",
     api: "https://generativelanguage.googleapis.com/v1beta/interactions",
