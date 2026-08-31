@@ -52,6 +52,7 @@ window.NNV_DATA = {
       lead: "A dark rider on pearl satin.",
       desc: "Loose mockneck in dense viscose satin, champagne shade. Ribbed knit collar in tone. The dark rider print with smoky edges is applied preserving the sheen of the fabric.",
       image: "img/p07.webp", images: ["img/mockneck-dark-rider/m1.webp", "img/mockneck-dark-rider/f2.webp", "img/mockneck-dark-rider/f3.webp", "img/mockneck-dark-rider/f4.webp", "img/mockneck-dark-rider/f5.webp", "img/mockneck-dark-rider/f6.webp", "img/mockneck-dark-rider/f7.webp"],
+      colors: [{ id: "champagne", label: "Champagne", swatch: "#E3D8CC", image: "img/p07.webp", images: ["img/mockneck-dark-rider/m1.webp", "img/mockneck-dark-rider/f2.webp", "img/mockneck-dark-rider/f3.webp", "img/mockneck-dark-rider/f4.webp", "img/mockneck-dark-rider/f5.webp", "img/mockneck-dark-rider/f6.webp", "img/mockneck-dark-rider/f7.webp"] }, { id: "black", label: "Black", swatch: "#101014", image: "img/mockneck-dark-rider/black-main.webp", images: ["img/mockneck-dark-rider/black-f3.webp"] }],
       process: [{ src: "img/process/board-knight-black.webp", cap: "Black three-thread cotton with knight graphic: ribbed collar and cuffs, embroidery vs print; the lace-hem skirt and the faces tote" }] },
     { id: "hoodie-horns", title: "Horns Hoodie Grey", category: "clothes",
       price: 160, colorGroup: "grey", sku: "NNV0108A",
@@ -251,7 +252,12 @@ window.NNV_DATA = {
       desc: "Six-panel baseball cap rebuilt from patches of over-washed brick-red twill: raw whiskered seams, torn holes on the visor, a strip of faded khaki twill over the crown and a small embossed NANAVA leather tag on top. The archive rider is embroidered on the side panel in cornflower blue satin stitch; a dense row of aged silver dome studs runs along the visor seam. Metal buckle strap at the back.",
       image: "img/cap-rider/main.webp", images: ["img/cap-rider/f2.webp", "img/cap-rider/f3.webp"],
       colors: [{ id: "sage", label: "Sage denim", swatch: "#6E8C7D", item: "cap-fangs", image: "img/cap-fangs/main.webp" }, { id: "brick", label: "Brick red", swatch: "#8A2733", item: "cap-rider", image: "img/cap-rider/main.webp" }],
-      process: [{ src: "img/process/board-rider-red.webp", cap: "Red rider sweater: standard shoulder line, sleeve and front placement; the monogram bag, the cardholder and the studded cap on the same sheet" }] }
+      process: [{ src: "img/process/board-rider-red.webp", cap: "Red rider sweater: standard shoulder line, sleeve and front placement; the monogram bag, the cardholder and the studded cap on the same sheet" }] },
+    { id: "body-crystal", title: "Crystal Mesh Bodysuit", category: "clothes",
+      price: 290, colorGroup: "silver", sku: "NNV0119A",
+      lead: "A body cast in crystal.",
+      desc: "Sleeveless bodysuit in dense crystal mesh — thousands of small stones set on a fine silver net and moulded over a sculpted torso shell, so the bust, sternum and ribs read as relief. High round neckline, wide cut armholes with small metal hardware at the shoulders, high-cut legs and a deep V at the front hem.",
+      image: "img/body-crystal/main.webp", images: ["img/body-crystal/f2.webp", "img/body-crystal/f3.webp", "img/body-crystal/f4.webp", "img/body-crystal/f5.webp", "img/body-crystal/f6.webp"] }
   ]
 };
 
