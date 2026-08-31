@@ -13,7 +13,7 @@
       all: "All", clothes: "Clothing", bags: "Bags", accessories: "Accessories", objects: "Objects",
       categories: "Categories", designer: "Designer", sort: "Sort", color: "Color",
       model: "Model", all_models: "Everyone", no_frames: "no frames yet",
-      empty_model: "No pieces shot with this one yet.", no_model: "Not cast",
+      empty_model: "No pieces shot with this one yet.", no_model: "No model",
       "sort.new": "New in", "sort.priceAsc": "Price low–high", "sort.priceDesc": "Price high–low",
       items: "items", new_in: "New", view_all: "View all",
       shop_look: "Shop by Look", season: "Garderobe Fall Winter 26/27", explore: "Explore the collection",
@@ -183,6 +183,8 @@
       (modelOf[id] = modelOf[id] || []).push(m.name);
     });
   });
+  // вещи, снятые без человека (по умолчанию так и снимаем — PLAYBOOK,
+  // «Человек в кадре — только по просьбе»): отдельной карточкой в фильтре
   var unassigned = D.items.filter(function (it) {
     var names = modelOf[it.id] || [];
     return !names.some(function (n) {

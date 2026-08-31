@@ -241,7 +241,13 @@ window.NNV_DATA = {
       price: 125, colorGroup: "silver", sku: "NNV0313A",
       lead: "A tag cast in metal, not sprayed.",
       desc: "Signet ring in silver-tone metal whose entire top is built from chunky three-dimensional block letters in a graffiti hand — flat tops, sharp bevelled sides, deep shadowed gaps between them and pointed spikes breaking out of the letterforms. The band below is plain with a flat angular shoulder. Brushed satin on the tops, polished bevels.",
-      image: "img/ring-letters/main.webp", images: ["img/ring-letters/f2.webp", "img/ring-letters/f3.webp", "img/ring-letters/f4.webp"] }
+      image: "img/ring-letters/main.webp", images: ["img/ring-letters/f2.webp", "img/ring-letters/f3.webp", "img/ring-letters/f4.webp"] },
+    { id: "cap-rider", title: "Rider Studded Cap Red", category: "accessories",
+      price: 110, colorGroup: "red", sku: "NNV0314A",
+      lead: "The rider rides on the side.",
+      desc: "Six-panel baseball cap rebuilt from patches of over-washed brick-red twill: raw whiskered seams, torn holes on the visor, a strip of faded khaki twill over the crown and a small embossed NANAVA leather tag on top. The archive rider is embroidered on the side panel in cornflower blue satin stitch; a dense row of aged silver dome studs runs along the visor seam. Metal buckle strap at the back.",
+      image: "img/cap-rider/main.webp", images: ["img/cap-rider/f2.webp", "img/cap-rider/f3.webp"],
+      process: [{ src: "img/process/board-rider-red.webp", cap: "Red rider sweater: standard shoulder line, sleeve and front placement; the monogram bag, the cardholder and the studded cap on the same sheet" }] }
   ]
 };
 
