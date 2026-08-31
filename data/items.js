@@ -62,9 +62,9 @@ window.NNV_DATA = {
       process: [{ src: "img/process/board-nnv-tight.webp", cap: "Very tight, translucent silhouette with the NNV mark; scarf variants of the rider print" }] },
     { id: "skirt-lace", title: "Satin Lace Skirt", category: "clothes",
       price: 220, colorGroup: "silver", sku: "NNV0109A",
-      lead: "A beaded bolt on steel satin.",
-      desc: "Midi slip skirt in steel satin. The jagged crown appliqué is embroidered in pearl-white beads and edged with navy piping, sewn on by hand. White Chantilly lace along the hem, narrow lace trim at the waist, concealed zip.",
-      image: "img/skirt-lace/main.webp", images: ["img/skirt-lace/m1.webp", "img/skirt-lace/f2.webp", "img/skirt-lace/f3.webp", "img/skirt-lace/f4.webp", "img/skirt-lace/f5.webp", "img/skirt-lace/f6.webp"],
+      lead: "A lace crown cut into steel satin.",
+      desc: "Midi slip skirt in cool steel-grey satin. A large jagged crown is appliquéd across the front in pale lemon floral lace — semi-transparent, so the satin reads through it, the edge finished with a fine tonal overlock; two leaf-shaped slits are cut through the lace onto the bare satin. A wide band of the same lemon lace with a scalloped edge runs along the hem, a narrow strip of it along the waistband over a braided tonal trim. Concealed zip at the back.",
+      image: "img/skirt-lace/main.webp", images: ["img/skirt-lace/f2.webp", "img/skirt-lace/f3.webp", "img/skirt-lace/f4.webp", "img/skirt-lace/f5.webp", "img/skirt-lace/f6.webp"],
       process: [{ src: "img/process/board-knight-black.webp", cap: "Black three-thread cotton with knight graphic: ribbed collar and cuffs, embroidery vs print; the lace-hem skirt and the faces tote" }] },
     { id: "tee-riders", title: "Riders Oversized T-Shirt", category: "clothes",
       price: 120, colorGroup: "brown", sku: "NNV0110A",
@@ -267,7 +267,12 @@ window.NNV_DATA = {
       price: 180, colorGroup: "red", sku: "NNV0315A",
       lead: "A pocket on the back of your hand.",
       desc: "Full-finger gloves in oxblood leather with a long standing gauntlet cuff. On the back of the hand — a flap pocket outlined in pale pink topstitching; across the wrist a webbing strap with a tone-on-tone quick-release buckle and a burgundy carabiner on a leather loop. Matte nubuck panels next to smoother satin leather on the cuff and flap, contrast stitching on every seam.",
-      image: "img/gloves-carabiner/main.webp", images: ["img/gloves-carabiner/f2.webp", "img/gloves-carabiner/f3.webp"] }
+      image: "img/gloves-carabiner/main.webp", images: ["img/gloves-carabiner/f2.webp", "img/gloves-carabiner/f3.webp"] },
+    { id: "bag-frill-navy", title: "Frill Patent Bag Graphite", category: "bags",
+      price: 290, colorGroup: "navy", sku: "NNV0208A",
+      lead: "The same strict shape, poured in graphite.",
+      desc: "Structured trapeze bag in graphite navy patent leather, the third colour of the frill family. Flap with sculpted frills, bow on the handle, silver metal padlock and riveted silver logo plate. Side zipper, real leather grain under the lacquer.",
+      image: "img/bag-frill-navy/main.webp", images: [] }
   ]
 };
 
