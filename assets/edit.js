@@ -258,7 +258,8 @@
     var W = full.width, H = full.height;
     if (!m) {
       var whole = await ask(wholePrompt(task, refs.length),
-                            [part(full)].concat(refs.map(part)), arOf(W, H), size);
+                            [part(full)].concat(refs.map(part)), arOf(W, H),
+                            size === "auto" ? "2K" : size);
       return fit(whole, W, H);
     }
     var bx = maskBox(m);
@@ -269,6 +270,7 @@
     log("зона " + Math.round(area * 100) + "% кадра → " +
         (crop ? "режим crop, окно " + box[2] + "×" + box[3] : "весь кадр в контексте"));
     var base = crop ? sub(full, box) : full, mm = crop ? sub(m, box) : m;
+    if (size === "auto") size = autoSize(base.width, base.height);
     var r = maskBox(mm);
     var rn = [r[0] / base.width, r[1] / base.height, r[2] / base.width, r[3] / base.height];
     var im = await ask(zonePrompt(task, rn, refs.length),
@@ -343,9 +345,13 @@
       return "залито на сайт, обновится за минуту";
     }
     if (!A.github) throw new Error("студия не подключена: нужен прокси (proxy/README.md) или свой токен GitHub — кнопка «Ключи»");
-    var cur = await gh("/contents/" + rel + "?ref=" + CFG.branch, "GET");
-    await gh("/contents/" + rel, "PUT", { message: message, branch: CFG.branch,
-      sha: cur.sha, content: dataUrl.replace(/^data:[^,]*,/, "") });
+    var sha = null;
+    try { sha = (await gh("/contents/" + rel + "?ref=" + CFG.branch, "GET")).sha; }
+    catch (e) { sha = null; }                         // нет файла — создаём новый
+    var body = { message: message, branch: CFG.branch,
+                 content: dataUrl.replace(/^data:[^,]*,/, "") };
+    if (sha) body.sha = sha;
+    await gh("/contents/" + rel, "PUT", body);
     return "залито в " + CFG.repo + ", прод пересоберётся за минуту";
   }
 
@@ -404,7 +410,7 @@
     ui.size.textContent = img.naturalWidth + "×" + img.naturalHeight;
     ui.prompt.value = ""; say(""); ui.vars.innerHTML = ""; ui.varsBox.hidden = true;
     ui.where.textContent = LOCAL ? "запись в файл (локальный сервер)" : "коммит в " + CFG.repo;
-    paintRefs(); paintZones(); cost();
+    paintRefs(); paintZones(); cost(); loadGallery();
   }
   function close() { ui.root.hidden = true; S = null; }
 
@@ -444,12 +450,16 @@
             '<option value="auto">режим: авто</option>' +
             '<option value="crop">точно по зоне</option>' +
             '<option value="full">весь кадр в контексте</option></select>' +
-          '<select class="nnv-ed__qual"><option value="2K">2K</option><option value="1K">1K дешевле</option></select>' +
-          '<select class="nnv-ed__n"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>' +
+          '<select class="nnv-ed__qual">' +
+            '<option value="auto">размер: авто</option>' +
+            '<option value="1K">1K дёшево</option>' +
+            '<option value="2K">2K</option></select>' +
+          '<select class="nnv-ed__n"><option selected>1</option><option>2</option><option>3</option><option>4</option></select>' +
         '</div>' +
         '<button class="nnv-ed__go">Сгенерировать</button>' +
         '<button class="nnv-ed__erase muted">Убрать из кадра</button>' +
         '<div class="nnv-ed__cost"></div>' +
+        '<div class="nnv-ed__spend"></div>' +
         '<div class="nnv-ed__log"></div>' +
         '<div class="nnv-ed__varsbox" hidden><h4>Варианты</h4><div class="nnv-ed__vars"></div>' +
           '<div class="nnv-ed__row" style="margin-top:8px">' +
@@ -457,7 +467,11 @@
             '<button class="nnv-ed__save muted">Скачать</button>' +
             '<button class="nnv-ed__again muted">Ещё варианты</button></div>' +
           '<div class="nnv-ed__cost nnv-ed__where"></div></div>' +
+        '<div class="nnv-ed__galbox" hidden><h4>Версии этого кадра</h4>' +
+          '<div class="nnv-ed__gal"></div>' +
+          '<button class="nnv-ed__use muted" hidden>Поставить на сайт</button></div>' +
         '<div class="nnv-ed__foot">' +
+          '<button class="nnv-ed__keep">Сохранить</button>' +
           '<button class="nnv-ed__close muted">Закрыть (Esc)</button></div>' +
       '</aside>';
     document.body.appendChild(root);
@@ -469,10 +483,13 @@
            prompt: g(".nnv-ed__prompt"), zones: g(".nnv-ed__zones"), mode: g(".nnv-ed__mode"),
            qual: g(".nnv-ed__qual"), n: g(".nnv-ed__n"), go: g(".nnv-ed__go"),
            erase: g(".nnv-ed__erase"),
-           cost: g(".nnv-ed__cost"), log: g(".nnv-ed__log"), varsBox: g(".nnv-ed__varsbox"),
+           cost: g(".nnv-ed__cost"), spend: g(".nnv-ed__spend"),
+           log: g(".nnv-ed__log"), varsBox: g(".nnv-ed__varsbox"),
            vars: g(".nnv-ed__vars"), apply: g(".nnv-ed__apply"), again: g(".nnv-ed__again"),
            down: g(".nnv-ed__save"),
-           where: g(".nnv-ed__where"), keys: g(".nnv-ed__keysbtn"), hint: g(".nnv-ed__tools .hint") };
+           where: g(".nnv-ed__where"), keys: g(".nnv-ed__keysbtn"), hint: g(".nnv-ed__tools .hint"),
+           galBox: g(".nnv-ed__galbox"), gal: g(".nnv-ed__gal"), use: g(".nnv-ed__use"),
+           keep: g(".nnv-ed__keep") };
     ui.ctx = ui.cv.getContext("2d");
     wire();
   }
@@ -664,11 +681,57 @@
   function passes() {
     try { return plan(S.zones, ui.prompt.value, S.refs).length; } catch (e) { return 1; }
   }
+
+  /* Размер генерации под конкретную зону. Смысл «авто»: маленькой зоне 2K
+     не нужен — её всё равно вклеивают в кадр в её собственный размер, так
+     что платим за 1K и получаем то же самое. 2K берём, только когда окно
+     правки реально больше 1400 px. */
+  function autoSize(w, h) { return Math.max(w, h) <= 1400 ? "1K" : "2K"; }
+
+  function planSize() {
+    if (ui.qual.value !== "auto") return ui.qual.value;
+    if (!S.zones.length) return "2K";                 // правим весь кадр — не мельчим
+    var W = S.img.naturalWidth, H = S.img.naturalHeight;
+    var x0 = 1, y0 = 1, x1 = 0, y1 = 0;
+    S.zones.forEach(function (z) {
+      x0 = Math.min(x0, z.rect[0]); y0 = Math.min(y0, z.rect[1]);
+      x1 = Math.max(x1, z.rect[0] + z.rect[2]); y1 = Math.max(y1, z.rect[1] + z.rect[3]);
+    });
+    var b = [x0 * W, y0 * H, (x1 - x0) * W, (y1 - y0) * H];
+    var area = (b[2] / W) * (b[3] / H);
+    if (ui.mode.value === "full" || (ui.mode.value === "auto" && area >= CFG.cropLimit)) return "2K";
+    var box = cropBox(b, W, H);
+    return autoSize(box[2], box[3]);
+  }
+
   function cost() {
     if (!S) return;
-    var p = passes(), n = +ui.n.value, price = CFG.price[ui.qual.value];
-    ui.cost.textContent = "~$" + (p * n * price).toFixed(2) + " · " + p +
-      (p === 1 ? " проход" : " прохода") + " × " + n + " вар.";
+    var p = passes(), n = +ui.n.value, size = planSize();
+    ui.cost.textContent = "~$" + (p * n * CFG.price[size]).toFixed(2) + " · " + p +
+      (p === 1 ? " проход" : " прохода") + " × " + n + " вар. · " + size;
+    paintSpend();
+  }
+
+  /* ---------- расход ----------
+     Считаем по прайсу Nano Banana и держим в браузере: видно, во сколько
+     обошёлся конкретный кадр и сколько ушло всего. */
+  var SPEND = "nnv_spend";
+  function spend() {
+    try { return JSON.parse(localStorage.getItem(SPEND)) || { total: 0, img: {} }; }
+    catch (e) { return { total: 0, img: {} }; }
+  }
+  function addSpend(rel, usd) {
+    var s = spend();
+    s.total = (s.total || 0) + usd;
+    s.img[rel] = (s.img[rel] || 0) + usd;
+    try { localStorage.setItem(SPEND, JSON.stringify(s)); } catch (e) {}
+    paintSpend();
+  }
+  function paintSpend() {
+    if (!S || !ui.spend) return;
+    var s = spend();
+    ui.spend.textContent = "потрачено: этот кадр $" + (s.img[S.src] || 0).toFixed(2) +
+                           " · всего $" + (s.total || 0).toFixed(2);
   }
 
   function say(t, err) {
@@ -678,7 +741,7 @@
   function busy(on, msg) {
     S.busy = on;
     ui.go.disabled = ui.apply.disabled = ui.again.disabled = ui.down.disabled =
-      ui.erase.disabled = on;
+      ui.erase.disabled = ui.keep.disabled = ui.use.disabled = on;
     ui.go.textContent = on ? (msg || "Генерим…") : "Сгенерировать";
   }
 
@@ -716,6 +779,7 @@
     if (!LOCAL && !A.gemini && !proxy()) return say("нет канала генерации: прокси или свой ключ Google — кнопка «Ключи»", true);
     busy(true);
     var t0 = Date.now(), n = +ui.n.value, made = [];
+    var usedSize = planSize(), jobs = plan(zones, task, refs).length;   // для счётчика расхода
     try {
       for (var v = 1; v <= n; v++) {
         log("вариант " + v + "/" + n);
@@ -728,8 +792,10 @@
     }
     busy(false);
     S.vars = made;
-    say("готово за " + Math.round((Date.now() - t0) / 1000) + " с · " +
-        ui.cost.textContent.split(" · ")[0]);
+    var spent = jobs * made.length * CFG.price[usedSize];
+    addSpend(S.src, spent);
+    say("готово за " + Math.round((Date.now() - t0) / 1000) + " с · $" + spent.toFixed(2) +
+        " (" + usedSize + ")");
     ui.varsBox.hidden = false;
     ui.vars.innerHTML = "";
     made.forEach(function (c, i) {
@@ -759,6 +825,61 @@
     ui.cv.classList.remove("hide"); render();
   }
 
+  /* ---------- галерея версий кадра ----------
+     Каждое сохранение кладёт копию в img/<вещь>/_gen/. Список читается из
+     репозитория без токена (репозиторий публичный), так что версии видят
+     все — можно вернуть любую в один клик. */
+  function genDir(rel) { return rel.replace(/\/[^/]+$/, "") + "/_gen"; }
+  function stampName() {
+    var d = new Date(), p = function (v) { return String(v).padStart(2, "0"); };
+    return d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) + "-" +
+           p(d.getHours()) + p(d.getMinutes()) + p(d.getSeconds()) + ".webp";
+  }
+
+  async function loadGallery() {
+    ui.gal.innerHTML = ""; ui.galBox.hidden = true; ui.use.hidden = true;
+    S.ver = null;
+    try {
+      var r = await fetch("https://api.github.com/repos/" + CFG.repo + "/contents/" +
+                          genDir(S.src) + "?ref=" + CFG.branch);
+      if (!r.ok) return;                              // папки ещё нет — норма
+      var list = (await r.json()).filter(function (f) { return /\.webp$/i.test(f.name); })
+                   .sort(function (a, b) { return b.name.localeCompare(a.name); });
+      if (!list.length) return;
+      ui.galBox.hidden = false;
+      list.slice(0, 24).forEach(function (f) {
+        var im = el("img");
+        im.src = f.download_url; im.title = f.name.replace(".webp", "");
+        im.onclick = function () { showVersion(f, im); };
+        ui.gal.appendChild(im);
+      });
+    } catch (e) { /* нет сети до GitHub — просто нет галереи */ }
+  }
+
+  function showVersion(f, im) {
+    S.ver = f; S.pick = null;
+    Array.prototype.forEach.call(ui.gal.children, function (t) { t.classList.toggle("on", t === im); });
+    ui.after.src = f.download_url; ui.after.hidden = false;
+    ui.split.hidden = false; ui.tagA.hidden = ui.tagB.hidden = false;
+    ui.cv.classList.add("hide"); setSplit(.5); render();
+    ui.use.hidden = false;
+    say("версия " + f.name.replace(".webp", "") + " — «Поставить на сайт», если берём её");
+  }
+
+  async function useVersion() {
+    if (!S.ver || S.busy) return;
+    busy(true, "Ставим…");
+    try {
+      var blob = await (await fetch(S.ver.download_url)).blob();
+      var data = await new Promise(function (ok, no) {
+        var r = new FileReader(); r.onload = function () { ok(r.result); }; r.onerror = no;
+        r.readAsDataURL(blob);
+      });
+      var res = await put(S.src, data, "вернул версию " + S.ver.name + " для " + S.src);
+      busy(false); bust(S.src); say(res);
+    } catch (e) { busy(false); say(e.message, true); }
+  }
+
   async function download() {
     /* Забрать кадр файлом — когда токена GitHub нет, а правку надо отдать
        тому, кто выкладывает. Имя как у кадра на сайте, чтобы не путаться. */
@@ -772,8 +893,18 @@
     } catch (e) { say(e.message, true); }
   }
 
+  function bust(rel) {                                // показать новый файл сразу
+    var stamp = String(Date.now());
+    Array.prototype.forEach.call(document.images, function (im) {
+      if (im.closest(".nnv-ed")) return;
+      var u = new URL(im.src, location.href);
+      if (u.pathname.replace(/^\//, "") === rel) im.src = u.pathname + "?v=" + stamp;
+    });
+  }
+
   async function apply() {
-    if (S.pick === null || S.busy) return;
+    if (S.ver) return useVersion();                   // выбрана готовая версия из галереи
+    if (S.pick === null || S.busy) return say("сначала выберите вариант", true);
     await PROBE;
     if (!LOCAL && !A.github && !proxy()) return say("нет канала записи: прокси или свой токен GitHub — кнопка «Ключи»", true);
     busy(true, LOCAL ? "Пишем…" : "Коммитим…");
@@ -782,15 +913,15 @@
       var msg = "правка кадра " + S.src + ": " +
         (ui.prompt.value.trim() || S.zones.map(function (z) { return z.prompt; }).filter(Boolean).join("; ") || "точечная");
       var res = await put(S.src, data, msg.slice(0, 180));
+      /* копия в галерею версий — чтобы к ней можно было вернуться одним
+         кликом. Если не записалась, правку это не отменяет. */
+      try { await put(genDir(S.src) + "/" + stampName(), data, "версия кадра " + S.src); }
+      catch (e) { res += " (в галерею не попало: " + e.message + ")"; }
       busy(false);
-      var stamp = String(Date.now());
-      Array.prototype.forEach.call(document.images, function (im) {
-        if (im.closest(".nnv-ed")) return;
-        var u = new URL(im.src, location.href);
-        if (u.pathname.replace(/^\//, "") === S.src) im.src = u.pathname + "?v=" + stamp;
-      });
+      bust(S.src);
       say(res);
-      setTimeout(close, 1200);
+      loadGallery();
+      setTimeout(close, 1400);
     } catch (e) { busy(false); say(e.message, true); }
   }
 
@@ -879,6 +1010,8 @@
 
     ui.go.onclick = function () { generate(); };
     ui.erase.onclick = erase;
+    ui.use.onclick = useVersion;
+    ui.keep.onclick = apply;
     ui.apply.onclick = apply;
     ui.down.onclick = download;
     ui.again.onclick = function () {
