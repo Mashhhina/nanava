@@ -127,17 +127,48 @@
   }
   function eur(n) { return "€" + n; }
 
-  /* ---------- карточка сетки ---------- */
+  /* ---------- карточка сетки ----------
+     У вещи с расцветками (it.colors) под ценой — ряд квадратиков: клик прямо
+     в сетке меняет кадр плитки и запоминается в ссылке (?color=…), чтобы
+     карточка товара открылась на выбранном цвете. Внутри <a> кнопок нет:
+     квадратики — это span'ы, клик по ним перехватывается делегатом ниже. */
+  function swatchHTML(it) {
+    var cs = it.colors || [];
+    if (cs.length < 2) return "";
+    return '<span class="sw">' + cs.map(function (c, i) {
+      var own = c.item ? c.item === it.id : i === 0;
+      return '<span class="sw__b' + (own ? " on" : "") + '" data-sw="' + i + '" role="button" tabindex="0" ' +
+             'title="' + c.label + '" aria-label="' + c.label + '" style="background:' + c.swatch + '"></span>';
+    }).join("") + '</span>';
+  }
   function cardHTML(it) {
     return (
-      '<a class="card" href="product.html?id=' + it.id + '">' +
+      '<a class="card" href="product.html?id=' + it.id + '" data-card="' + it.id + '">' +
         '<span class="ph"><img src="' + it.image + '" alt="' + it.title + '" loading="lazy"></span>' +
         '<span class="info"><span class="t">' + it.title + '</span>' +
-        '<span class="p" style="display:block">' + eur(it.price) + '</span></span>' +
+        '<span class="p" style="display:block">' + eur(it.price) + '</span>' +
+        swatchHTML(it) + '</span>' +
       '</a>'
     );
   }
   function renderInto(el, items) { el.innerHTML = items.map(cardHTML).join(""); }
+
+  /* Клик по квадратику в сетке: не уходим по ссылке, а показываем этот цвет. */
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest ? e.target.closest("[data-sw]") : null;
+    if (!b) return;
+    var card = b.closest("[data-card]");
+    if (!card) return;
+    e.preventDefault();
+    var it = byId[card.dataset.card], c = (it && it.colors || [])[+b.dataset.sw];
+    if (!c) return;
+    var img = card.querySelector(".ph img");
+    if (img) img.src = c.image;
+    card.querySelectorAll("[data-sw]").forEach(function (x) { x.classList.remove("on"); });
+    b.classList.add("on");
+    // расцветка живёт своей карточкой (c.item) — ссылка ведёт туда
+    card.setAttribute("href", "product.html?id=" + (c.item || it.id) + "&color=" + c.id);
+  });
 
   /* ---------- каталог ---------- */
   var state = { cat: "all", color: "all", sort: "new", model: "all" };
@@ -154,6 +185,8 @@
       (modelOf[id] = modelOf[id] || []).push(m.name);
     });
   });
+  // вещи, снятые без человека (по умолчанию так и снимаем — PLAYBOOK,
+  // «Человек в кадре — только по просьбе»): отдельной карточкой в фильтре
   var unassigned = D.items.filter(function (it) {
     var names = modelOf[it.id] || [];
     return !names.some(function (n) {
@@ -338,11 +371,59 @@
     var id = new URLSearchParams(location.search).get("id");
     var it = byId[id] || D.items[0];
     document.title = it.title + " — " + D.brand;
-    var frames = [it.image].concat(it.images || []);
-    document.querySelector("[data-gallery]").innerHTML = frames.map(function (src, i) {
-      // без пролёток: второй кадр — автозум-деталь из эталона
-      return '<div class="fr"><img src="' + src + '" alt="' + (i ? "" : it.title) + '" loading="lazy"></div>';
-    }).join("") + (frames.length === 1 ? '<div class="fr zoom"><img src="' + it.image + '" alt="" aria-hidden="true"></div>' : "");
+    /* Галерея. Если у вещи есть разновидности цвета (it.colors), кадры берём
+       у выбранной: сама вещь одна, карточка одна, меняется только расцветка. */
+    function gallery(main, rest) {
+      var frames = [main].concat(rest || []);
+      document.querySelector("[data-gallery]").innerHTML = frames.map(function (src, i) {
+        // без пролёток: второй кадр — автозум-деталь из эталона
+        return '<div class="fr"><img src="' + src + '" alt="' + (i ? "" : it.title) + '" loading="lazy"></div>';
+      }).join("") + (frames.length === 1 ? '<div class="fr zoom"><img src="' + main + '" alt="" aria-hidden="true"></div>' : "");
+    }
+    gallery(it.image, it.images);
+
+    var colors = it.colors || [], cw = document.querySelector("[data-colors]");
+    if (cw) {
+      cw.hidden = colors.length < 2;
+      if (!cw.hidden) {
+        cw.innerHTML = colors.map(function (c, i) {
+          return '<button type="button" data-color="' + i + '" title="' + c.label + '" aria-label="' + c.label +
+                 '"><i style="background:' + c.swatch + '"></i></button>';
+        }).join("") + '<span class="pdp-colors__name"></span>';
+        var name = cw.querySelector(".pdp-colors__name");
+        var btns = cw.querySelectorAll("[data-color]");
+        function show(i) {                                  // показать расцветку этой же вещи
+          var c = colors[i];
+          btns.forEach(function (x) { x.classList.remove("on"); });
+          btns[i].classList.add("on");
+          name.textContent = c.label;
+          // свои кадры у расцветки заданы полем images (пустое — значит кадр один);
+          // если поля нет, расцветка снята кадрами самой вещи
+          gallery(c.image || it.image, "images" in c ? c.images : it.images);
+        }
+        btns.forEach(function (b, i) {
+          b.onclick = function () {
+            var c = colors[i];
+            // расцветка снята отдельной карточкой (своя цена и свой артикул) —
+            // уходим на неё; иначе просто меняем кадры здесь
+            if (c.item && c.item !== it.id) {
+              location.href = "product.html?id=" + c.item + "&color=" + c.id;
+              return;
+            }
+            show(i);
+          };
+        });
+        var want = new URLSearchParams(location.search).get("color");
+        var start = 0;
+        colors.forEach(function (c, i) {                    // сначала — расцветка этой вещи
+          if (c.item === it.id) start = i;
+        });
+        colors.forEach(function (c, i) {                    // затем — то, что просили ссылкой
+          if (c.id === want && (!c.item || c.item === it.id)) start = i;
+        });
+        show(start);
+      }
+    }
     document.querySelector("[data-title]").textContent = it.title;
     document.querySelector("[data-price]").textContent = eur(it.price);
     document.querySelector("[data-lead]").textContent = it.lead;
