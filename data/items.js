@@ -278,7 +278,17 @@ window.NNV_DATA = {
       lead: "The same strict shape, poured in graphite.",
       desc: "Structured trapeze bag in graphite navy patent leather, the third colour of the frill family. Flap with sculpted frills, bow on the handle, silver metal padlock and riveted silver logo plate. Side zipper, real leather grain under the lacquer.",
       image: "img/bag-frill-navy/main.webp", images: [],
-      colors: [{ id: "powder", label: "Powder pink", swatch: "#D9BEC0", item: "bag-frill", image: "img/p17.webp" }, { id: "mustard", label: "Mustard", swatch: "#E8B45C", item: "bag-frill-yellow", image: "img/bag-frill-yellow/main.webp" }, { id: "graphite", label: "Graphite", swatch: "#484B54", item: "bag-frill-navy", image: "img/bag-frill-navy/main.webp" }] }
+      colors: [{ id: "powder", label: "Powder pink", swatch: "#D9BEC0", item: "bag-frill", image: "img/p17.webp" }, { id: "mustard", label: "Mustard", swatch: "#E8B45C", item: "bag-frill-yellow", image: "img/bag-frill-yellow/main.webp" }, { id: "graphite", label: "Graphite", swatch: "#484B54", item: "bag-frill-navy", image: "img/bag-frill-navy/main.webp" }] },
+    { id: "longsleeve-angels", title: "Angels Longsleeve Grey", category: "clothes",
+      price: 145, colorGroup: "grey", sku: "NNV0121A",
+      lead: "A halo left in the grey.",
+      desc: "Boxy longsleeve in heavyweight grey melange jersey with a ribbed crew neck, dropped shoulder and a wide straight sleeve. The print sits one shade darker than the cloth: two winged figures drifting across the shoulders and collar, a thin halo ellipse under them, and the NNV mark laid over a broad brush smudge at the chest. Printed tone on tone, so the graphic reads only in raking light.",
+      image: "img/longsleeve-angels/main.webp", images: ["img/longsleeve-angels/f2.webp", "img/longsleeve-angels/f3.webp", "img/longsleeve-angels/f4.webp", "img/longsleeve-angels/f5.webp", "img/longsleeve-angels/f6.webp"] },
+    { id: "charm-bird", title: "Crowned Bird Bag Charm", category: "accessories",
+      price: 85, colorGroup: "lilac", sku: "NNV0317A",
+      lead: "A glass bird with its own keys.",
+      desc: "Bag charm on a lavender velvet ribbon tied into a loose bow with two burgundy pompoms. A hand-blown glass bird with a milky frosted core wears a tiny clear crown; beside it hang a mustard leather tag, a brass key and a small gold coin. Gold swivel clasp, clips to any handle.",
+      image: "img/charm-bird/main.webp", images: [] }
   ]
 };
 
