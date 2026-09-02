@@ -304,7 +304,12 @@ window.NNV_DATA = {
       price: 290, colorGroup: "brown", sku: "NNV0122A",
       lead: "A trouser waist over four flying panels.",
       desc: "Floor-length skirt in heavy tobacco wool suiting. The top is built like tailored trousers: flat waistband, exposed zip fly, a pressed crease down the front. Below, deep knife pleats are stitched flat and then left open — three slits, four panels, each hem cut to a sharp point. Matte black inner layer shows through the openings.",
-      image: "img/skirt-pleat/main.webp", images: ["img/skirt-pleat/f2.webp", "img/skirt-pleat/f3.webp", "img/skirt-pleat/f4.webp", "img/skirt-pleat/f5.webp", "img/skirt-pleat/f6.webp"] }
+      image: "img/skirt-pleat/main.webp", images: ["img/skirt-pleat/f2.webp", "img/skirt-pleat/f3.webp", "img/skirt-pleat/f4.webp", "img/skirt-pleat/f5.webp", "img/skirt-pleat/f6.webp"] },
+    { id: "belt-basque", title: "Pompom Basque Belt", category: "accessories",
+      price: 140, colorGroup: "brown", sku: "NNV0320A",
+      lead: "A belt that brings its own shirt.",
+      desc: "Wide corset belt in tan basket-woven leather, mounted over a white cotton shirting basque that flares below the hip like an untucked hem. A snow-white fur pompom sits at the centre front; fine teal-edged piping runs along both edges of the leather band. Hook closure at the back.",
+      image: "img/belt-basque/main.webp", images: [] }
   ]
 };
 
