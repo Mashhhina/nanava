@@ -348,7 +348,7 @@ window.NNV_DATA = {
       price: 160, colorGroup: "brown", sku: "NNV0321A",
       lead: "Two ends, two different toys.",
       desc: "Hand-knitted scarf in chunky chocolate-brown wool: a wide braided cable runs down the centre between columns of rib. From each end hangs a short braided cord, and the two cords finish differently — one with a brown fur pom-pom carrying a pale pink inset with our star embroidered in it, the other with a small knitted ball in a marigold, grey and cream check.",
-      image: "img/scarf-pompom/main.webp", images: ["img/scarf-pompom/f2.webp", "img/scarf-pompom/f3.webp"],
+      image: "img/scarf-pompom/main.webp", images: ["img/scarf-pompom/f2.webp"],
       process: [{ src: "img/process/lineup-01.webp", cap: "Season line-up FW 26/27 — the looks this piece was drawn into" }] },
     { id: "case-heart", title: "Nesting Heart Keyring", category: "accessories",
       price: 130, colorGroup: "green", sku: "NNV0322A",
