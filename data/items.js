@@ -345,7 +345,13 @@ window.NNV_DATA = {
       price: 65, colorGroup: "green", sku: "NNV0323A",
       lead: "A heart that got out.",
       desc: "Flat cast charm in emerald-green metal: a smiling heart with a feathered wing on each side and short rays around the top, NANAVA below in chunky hand-drawn capitals. One solid silhouette with a raised outline, the whole drawing pressed into the metal.",
-      image: "img/charm-wings/main.webp", images: ["img/charm-wings/f2.webp", "img/charm-wings/f3.webp", "img/charm-wings/f4.webp"] }
+      image: "img/charm-wings/main.webp", images: ["img/charm-wings/f2.webp", "img/charm-wings/f3.webp", "img/charm-wings/f4.webp"] },
+    { id: "sweater-harbour", title: "Harbour Line Sweater", category: "clothes",
+      price: 290, colorGroup: "purple", sku: "NNV0127A",
+      lead: "A harbour drawn straight into the knit.",
+      desc: "Slim crew-neck sweater in fine-gauge wool jacquard. The whole garment is one continuous knitted drawing of a harbour: a grid of small irregular rectangles across the chest and shoulders, a pale panel in the middle crossed by long horizontal lines with sails hanging inside it, a solid band across the hem carrying a small boat, and sleeves striped in the ground colour with the same lines running across them. Every contour is knitted in intarsia, one to two stitches thick and honestly uneven, never printed. Ribbed collar, cuffs and hem band, and a cursive signature embroidered on the right chest. Two colourways: violet and black with acid-green and teal lines and NNV knitted into the collar band, and charcoal with wine lines, a lilac block and a green hem.",
+      image: "img/sweater-harbour/main.webp", images: ["img/sweater-harbour/f2.webp", "img/sweater-harbour/f3.webp", "img/sweater-harbour/f4.webp", "img/sweater-harbour/f5.webp", "img/sweater-harbour/f6.webp"],
+      colors: [{ id: "violet", label: "Violet", swatch: "#4A3E7A", image: "img/sweater-harbour/main.webp", images: ["img/sweater-harbour/f2.webp", "img/sweater-harbour/f3.webp", "img/sweater-harbour/f4.webp", "img/sweater-harbour/f5.webp", "img/sweater-harbour/f6.webp"] }
   ]
 };
 
