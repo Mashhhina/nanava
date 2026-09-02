@@ -417,6 +417,178 @@ footer { border-top: 1px solid var(--line); margin-top: 20px; }
 .hm-figure--sketch .hm-head { padding-bottom: 10px; }
 
 /* ==================================================================
+   МОБИЛЬНАЯ ВЁРСТКА (аудит 28.08, refs/mobile-audit)
+   Только добавления в конце файла — правила выше не переписаны,
+   десктоп (>600px) не затронут.
+   ================================================================== */
+
+/* ---------- шапка: две строки, ≤600 ----------
+   На 375 в одну строку не влезает: слева меню ~217, логотип 136,
+   справа HELP + EN/BY + BAG ~105 → 476 при ширине 375 (P0: BAG за краем).
+   Раскладываем в две строки: [логотип | HELP EN/BY BAG] / [меню].
+   Бургер не нужен — всё помещается, в т.ч. в белорусской локали
+   (ДАПАМОГА / КОШЫК). Высота фиксирована: 44 + 44 = 88px. */
+@media (max-width: 600px) {
+  :root { --topbar-h: 88px; }
+
+  .topbar {
+    height: auto;                 /* высоту задают строки: 44 + 44 = --topbar-h */
+    padding: 0 12px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: 44px 44px;
+    grid-template-areas:
+      "logo right"
+      "menu menu";
+    column-gap: 8px;
+  }
+  .topbar > nav, .topbar > .logo { min-width: 0; }
+
+  .topbar .logo {
+    grid-area: logo;
+    font-size: 15px; letter-spacing: .2em; text-indent: .2em;
+  }
+
+  /* правая группа: HELP · EN/BY · BAG — остаётся одной строкой,
+     BAG всегда прижат к правому краю и видим (P0) */
+  .topbar nav.right { grid-area: right; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+  .topbar nav.right::-webkit-scrollbar { display: none; }
+  /* прижимаем группу вправо через margin, а не justify-content: при переполнении
+     (длинная локаль) контент уезжает вправо и остаётся доступным скроллом */
+  .topbar nav.right { justify-content: flex-start; }
+  .topbar nav.right > :first-child { margin-left: auto; }
+
+  /* левое меню: вторая строка на всю ширину */
+  .topbar nav:not(.right) { grid-area: menu; gap: 14px; overflow-x: auto; scrollbar-width: none; }
+  .topbar nav:not(.right)::-webkit-scrollbar { display: none; }
+
+  /* P3 шрифт 12 вместо 11, P2 тап-зона 44px по высоте */
+  .topbar nav a, .topbar nav button {
+    font-size: 12px;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 4px;                     /* вместо пробела между BAG и (0) — flex его съедает */
+    min-height: 44px; white-space: nowrap; flex: 0 0 auto;
+  }
+  .topbar .lang { display: inline-flex; align-items: center; gap: 2px; flex: 0 0 auto; }
+  .topbar .lang button { min-width: 34px; }
+
+  /* каталог: main перестаёт держать min-content 564px, инструменты переносятся.
+     Здесь, а не в ≤480 — иначе на 481–600 остаётся горизонтальный скролл. */
+  .cat-wrap > * { min-width: 0; }
+  .cat-tools { flex-wrap: wrap; }
+}
+
+/* ---------- телефон: ≤480 ---------- */
+@media (max-width: 480px) {
+
+  /* --- каталог: сайдбар лентой, инструменты в перенос ---
+     Было: aside 564px тянул документ (P0 скролл) и занимал 220px высоты,
+     товары начинались с y=331 (P1). Стало: одна строка 44px со скроллом. */
+  .cat-wrap > * { min-width: 0; }          /* ключ к P0: main перестаёт держать 564 */
+
+  .side {
+    display: flex; align-items: center; gap: 14px;
+    padding: 0 12px; font-size: 12px;
+    white-space: nowrap; overflow-x: auto; scrollbar-width: none;
+    border-bottom: 1px solid var(--line);
+  }
+  .side::-webkit-scrollbar { display: none; }
+  .side h3 { margin: 0; flex: 0 0 auto; font-size: 12px; }
+  .side ul { display: flex; gap: 14px; flex: 0 0 auto; }
+  .side li { margin: 0; }
+  .side li button { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; }
+  .side .designer { flex: 0 0 auto; }
+
+  .cat-tools {
+    flex-wrap: wrap; justify-content: flex-start;
+    gap: 0 14px; padding: 6px 12px 4px; font-size: 12px;
+  }
+  .cat-tools .count { flex: 1 0 100%; margin-right: 0; padding: 6px 0 0; }
+  .cat-tools label { display: inline-flex; align-items: center; min-height: 44px; }
+  .cat-tools select { min-height: 44px; font-size: 12px; }
+  .mfilter { min-width: 0; }
+  .mf-btn { min-height: 44px; font-size: 12px; }
+
+  /* попап моделей: раньше уезжал за левый край (P1).
+     Прибиваем к экрану под шапкой, ширина = экран минус поля. */
+  .mf-pop {
+    position: fixed; z-index: 60;
+    top: calc(var(--topbar-h) + 8px);
+    left: 12px; right: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));
+    gap: 12px 10px;
+    max-height: calc(100vh - var(--topbar-h) - 24px);
+    overflow-y: auto;
+  }
+  .mf-item { width: auto; }
+  .mf-item .mf-face { width: 100%; height: 82px; }
+  .mf-item .nm { font-size: 12px; }
+  .mf-item.all { min-height: 44px; display: flex; align-items: center; font-size: 12px; }
+
+  /* сетка в одну колонку (P1: было 2×282 = 564) */
+  .grid { grid-template-columns: 1fr; }
+  .card .info { padding: 4px 12px 26px; }
+  .card .info .t, .card .info .p { font-size: 13px; }
+
+  /* --- карточка товара: блок покупки выше галереи (P2) ---
+     .pdp-buy разворачиваем в display:contents, чтобы заголовок, цена,
+     размеры и ADD TO BAG стали элементами сетки и встали первым экраном,
+     а аккордеон уехал вниз под описание. */
+  .pdp { grid-template-columns: 1fr; gap: 0; padding: 14px 12px 34px; }
+  .pdp-buy { display: contents; }
+  .pdp-buy h1 { order: 1; font-size: 16px; }
+  .pdp-buy .price { order: 2; font-size: 14px; }
+  .pdp-sizes { order: 3; }
+  .btn-buy { order: 4; }
+  .pdp-buy .added { order: 5; }
+  .pdp-imgs { order: 6; margin-top: 18px; }
+  .pdp-left { order: 7; position: static; margin-top: 24px; font-size: 13px; }
+  .pdp-acc { order: 8; max-width: none; }
+
+  .pdp-sizes button { min-width: 44px; height: 44px; font-size: 12px; }
+  .btn-buy { height: 46px; max-width: none; font-size: 12px; }
+  .pdp-acc summary { padding: 14px 2px; font-size: 12px; }
+  .pdp-acc .bd { font-size: 12px; }
+
+  /* --- корзина --- */
+  .bag-wrap { padding: 14px 12px 40px; gap: 24px; }
+  .bag-wrap > * { min-width: 0; }
+  .bag-item { grid-template-columns: 76px 1fr auto; gap: 12px; }
+  .bag-item .rm { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; }
+  .btn-checkout { height: 46px; font-size: 12px; }
+  .checkout input[type=email] { height: 44px; }
+
+  /* --- главная --- */
+  .hm-slider--cats .hm-slider__items { padding-left: 12px; }
+  .hm-news__form { flex-wrap: wrap; gap: 8px; }
+  .hm-news__form input { width: 100%; height: 44px; }
+  .hm-news__form button { width: 100%; height: 46px; font-size: 12px; }
+  .hm-arrow { padding: 12px 0; }          /* тап-зона ~42px без сдвига макета */
+  .hm-arrow--abs { bottom: 2px; }
+  .sect-h { padding: 22px 12px 12px; font-size: 12px; }
+  .sect-h a { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* --- футер и общие тап-зоны --- */
+  .foot-grid { padding: 26px 12px; }
+  .foot-grid li { margin: 0; }
+  .foot-grid li a, .foot-grid .news button {
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  .news input[type=email] { max-width: none; height: 44px; }
+  .foot-base { padding: 14px 12px 22px; }
+
+  .cookies { flex-wrap: wrap; gap: 10px; padding: 12px; font-size: 12px; }
+  .cookies button { min-height: 44px; }
+  .notice { padding: 28px 20px 24px; }
+  .notice .em, .notice .cl { display: inline-flex; align-items: center; min-height: 44px; }
+
+  /* iOS не зумит форму при фокусе только на 16px.
+     Селекторы точные — у каждого инпута уже есть font-size:12px из своего блока. */
+  .hm-news__form input,
+  .news input[type=email],
+  .checkout input[type=email] { font-size: 16px; }
+}
+
+/* ==================================================================
    ВРЕМЕННО (31.08): все кадры на сайте вдвое ниже.
    Рабочее решение, чтобы на экран влезало больше страницы —
    не дизайн. Блок целиком удаляется одним куском, ничего выше

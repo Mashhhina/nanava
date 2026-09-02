@@ -185,6 +185,8 @@
       (modelOf[id] = modelOf[id] || []).push(m.name);
     });
   });
+  // вещи, снятые без человека (по умолчанию так и снимаем — PLAYBOOK,
+  // «Человек в кадре — только по просьбе»): отдельной карточкой в фильтре
   var unassigned = D.items.filter(function (it) {
     var names = modelOf[it.id] || [];
     return !names.some(function (n) {
