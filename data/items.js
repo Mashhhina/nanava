@@ -356,7 +356,8 @@ window.NNV_DATA = {
       price: 190, colorGroup: "grey", sku: "NNV0130A",
       lead: "A knight rides across the pinstripes.",
       desc: "Relaxed button-down shirt in crisp cotton poplin, white with fine grey, slate and forest-green stripes. Across the whole front, sleeves included, a smoky charcoal knight on horseback is printed over the weave — soft-edged and semi-transparent, so the stripes keep running through the drawing. Button-down collar with a striped inner stand, patch chest pocket, barrel cuffs, curved shirttail hem.",
-      image: "img/shirt-rider-stripe/main.webp", images: ["img/shirt-rider-stripe/f2.webp", "img/shirt-rider-stripe/f3.webp", "img/shirt-rider-stripe/f4.webp", "img/shirt-rider-stripe/f5.webp", "img/shirt-rider-stripe/f6.webp"] }
+      image: "img/shirt-rider-stripe/main.webp", images: ["img/shirt-rider-stripe/f2.webp", "img/shirt-rider-stripe/f3.webp", "img/shirt-rider-stripe/f4.webp", "img/shirt-rider-stripe/f5.webp", "img/shirt-rider-stripe/f6.webp"],
+      process: [{ src: "img/process/board-knight-black.webp", cap: "Black three-thread cotton with knight graphic: ribbed collar and cuffs, embroidery vs print; the lace-hem skirt and the faces tote" }] }
   ]
 };
 
