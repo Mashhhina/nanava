@@ -107,7 +107,7 @@ window.NNV_DATA = {
       price: 130, colorGroup: "green", sku: "NNV0123A",
       lead: "One quiet pocket, washed olive.",
       desc: "Oversized longsleeve in heavyweight cotton jersey, garment-dyed to a faded olive with uneven wash. Dropped shoulders, wide body, ribbed crew neck and cuffs. Patch chest pocket with the NNV monogram embroidered on it in tonal outline — visible only when the light catches it. Woven label at the inside neck.",
-      image: "img/longsleeve-pocket/main.webp", images: [] },
+      image: "img/longsleeve-pocket/main.webp", images: ["img/longsleeve-pocket/f2.webp", "img/longsleeve-pocket/f3.webp", "img/longsleeve-pocket/f4.webp", "img/longsleeve-pocket/f5.webp", "img/longsleeve-pocket/f6.webp"] },
     { id: "longsleeve-smile", title: "Belarusian Smile Longsleeve", category: "clothes",
       price: 140, colorGroup: "black", sku: "NNV0114A",
       lead: "A grin printed in an arc.",
