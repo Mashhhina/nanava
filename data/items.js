@@ -310,7 +310,12 @@ window.NNV_DATA = {
       price: 140, colorGroup: "brown", sku: "NNV0320A",
       lead: "A belt that brings its own shirt.",
       desc: "Wide corset belt in tan basket-woven leather, mounted over a white cotton shirting basque that flares below the hip like an untucked hem. A snow-white fur pompom sits at the centre front; fine teal-edged piping runs along both edges of the leather band. Hook closure at the back.",
-      image: "img/belt-basque/main.webp", images: [] }
+      image: "img/belt-basque/main.webp", images: [] },
+    { id: "dress-ruched", title: "Ruched Knit Maxi Dress", category: "clothes",
+      price: 320, colorGroup: "grey", sku: "NNV0123A",
+      lead: "A drawstring drawn down the front.",
+      desc: "Floor-length dress in brushed grey wool-mohair marl. The centre front is gathered on a hidden drawstring into dense soft folds that narrow at the waist and open again over the hip. Sculpted puff shoulders, narrow sleeves with long ribbed cuffs, a seam at the hip releasing an asymmetric handkerchief hem.",
+      image: "img/dress-ruched/main.webp", images: ["img/dress-ruched/f2.webp", "img/dress-ruched/f3.webp", "img/dress-ruched/f4.webp", "img/dress-ruched/f5.webp", "img/dress-ruched/f6.webp"] }
   ]
 };
 
