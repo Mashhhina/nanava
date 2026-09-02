@@ -320,7 +320,12 @@ window.NNV_DATA = {
       price: 280, colorGroup: "grey", sku: "NNV0125A",
       lead: "Grey slips into sand, the hem opens.",
       desc: "Long slip dress on fine spaghetti straps: soft marl jersey through the body, dip-dyed from heather grey into warm sand across the middle with no seam and no hard line. Below the hips the fabric turns to bonded jersey and the hem is cut, not sewn — a wide arch opens up through the centre and a narrow slit through each panel, every edge left raw so the cut section reads as solid colour.",
-      image: "img/dress-dipdye/main.webp", images: ["img/dress-dipdye/f2.webp", "img/dress-dipdye/f3.webp", "img/dress-dipdye/f4.webp", "img/dress-dipdye/f5.webp"] }
+      image: "img/dress-dipdye/main.webp", images: ["img/dress-dipdye/f2.webp", "img/dress-dipdye/f3.webp", "img/dress-dipdye/f4.webp", "img/dress-dipdye/f5.webp"] },
+    { id: "tee-teeth", title: "Teeth Oversized T-Shirt", category: "clothes",
+      price: 130, colorGroup: "brown", sku: "NNV0126A",
+      lead: "Twelve teeth, drawn in marker.",
+      desc: "Oversized boxy t-shirt in heavyweight taupe cotton jersey. High mock neck cut raw at the top, dropped shoulders, rolled sleeve cuffs, raw hem with a side split. Across the chest — twelve hand-drawn teeth in three rows: black marker, pink and outline, several sitting on torn off-white painted grounds, with the NNV scribble and a row of tally marks. The back is left plain.",
+      image: "img/tee-teeth/main.webp", images: ["img/tee-teeth/f2.webp", "img/tee-teeth/f3.webp", "img/tee-teeth/f4.webp", "img/tee-teeth/f5.webp", "img/tee-teeth/f6.webp"] }
   ]
 };
 
