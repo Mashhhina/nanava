@@ -103,6 +103,11 @@ window.NNV_DATA = {
       desc: "Short A-line mini dress densely covered in midnight-navy feathers with dark plum undertones. Shoulder straps are polished stainless-steel watch bracelets with working clasps; white feather tufts mark their base. On the chest — the hand-scribbled emblem patch, stitched as drawn.",
       image: "img/p19.webp", images: ["img/dress-feather/m1.webp", "img/dress-feather/m2.webp", "img/dress-feather/m3.webp", "img/dress-feather/m4.webp", "img/dress-feather/m5.webp", "img/dress-feather/m6.webp"],
       process: [{ src: "img/process/lineup-01.webp", cap: "Season line-up FW 26/27 — the looks this piece was drawn into" }] },
+    { id: "longsleeve-pocket", title: "NNV Pocket Longsleeve", category: "clothes",
+      price: 130, colorGroup: "green", sku: "NNV0123A",
+      lead: "One quiet pocket, washed olive.",
+      desc: "Oversized longsleeve in heavyweight cotton jersey, garment-dyed to a faded olive with uneven wash. Dropped shoulders, wide body, ribbed crew neck and cuffs. Patch chest pocket with the NNV monogram embroidered on it in tonal outline — visible only when the light catches it. Woven label at the inside neck.",
+      image: "img/longsleeve-pocket/main.webp", images: [] },
     { id: "longsleeve-smile", title: "Belarusian Smile Longsleeve", category: "clothes",
       price: 140, colorGroup: "black", sku: "NNV0114A",
       lead: "A grin printed in an arc.",
@@ -311,11 +316,11 @@ window.NNV_DATA = {
       lead: "A belt that brings its own shirt.",
       desc: "Wide corset belt in tan basket-woven leather, mounted over a white cotton shirting basque that flares below the hip like an untucked hem. A snow-white fur pompom sits at the centre front; fine teal-edged piping runs along both edges of the leather band. Hook closure at the back.",
       image: "img/belt-basque/main.webp", images: [] },
-    { id: "dress-ruched", title: "Ruched Knit Maxi Dress", category: "clothes",
-      price: 320, colorGroup: "grey", sku: "NNV0123A",
-      lead: "A drawstring drawn down the front.",
-      desc: "Floor-length dress in brushed grey wool-mohair marl. The centre front is gathered on a hidden drawstring into dense soft folds that narrow at the waist and open again over the hip. Sculpted puff shoulders, narrow sleeves with long ribbed cuffs, a seam at the hip releasing an asymmetric handkerchief hem.",
-      image: "img/dress-ruched/main.webp", images: ["img/dress-ruched/f2.webp", "img/dress-ruched/f3.webp", "img/dress-ruched/f4.webp", "img/dress-ruched/f5.webp", "img/dress-ruched/f6.webp"] }
+    { id: "dress-dipdye", title: "Dip-Dye Arch-Hem Dress", category: "clothes",
+      price: 280, colorGroup: "grey", sku: "NNV0125A",
+      lead: "Grey slips into sand, the hem opens.",
+      desc: "Long slip dress on fine spaghetti straps: soft marl jersey through the body, dip-dyed from heather grey into warm sand across the middle with no seam and no hard line. Below the hips the fabric turns to bonded jersey and the hem is cut, not sewn — a wide arch opens up through the centre and a narrow slit through each panel, every edge left raw so the cut section reads as solid colour.",
+      image: "img/dress-dipdye/main.webp", images: ["img/dress-dipdye/f2.webp", "img/dress-dipdye/f3.webp", "img/dress-dipdye/f4.webp", "img/dress-dipdye/f5.webp"] }
   ]
 };
 
