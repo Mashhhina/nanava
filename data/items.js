@@ -325,7 +325,12 @@ window.NNV_DATA = {
       price: 130, colorGroup: "brown", sku: "NNV0126A",
       lead: "Twelve teeth, drawn in marker.",
       desc: "Oversized boxy t-shirt in heavyweight taupe cotton jersey. High mock neck cut raw at the top, dropped shoulders, rolled sleeve cuffs, raw hem with a side split. Across the chest — twelve hand-drawn teeth in three rows: black marker, pink and outline, several sitting on torn off-white painted grounds, with the NNV scribble and a row of tally marks. The back is left plain.",
-      image: "img/tee-teeth/main.webp", images: ["img/tee-teeth/f2.webp", "img/tee-teeth/f3.webp", "img/tee-teeth/f4.webp", "img/tee-teeth/f5.webp", "img/tee-teeth/f6.webp"] }
+      image: "img/tee-teeth/main.webp", images: ["img/tee-teeth/f2.webp", "img/tee-teeth/f3.webp", "img/tee-teeth/f4.webp", "img/tee-teeth/f5.webp", "img/tee-teeth/f6.webp"] },
+    { id: "scarf-pompom", title: "Pompom Cable Scarf Brown", category: "accessories",
+      price: 160, colorGroup: "brown", sku: "NNV0321A",
+      lead: "Two ends, two different toys.",
+      desc: "Hand-knitted scarf in chunky chocolate-brown wool: a wide braided cable runs down the centre between columns of rib. From each end hangs a short braided cord, and the two cords finish differently — one with a brown fur pom-pom carrying a pale pink inset with our star embroidered in it, the other with a small knitted ball in a marigold, grey and cream check.",
+      image: "img/scarf-pompom/main.webp", images: ["img/scarf-pompom/f2.webp", "img/scarf-pompom/f3.webp"] }
   ]
 };
 
