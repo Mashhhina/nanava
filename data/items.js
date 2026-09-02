@@ -330,7 +330,22 @@ window.NNV_DATA = {
       price: 160, colorGroup: "brown", sku: "NNV0321A",
       lead: "Two ends, two different toys.",
       desc: "Hand-knitted scarf in chunky chocolate-brown wool: a wide braided cable runs down the centre between columns of rib. From each end hangs a short braided cord, and the two cords finish differently — one with a brown fur pom-pom carrying a pale pink inset with our star embroidered in it, the other with a small knitted ball in a marigold, grey and cream check.",
-      image: "img/scarf-pompom/main.webp", images: ["img/scarf-pompom/f2.webp", "img/scarf-pompom/f3.webp"] }
+      image: "img/scarf-pompom/main.webp", images: ["img/scarf-pompom/f2.webp", "img/scarf-pompom/f3.webp"] },
+    { id: "case-heart", title: "NNV Heart Case", category: "objects",
+      price: 110, colorGroup: "green", sku: "NNV0402A",
+      lead: "Three hearts, one inside the other.",
+      desc: "Heart-shaped case in emerald-green metal with a lift-off lid. N N V is engraved across the top in a wobbly hand-drawn line, and small scratched doodles run around the side wall. Inside it holds two smaller heart cases nested one within the other; the smallest opens onto a bare polished steel interior. Every mark is pressed into the metal itself, nothing printed.",
+      image: "img/case-heart/main.webp", images: ["img/case-heart/f2.webp", "img/case-heart/f3.webp", "img/case-heart/f4.webp"] },
+    { id: "keyring-hearts", title: "Doodle Heart Keyring", category: "accessories",
+      price: 95, colorGroup: "green", sku: "NNV0322A",
+      lead: "A pocketful of drawings.",
+      desc: "Split-ring keyring in emerald-green metal hung with five charms: a daisy with cut petals and a spiral centre, a small key, a long flat tag engraved edge to edge with children's drawings — sun, house, heart, little figures — and two small hearts, one marked N, one V. All of it engraved into the metal, all of it the same green.",
+      image: "img/keyring-hearts/main.webp", images: ["img/keyring-hearts/f2.webp", "img/keyring-hearts/f3.webp", "img/keyring-hearts/f4.webp"] },
+    { id: "charm-wings", title: "Winged Heart Charm", category: "accessories",
+      price: 65, colorGroup: "green", sku: "NNV0323A",
+      lead: "A heart that got out.",
+      desc: "Flat cast charm in emerald-green metal: a smiling heart with a feathered wing on each side and short rays around the top, NANAVA below in chunky hand-drawn capitals. One solid silhouette with a raised outline, the whole drawing pressed into the metal.",
+      image: "img/charm-wings/main.webp", images: ["img/charm-wings/f2.webp", "img/charm-wings/f3.webp", "img/charm-wings/f4.webp"] }
   ]
 };
 
