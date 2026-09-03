@@ -201,8 +201,13 @@
     return (m.items || []).filter(function (id) { return !!byId[id]; }).length;
   }
   function faceHTML(m, cls) {
+    /* Лицо режется в тот же файл img/models/<имя>/face.webp, поэтому к URL
+       приклеиваем время сборки faces.js — иначе после пересборки в фильтре
+       остаётся прежнее лицо из кеша браузера (правка 03.09). */
+    var v = String((window.NNV_FACES && window.NNV_FACES.generated) || "").replace(/\D/g, "");
     return m.face
-      ? '<span class="' + cls + '"><img src="' + m.face + '" alt="" loading="lazy"></span>'
+      ? '<span class="' + cls + '"><img src="' + m.face + (v ? "?v=" + v : "") +
+        '" alt="" loading="lazy"></span>'
       : '<span class="' + cls + ' none"></span>';
   }
   function renderModelFilter() {

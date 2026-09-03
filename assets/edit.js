@@ -290,7 +290,7 @@
   }
 
   async function edit(img, zones, prompt, refs, mode, size, log) {
-    var W = img.naturalWidth, H = img.naturalHeight;
+    var W = img.naturalWidth || img.width, H = img.naturalHeight || img.height;
     var full = cv(W, H); full.getContext("2d").drawImage(img, 0, 0);
     var jobs = plan(zones, prompt, refs);
     jobs.forEach(function (j) { j.mask = j.zones.length ? unionMask(j.zones, W, H) : null; });
@@ -394,10 +394,18 @@
   var S = null, ui = null;
   function relSrc(img) { return new URL(img.currentSrc || img.src, location.href).pathname.replace(/^\//, ""); }
 
+  /* С чего генерим. Пока правок не было — исходный кадр сайта; после
+     «Продолжить с этим» — холст предыдущего результата, и следующая правка
+     ложится поверх него (правка 03.09: раньше каждый проход начинался
+     заново от исходной картинки, и работать по шагам было нельзя). */
+  function srcCanvas() { return (S && S.work) || (S && S.img); }
+  function dimOf(o) { return [o.naturalWidth || o.width, o.naturalHeight || o.height]; }
+
   function open(img) {
     hide();
     S = { img: img, src: relSrc(img), zones: [], sel: null, refs: [], vars: [],
-          pick: null, tool: "rect", brush: 44, busy: false, n: 0 };
+          pick: null, tool: "rect", brush: 44, busy: false, n: 0,
+          work: null, step: 0 };            // work — кадр после предыдущего шага
     if (!ui) build();
     ui.root.hidden = false;
     ui.base.onload = fitCanvas;
@@ -453,8 +461,11 @@
           '<div class="nnv-ed__vars"></div>' +
           '<div class="nnv-ed__row" style="margin-top:8px">' +
             '<button class="nnv-ed__apply">Применить</button>' +
+            '<button class="nnv-ed__next">Продолжить с этим</button>' +
             '<button class="nnv-ed__save muted">Скачать</button>' +
             '<button class="nnv-ed__again muted">Ещё раз</button></div></div>' +
+        '<div class="nnv-ed__stepbox" hidden><span class="nnv-ed__step"></span>' +
+          '<button class="nnv-ed__orig muted">К оригиналу</button></div>' +
         '<div class="nnv-ed__galbox" hidden><h4>Версии этого кадра</h4>' +
           '<div class="nnv-ed__gal"></div>' +
           '<button class="nnv-ed__use muted" hidden>Поставить на сайт</button></div>' +
@@ -473,6 +484,8 @@
            cost: g(".nnv-ed__cost"), spend: g(".nnv-ed__spend"),
            log: g(".nnv-ed__log"), varsBox: g(".nnv-ed__varsbox"),
            vars: g(".nnv-ed__vars"), apply: g(".nnv-ed__apply"), again: g(".nnv-ed__again"),
+           next: g(".nnv-ed__next"), stepBox: g(".nnv-ed__stepbox"),
+           step: g(".nnv-ed__step"), orig: g(".nnv-ed__orig"),
            down: g(".nnv-ed__save"),
            keys: g(".nnv-ed__keysbtn"), hint: g(".nnv-ed__tools .hint"),
            galBox: g(".nnv-ed__galbox"), gal: g(".nnv-ed__gal"), use: g(".nnv-ed__use"),
@@ -677,7 +690,7 @@
 
   function planSize() {
     if (!S.zones.length) return "2K";                 // правим весь кадр — не мельчим
-    var W = S.img.naturalWidth, H = S.img.naturalHeight;
+    var d = dimOf(srcCanvas()), W = d[0], H = d[1];
     var x0 = 1, y0 = 1, x1 = 0, y1 = 0;
     S.zones.forEach(function (z) {
       x0 = Math.min(x0, z.rect[0]); y0 = Math.min(y0, z.rect[1]);
@@ -769,7 +782,7 @@
     try {
       for (var v = 1; v <= n; v++) {
         log("вариант " + v + "/" + n);
-        made.push(await edit(S.img, zones, task, refs,
+        made.push(await edit(srcCanvas(), zones, task, refs,
                              zones.length ? "crop" : "auto", "auto", log));
       }
     } catch (e) {
@@ -813,6 +826,45 @@
     S.pick = null; ui.after.hidden = true; ui.split.hidden = true;
     ui.tagA.hidden = ui.tagB.hidden = true;
     ui.cv.classList.remove("hide"); render();
+  }
+
+  /* Работа по шагам: результат становится новой базой, не уезжая на сайт.
+     Кадр остаётся в браузере, пока не нажали «Применить», — можно править
+     зону за зоной и сохранить один раз. */
+  function clearZones() { S.zones = []; S.sel = null; paintZones(); render(); cost(); }
+  function stepOn() {
+    if (!S || S.pick === null) return say("сначала выберите вариант", true);
+    S.work = S.vars[S.pick];
+    S.step += 1;
+    S.vars = []; S.pick = null;
+    ui.vars.innerHTML = ""; ui.varsBox.hidden = true;
+    unpreview();
+    ui.base.onload = fitCanvas;
+    ui.base.src = S.work.toDataURL("image/png");
+    clearZones();
+    showStep();
+    say("шаг " + S.step + ": правки идут поверх этого кадра. «Применить» — " +
+        "записать его на сайт, «К оригиналу» — начать заново.");
+  }
+  function backToOriginal() {
+    if (!S) return;
+    S.work = null; S.step = 0; S.vars = []; S.pick = null;
+    ui.vars.innerHTML = ""; ui.varsBox.hidden = true;
+    unpreview();
+    ui.base.onload = fitCanvas;
+    ui.base.src = "/" + S.src + "?t=" + Date.now();
+    clearZones();
+    showStep();
+    say("вернулись к исходному кадру");
+  }
+  function showStep() {
+    if (!ui.stepBox) return;
+    ui.stepBox.hidden = !S || !S.step;
+    if (S && S.step) ui.step.textContent = "правок поверх кадра: " + S.step + " ";
+    if (S) {                                  // размер показываем от текущей базы
+      var d = dimOf(srcCanvas());
+      ui.size.textContent = d[0] + "×" + d[1];
+    }
   }
 
   /* ---------- галерея версий кадра ----------
@@ -926,9 +978,9 @@
   async function download() {
     /* Забрать кадр файлом — когда токена GitHub нет, а правку надо отдать
        тому, кто выкладывает. Имя как у кадра на сайте, чтобы не путаться. */
-    if (S.pick === null || S.busy) return;
+    if (S.busy || (S.pick === null && !S.work)) return;
     try {
-      var data = await toWebp(S.vars[S.pick], quality(S.src));
+      var data = await toWebp(S.pick !== null ? S.vars[S.pick] : S.work, quality(S.src));
       var a = el("a");
       a.href = data; a.download = S.src.split("/").pop();
       document.body.appendChild(a); a.click(); a.remove();
@@ -957,12 +1009,13 @@
 
   async function apply() {
     if (S.ver) return useVersion();                   // выбрана готовая версия из галереи
-    if (S.pick === null || S.busy) return say("сначала выберите вариант", true);
+    if (S.busy) return;
+    if (S.pick === null && !S.work) return say("сначала выберите вариант", true);
     await PROBE;
     if (!LOCAL && !A.github && !proxy()) return say("нет канала записи: прокси или свой токен GitHub — кнопка «Ключи»", true);
     busy(true, LOCAL ? "Пишем…" : "Коммитим…");
     try {
-      var data = await toWebp(S.vars[S.pick], quality(S.src));
+      var data = await toWebp(S.pick !== null ? S.vars[S.pick] : S.work, quality(S.src));
       var msg = "правка кадра " + S.src + ": " +
         (ui.prompt.value.trim() || S.zones.map(function (z) { return z.prompt; }).filter(Boolean).join("; ") || "точечная");
       var res = await put(S.src, data, msg.slice(0, 180));
@@ -1053,7 +1106,7 @@
 
     ui.tools.addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b || !S) return;
-      if (b.dataset.act === "clear") { S.zones = []; S.sel = null; paintZones(); render(); cost(); return; }
+      if (b.dataset.act === "clear") { clearZones(); return; }
       S.tool = b.dataset.tool;
       Array.prototype.forEach.call(ui.tools.querySelectorAll("[data-tool]"), function (t) {
         t.classList.toggle("on", t === b);
@@ -1071,6 +1124,8 @@
       unpreview();
       generate.apply(null, (S && S.last) || []);
     };
+    ui.next.onclick = stepOn;
+    ui.orig.onclick = backToOriginal;
     ui.keys.onclick = keysPanel;
     ui.root.querySelector(".nnv-ed__close").onclick = close;
     ui.prompt.oninput = cost;

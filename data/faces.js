@@ -1,7 +1,7 @@
 // Модели для фильтра в каталоге. НЕ ПРАВИТЬ РУКАМИ:
 //     python3 scripts/build_models.py
 window.NNV_FACES = {
-  "generated": "2026-08-27 21:56",
+  "generated": "2026-09-03 15:34",
   "models": [
     {
       "name": "katya",
@@ -36,6 +36,7 @@ window.NNV_FACES = {
       "kind": "person",
       "face": "img/models/lina/face.webp",
       "items": [
+        "beret-crystal",
         "skirt-dipdye",
         "tote-ghost"
       ]

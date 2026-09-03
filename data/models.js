@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-08-27 21:56",
+  "generated": "2026-09-03 15:34",
   "unknown": [],
   "models": [
     {
@@ -135,6 +135,7 @@ window.NNV_MODELS = {
       "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, short dark brown hair cut as a chin-length bob with a short blunt fringe, light green-grey eyes, thick straight dark eyebrows, very full lips with a prominent lower lip, oval face with a defined jaw and high cheekbones, light freckles across the nose and cheeks, pale light skin, no makeup. The reference photos show her with different hair (braids, curls, pixie): use ONLY the short dark brown bob with blunt fringe, and keep the facial identity identical across all references. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
+        "beret-crystal",
         "skirt-dipdye",
         "tote-ghost"
       ],
@@ -795,13 +796,13 @@ window.NNV_MODELS = {
           "path": "img/hoodie-horns/m1.webp",
           "label": "m1",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/hoodie-horns/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": false
+          "ref": true
         },
         {
           "path": "img/hoodie-horns/f3.webp",
@@ -841,7 +842,7 @@ window.NNV_MODELS = {
         }
       ],
       "dog": "f7",
-      "refsCustom": false
+      "refsCustom": true
     },
     {
       "id": "skirt-lace",
@@ -856,16 +857,10 @@ window.NNV_MODELS = {
           "ref": true
         },
         {
-          "path": "img/skirt-lace/m1.webp",
-          "label": "m1",
-          "exists": true,
-          "ref": true
-        },
-        {
           "path": "img/skirt-lace/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": false
+          "ref": true
         },
         {
           "path": "img/skirt-lace/f3.webp",
@@ -911,13 +906,13 @@ window.NNV_MODELS = {
           "path": "img/tee-riders/m1.webp",
           "label": "m1",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/tee-riders/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": false
+          "ref": true
         },
         {
           "path": "img/tee-riders/f3.webp",
@@ -945,7 +940,7 @@ window.NNV_MODELS = {
         }
       ],
       "dog": "",
-      "refsCustom": false
+      "refsCustom": true
     },
     {
       "id": "shirt-fangs",
@@ -1194,6 +1189,52 @@ window.NNV_MODELS = {
         {
           "path": "img/dress-feather/m6.webp",
           "label": "m6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "longsleeve-pocket",
+      "title": "NNV Pocket Longsleeve",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/longsleeve-pocket/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-pocket/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-pocket/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-pocket/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-pocket/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-pocket/f6.webp",
+          "label": "f6",
           "exists": true,
           "ref": false
         }
@@ -1790,6 +1831,40 @@ window.NNV_MODELS = {
       "refsCustom": false
     },
     {
+      "id": "belt-graffiti",
+      "title": "Graffiti Patch Leather Belt",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/belt-graffiti/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/belt-graffiti/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/belt-graffiti/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/belt-graffiti/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
       "id": "belt-holster",
       "title": "Holster Velvet Belt",
       "category": "accessories",
@@ -1965,13 +2040,13 @@ window.NNV_MODELS = {
           "path": "img/sweater-shadow/m1.webp",
           "label": "m1",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/sweater-shadow/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": false
+          "ref": true
         },
         {
           "path": "img/sweater-shadow/f3.webp",
@@ -1994,6 +2069,40 @@ window.NNV_MODELS = {
         {
           "path": "img/sweater-shadow/f6.webp",
           "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": true
+    },
+    {
+      "id": "fan-rider",
+      "title": "Rider Hand Fan",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/fan-rider/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/fan-rider/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/fan-rider/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/fan-rider/f4.webp",
+          "label": "f4",
           "exists": true,
           "ref": false
         }
@@ -2097,7 +2206,7 @@ window.NNV_MODELS = {
           "path": "img/dress-moon/f2.webp",
           "label": "f2",
           "exists": true,
-          "ref": true
+          "ref": false
         },
         {
           "path": "img/dress-moon/f3.webp",
@@ -2109,7 +2218,7 @@ window.NNV_MODELS = {
           "path": "img/dress-moon/f4.webp",
           "label": "f4",
           "exists": true,
-          "ref": false
+          "ref": true
         },
         {
           "path": "img/dress-moon/f5.webp",
@@ -2119,6 +2228,704 @@ window.NNV_MODELS = {
         },
         {
           "path": "img/dress-moon/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": true
+    },
+    {
+      "id": "ring-cross",
+      "title": "Cross Signet Ring",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/ring-cross/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-cross/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-cross/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/ring-cross/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "ring-facet",
+      "title": "Boulder Facet Ring",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/ring-facet/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-facet/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-facet/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/ring-facet/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "ring-stones",
+      "title": "Blackened Eye Band",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/ring-stones/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-stones/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-stones/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/ring-stones/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "ring-letters",
+      "title": "Graffiti Letter Signet Ring",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/ring-letters/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-letters/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/ring-letters/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/ring-letters/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "cap-rider",
+      "title": "Rider Studded Cap Red",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/cap-rider/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/cap-rider/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/cap-rider/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "body-crystal",
+      "title": "Crystal Mesh Bodysuit",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/body-crystal/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/body-crystal/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/body-crystal/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/body-crystal/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/body-crystal/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/body-crystal/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "bomber-wing",
+      "title": "Wing Organza Bomber Black",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/bomber-wing/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bomber-wing/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/bomber-wing/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bomber-wing/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bomber-wing/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/bomber-wing/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "gloves-carabiner",
+      "title": "Carabiner Leather Gloves",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/gloves-carabiner/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/gloves-carabiner/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/gloves-carabiner/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "bag-frill-navy",
+      "title": "Frill Patent Bag Graphite",
+      "category": "bags",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/bag-frill-navy/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "longsleeve-angels",
+      "title": "Angels Longsleeve Grey",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/longsleeve-angels/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-angels/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/longsleeve-angels/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-angels/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-angels/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/longsleeve-angels/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "charm-bird",
+      "title": "Crowned Bird Bag Charm",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/charm-bird/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "beret-crystal",
+      "title": "Crystal Beret",
+      "category": "accessories",
+      "model": "lina",
+      "frames": [
+        {
+          "path": "img/beret-crystal/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/beret-crystal/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/beret-crystal/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "skirt-pleat",
+      "title": "Open-Pleat Tailored Skirt",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/skirt-pleat/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/skirt-pleat/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/skirt-pleat/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-pleat/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-pleat/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/skirt-pleat/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "belt-basque",
+      "title": "Pompom Basque Belt",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/belt-basque/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "dress-dipdye",
+      "title": "Dip-Dye Arch-Hem Dress",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/dress-dipdye/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-dipdye/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/dress-dipdye/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-dipdye/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/dress-dipdye/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "tee-teeth",
+      "title": "Teeth Oversized T-Shirt",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/tee-teeth/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tee-teeth/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/tee-teeth/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-teeth/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-teeth/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/tee-teeth/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "scarf-pompom",
+      "title": "Pompom Cable Scarf Brown",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/scarf-pompom/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/scarf-pompom/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "case-heart",
+      "title": "Nesting Heart Keyring",
+      "category": "accessories",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/case-heart/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/case-heart/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/case-heart/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/case-heart/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/case-heart/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/case-heart/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "sweater-harbour",
+      "title": "Harbour Line Sweater",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/sweater-harbour/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/sweater-harbour/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/sweater-harbour/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-harbour/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-harbour/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/sweater-harbour/f6.webp",
+          "label": "f6",
+          "exists": true,
+          "ref": false
+        }
+      ],
+      "dog": "",
+      "refsCustom": false
+    },
+    {
+      "id": "shirt-rider-stripe",
+      "title": "Rider Striped Shirt",
+      "category": "clothes",
+      "model": "",
+      "frames": [
+        {
+          "path": "img/shirt-rider-stripe/main.webp",
+          "label": "main",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/shirt-rider-stripe/f2.webp",
+          "label": "f2",
+          "exists": true,
+          "ref": true
+        },
+        {
+          "path": "img/shirt-rider-stripe/f3.webp",
+          "label": "f3",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/shirt-rider-stripe/f4.webp",
+          "label": "f4",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/shirt-rider-stripe/f5.webp",
+          "label": "f5",
+          "exists": true,
+          "ref": false
+        },
+        {
+          "path": "img/shirt-rider-stripe/f6.webp",
           "label": "f6",
           "exists": true,
           "ref": false

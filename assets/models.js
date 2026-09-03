@@ -20,6 +20,18 @@
     });
   }
   function el(html) { var d = document.createElement("div"); d.innerHTML = html; return d.firstElementChild; }
+  /* Картинки моделей лежат по постоянным путям (img/models/<имя>/sheet.webp),
+     поэтому после пересборки браузер показывал прежний файл из кеша — правка
+     03.09: к URL приклеиваем время сборки данных. Меняется только когда
+     данные действительно пересобраны, лишних загрузок нет. */
+  var REV = 0;                            // сколько раз данные обновились на живой странице
+  function bust(u) {
+    if (!u) return u;
+    var v = String(ST.generated || "").replace(/\D/g, "") || String(Date.now());
+    /* generated с точностью до минуты: два «Сделать каноном» подряд дали бы
+       один и тот же URL — поэтому добавляем счётчик обновлений. */
+    return u + (u.indexOf("?") < 0 ? "?" : "&") + "v=" + v + (REV ? "-" + REV : "");
+  }
   function api(path, body) {
     return fetch("/api/" + path, {
       method: body ? "POST" : "GET",
@@ -64,7 +76,7 @@
 
     var refs = m.photos.map(function (p) {
       var used = m.refs.indexOf(p.file) >= 0;
-      return '<figure class="' + (used ? "used" : "") + '"><img src="' + esc(p.url) +
+      return '<figure class="' + (used ? "used" : "") + '"><img src="' + esc(bust(p.url)) +
         '" alt=""><figcaption>' + esc(p.file) + (used ? " ·&nbsp;реф" : "") + '</figcaption></figure>';
     }).join("") || '<span class="empty-note">нет живых фото</span>';
 
@@ -81,7 +93,7 @@
           '<button class="btn" data-edit="' + esc(m.name) + '">Редактировать</button>' +
         '</div>' +
       '</div>' +
-      (m.sheet ? '<div class="sheet"><img src="' + esc(m.sheet) + '" alt="раскадровка ' + esc(m.ru) + '"></div>'
+      (m.sheet ? '<div class="sheet"><img src="' + esc(bust(m.sheet)) + '" alt="раскадровка ' + esc(m.ru) + '"></div>'
                : '<div class="sheet none">раскадровки нет — сгенерить через «Редактировать»</div>') +
       '<div class="mdl-cols">' +
         '<div class="col"><h3>Живые фото и референсы</h3><div class="refs">' + refs + '</div>' +
@@ -405,7 +417,7 @@
       picksBox.innerHTML = all.map(function (p) {
         var on = picked.indexOf(p.file) >= 0;
         return '<figure class="pickable' + (on ? " on" : "") + '" data-f="' + esc(p.file) + '">' +
-          '<img src="' + esc(p.url) + '" alt="">' +
+          '<img src="' + esc(bust(p.url)) + '" alt="">' +
           '<figcaption><span class="mark">' + (on ? "берём" : "не берём") + '</span><br>' +
           esc(p.file) + (p.isNew ? " · новое" : "") + '</figcaption></figure>';
       }).join("") || '<span class="empty-note">фото нет — загрузите несколько</span>';
@@ -521,6 +533,7 @@
   function applyState(state) {
     if (!state) return;
     ST = state;
+    REV += 1;                             // новый URL картинкам, иначе кеш
     render();
   }
 
