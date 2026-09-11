@@ -1,7 +1,7 @@
 // Модели для фильтра в каталоге. НЕ ПРАВИТЬ РУКАМИ:
 //     python3 scripts/build_models.py
 window.NNV_FACES = {
-  "generated": "2026-09-03 15:34",
+  "generated": "2026-09-11 13:22",
   "models": [
     {
       "name": "katya",

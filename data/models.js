@@ -2,7 +2,7 @@
 // пересобирается из refs/models/registry.json + usage.json командой
 //     python3 scripts/build_models.py
 window.NNV_MODELS = {
-  "generated": "2026-09-03 15:34",
+  "generated": "2026-09-11 13:22",
   "unknown": [],
   "models": [
     {
@@ -11,21 +11,33 @@ window.NNV_MODELS = {
       "gender": "f",
       "height": null,
       "build": "худощавое/стройное, узкие плечи, длинная шея, тонкие руки",
-      "note": "Действующий лист — фас + 3/4 + профиль, оба боковых смотрят вправо, левого ракурса нет. Канон сверен, не трогаем: если нужна левая сторона — догенерить второй лист и сверить отдельно.",
-      "desc": "young woman, short dark chestnut wavy bob with a choppy fringe, light hazel eyes, freckles across the nose and cheeks, natural skin with no makeup, narrow shoulders, long neck, slim petite build",
+      "note": "Канон с 11.09 — лист GPT Image 2.5 Sunburst (Flora), вариант 1, выбран Алексеем: 5 видов (оба профиля, обе 3/4, фас). Референсы — три фото из чата 11.09 (chat-20260911-*) + face-photo-crop. Прежний лист 26.08 (только правая сторона) — character-sheet-old-20260826.png. Минус канона: причёска аккуратнее, чем в жизни (у Кати растрёпанный шэг) — в кадрах просить tousled choppy bob. Профили додуманы: живых профилей нет, ждём фото по брифу.",
+      "desc": "young woman, dark brown chin-length bob with a full, slightly choppy fringe covering the eyebrows, ends slightly tousled and wavy, hazel-brown eyes, faint freckles across the nose and cheeks, fair skin with natural redness, no makeup, narrow shoulders, long neck, slim build",
       "sheetStatus": "canon",
       "sheet": "img/models/katya/sheet.webp",
       "photos": [
         {
-          "file": "face-photo-crop.jpg",
+          "file": "chat-20260911-dcee7c56.webp",
           "url": "img/models/katya/photo-01.webp"
+        },
+        {
+          "file": "chat-20260911-efe07e04.jpg",
+          "url": "img/models/katya/photo-02.webp"
+        },
+        {
+          "file": "chat-20260911-f15c979d.jpg",
+          "url": "img/models/katya/photo-03.webp"
+        },
+        {
+          "file": "face-photo-crop.jpg",
+          "url": "img/models/katya/photo-04.webp"
         }
       ],
       "refs": [
         "face-photo-crop.jpg"
       ],
-      "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, short dark chestnut wavy bob with a choppy fringe, light hazel eyes, freckles across the nose and cheeks, natural skin with no makeup, narrow shoulders, long neck, slim petite build. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
-      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, short dark chestnut wavy bob with a choppy fringe, light hazel eyes, freckles across the nose and cheeks, natural skin with no makeup, narrow shoulders, long neck, slim petite build. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "prompt": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, dark brown chin-length bob with a full, slightly choppy fringe covering the eyebrows, ends slightly tousled and wavy, hazel-brown eyes, faint freckles across the nose and cheeks, fair skin with natural redness, no makeup, narrow shoulders, long neck, slim build. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
+      "promptBase": "Character reference sheet of the EXACT same person as in the reference photo(s): young woman, dark brown chin-length bob with a full, slightly choppy fringe covering the eyebrows, ends slightly tousled and wavy, hazel-brown eyes, faint freckles across the nose and cheeks, fair skin with natural redness, no makeup, narrow shoulders, long neck, slim build. One horizontal row of FIVE studio head-and-shoulders views of this same person, left to right: (1) left profile, (2) left three-quarter view, (3) frontal view, (4) right three-quarter view, (5) right profile. EXACT same face shape, eyes, nose, mouth in every view; preserve facial identity; do not beautify, do not slim, keep natural skin texture. Neutral calm expression, plain dark crew-neck top, plain seamless background of colour #F1F1EF, soft even studio light, photorealistic photography, consistent head size and eye level across all five views. No text, no labels, no watermarks.",
       "promptCustom": false,
       "items": [
         "cap-fangs",
