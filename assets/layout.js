@@ -7,10 +7,12 @@
    1. Параллакс — у кадров, которые в макете наезжают на другие: меньший кадр
       едет быстрее большого, поэтому слои расходятся.
    2. Стопка (как на openai.com/index/introducing-chatgpt-images-2-5) — у
-      колонок из ≥3 кадров одной ширины, стоящих друг под другом. Примерно
-      в трети таких колонок (детерминированно по id вещи) первая половина
+      колонок из ≥3 кадров одной ширины, стоящих друг под другом. На ~трети
+      страниц (детерминированно, isStackPage) в таких колонках первая половина
       листается обычно, а следующие кадры прилипают к низу экрана и ложатся
-      друг на друга. */
+      друг на друга.
+   Кадр лежит ровно в своих render bounds из Figma (видимая часть узла,
+   обрезанная бордом), картинка уже с этим кропом — растягивать нечего. */
 (function () {
   var L = window.NNV_LAYOUTS || {};
   var W = 1440;
@@ -34,11 +36,11 @@
     return ix * iy / Math.min(a.w * a.h, b.w * b.h);
   }
 
-  /* колонки одинаковой ширины: одинаковые x и w (±2%), стоят столбиком
+  /* колонки одинаковой ширины: одинаковые x и w (±5%), стоят столбиком
      без наложений друг на друга и на соседей */
   function columns(imgs) {
     var used = {}, out = [];
-    var tol = W * 0.02;
+    var tol = W * 0.05;
     imgs.forEach(function (a, i) {
       if (used[i]) return;
       var g = [i];
@@ -62,7 +64,23 @@
   }
 
   function img(o, cls) {
-    return '<img class="' + cls + '" src="' + o.src + '" alt="" loading="lazy" decoding="async">';
+    return '<img class="' + cls + '" src="' + o.src + '" alt="" loading="lazy" decoding="async"' +
+           (o.o != null ? ' style="opacity:' + o.o + '"' : "") + ">";
+  }
+
+  /* стопка — на ~трети всех страниц (детерминированно): берём страницы, где
+     вообще есть столбик одинаковых кадров, и из них столько, чтобы вышла
+     треть от общего числа страниц. На выбранной странице стопкой становятся
+     все её столбики. */
+  var stackPages = null;
+  function isStackPage(id) {
+    if (!stackPages) {
+      var ids = Object.keys(L), cand = ids.filter(function (k) { return columns(L[k].imgs).length; });
+      cand.sort(function (a, b) { return hash(a) - hash(b); });
+      stackPages = {};
+      cand.slice(0, Math.round(ids.length / 3)).forEach(function (k) { stackPages[k] = 1; });
+    }
+    return !!stackPages[id];
   }
 
   function build(id) {
@@ -73,7 +91,7 @@
 
     // стопки
     columns(imgs).forEach(function (g, gi) {
-      if (!window.NNV_LAY_ALL && hash(id + ":" + gi) % 3 !== 0) return;   // ~33% колонок (NNV_LAY_ALL — показать все, для проверки)
+      if (!window.NNV_LAY_ALL && !isStackPage(id)) return;   // ~33% страниц (NNV_LAY_ALL — стопки везде, для проверки)
       var first = imgs[g[0]], last = imgs[g[g.length - 1]];
       var half = Math.floor(g.length / 2);
       var box = '<div class="lay-stack" style="left:' + vw(first.x) + ";top:" + vw(first.y) +
@@ -105,7 +123,7 @@
       imgs.forEach(function (b, j) {
         if (j === i || inStack[j]) return;
         // двигается тот, кто меньше: крупный кадр — «задник»
-        if (overlap(o, b) > 0.02 && o.w * o.h <= b.w * b.h) k = Math.max(k, 0.06 + 0.14 * (1 - o.w * o.h / (b.w * b.h)));
+        if (overlap(o, b) > 0.02 && o.w * o.h <= b.w * b.h) k = Math.max(k, 0.16 + 0.22 * (1 - o.w * o.h / (b.w * b.h)));
       });
       var st = "left:" + vw(o.x) + ";top:" + vw(o.y) + ";width:" + vw(o.w) + ";height:" + vw(o.h) + ";z-index:" + (i + 1);
       html.push('<div class="lay-im' + (k ? " is-par" : "") + '" data-k="' + k.toFixed(3) + '" style="' + st + '">' +

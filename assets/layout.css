@@ -1,18 +1,19 @@
 /* Раскладка кадров по макету Figma — см. assets/layout.js */
 .lay {
   position: absolute; top: 0; left: 0; width: 100%;
-  overflow-x: clip;              /* clip, не hidden: иначе не работает sticky у стопок */
+  overflow: clip;                /* борд Figma режет всё по своим краям; clip, не hidden: иначе не работает sticky у стопок */
   z-index: 0; pointer-events: none;
 }
 .lay-im { position: absolute; will-change: transform; }
 .lay-im img, .lay-card img {
-  display: block; width: 100%; height: 100%; object-fit: cover;
+  display: block; width: 100%; height: 100%; object-fit: fill;   /* кадр уже в пропорциях своего бокса */
 }
 
 .lay-stack { position: absolute; }
 .lay-card { position: relative; }
 .lay-card.is-stuck { position: sticky; }
 .lay-card.is-stuck img { transform: rotate(var(--rot, 0deg)); }
+.lay-card img { object-fit: cover; }   /* в стопке ширина общая, кадры в ней могут расходиться на пару процентов */
 
 /* колонки текста и покупки остаются над кадрами */
 body.has-lay .topbar { z-index: 50; }
