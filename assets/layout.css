@@ -1,0 +1,27 @@
+/* Раскладка кадров по макету Figma — см. assets/layout.js */
+.lay {
+  position: absolute; top: 0; left: 0; width: 100%;
+  overflow-x: clip;              /* clip, не hidden: иначе не работает sticky у стопок */
+  z-index: 0; pointer-events: none;
+}
+.lay-im { position: absolute; will-change: transform; }
+.lay-im img, .lay-card img {
+  display: block; width: 100%; height: 100%; object-fit: cover;
+}
+
+.lay-stack { position: absolute; }
+.lay-card { position: relative; }
+.lay-card.is-stuck { position: sticky; }
+.lay-card.is-stuck img { transform: rotate(var(--rot, 0deg)); }
+
+/* колонки текста и покупки остаются над кадрами */
+body.has-lay .topbar { z-index: 50; }
+body.has-lay .pdp { position: relative; z-index: 1; pointer-events: none; }
+/* в макете текст и покупка — часть шапки: уезжают вместе с ней, а не висят над кадрами */
+body.has-lay .pdp-left, body.has-lay .pdp-buy { pointer-events: auto; position: static; }
+body.has-lay .pdp-imgs:empty { min-height: 1px; }
+body.has-lay .proc, body.has-lay .sect-h, body.has-lay .rail, body.has-lay footer { position: relative; z-index: 1; background: var(--bg); }
+
+/* телефон: столбик */
+.pdp-imgs .fr.lay-m { aspect-ratio: auto; }
+.pdp-imgs .fr.lay-m img { position: static; width: 100%; height: auto; padding: 0; }

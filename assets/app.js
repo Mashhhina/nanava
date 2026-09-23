@@ -379,6 +379,8 @@
     /* Галерея. Если у вещи есть разновидности цвета (it.colors), кадры берём
        у выбранной: сама вещь одна, карточка одна, меняется только расцветка. */
     function gallery(main, rest) {
+      // есть раскладка из Figma (data/layouts.js) — кадры кладёт assets/layout.js
+      if (main === it.image && window.NNV_LAYOUT && NNV_LAYOUT.render(it)) return;
       var frames = [main].concat(rest || []);
       document.querySelector("[data-gallery]").innerHTML = frames.map(function (src, i) {
         // без пролёток: второй кадр — автозум-деталь из эталона
