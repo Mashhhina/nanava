@@ -1,16 +1,17 @@
-/* Раскладка кадров на странице товара по макету из Figma (врап «Section 1»,
-   node 3287:2 файла «РЕФЕРЕНСЫ И ВИЗУАЛИЗАЦИЯ», 22.09).
+/* Раскладка кадров на странице товара по макету из Figma (борды web/<вещь>
+   и «✅ ✅ ✅» файла «РЕФЕРЕНСЫ И ВИЗУАЛИЗАЦИЯ», стр. «Август 26»).
    Данные — data/layouts.js: координаты кадров в пикселях макета шириной 1440,
    y считается от верха страницы (вместе с шапкой), как в Figma.
 
    Два эффекта при скролле:
-   1. Параллакс — у кадров, которые в макете наезжают на другие: меньший кадр
-      едет быстрее большого, поэтому слои расходятся.
-   2. Стопка (как на openai.com/index/introducing-chatgpt-images-2-5) — у
-      колонок из ≥3 кадров одной ширины, стоящих друг под другом. На ~трети
-      страниц (детерминированно, isStackPage) в таких колонках первая половина
-      листается обычно, а следующие кадры прилипают к низу экрана и ложатся
-      друг на друга.
+   1. Параллакс — небольшой, только у кадров, которые в макете наезжают на
+      другие: меньший кадр едет чуть быстрее большого.
+   2. Стопка — как на openai.com/index/introducing-chatgpt-images-2-5: у
+      колонок из ≥3 кадров одной ширины, стоящих друг под другом. На ~20%
+      страниц (детерминированно, isStackPage) каждый кадр колонки — sticky с
+      top ≈ −22% своей высоты и лёгким наклоном ±1–2°: доезжает до верха
+      экрана, замирает, а следующий наезжает на него сверху. Каждый кадр
+      сохраняет свои x/ширину и отступы из макета.
    Кадр лежит ровно в своих render bounds из Figma (видимая часть узла,
    обрезанная бордом), картинка уже с этим кропом — растягивать нечего. */
 (function () {
@@ -68,17 +69,17 @@
            (o.o != null ? ' style="opacity:' + o.o + '"' : "") + ">";
   }
 
-  /* стопка — на ~трети всех страниц (детерминированно): берём страницы, где
+  /* стопка — на ~20% всех страниц (детерминированно): берём страницы, где
      вообще есть столбик одинаковых кадров, и из них столько, чтобы вышла
-     треть от общего числа страниц. На выбранной странице стопкой становятся
-     все её столбики. */
+     пятая часть от общего числа страниц. На выбранной странице стопкой
+     становятся все её столбики. */
   var stackPages = null;
   function isStackPage(id) {
     if (!stackPages) {
       var ids = Object.keys(L), cand = ids.filter(function (k) { return columns(L[k].imgs).length; });
       cand.sort(function (a, b) { return hash(a) - hash(b); });
       stackPages = {};
-      cand.slice(0, Math.round(ids.length / 3)).forEach(function (k) { stackPages[k] = 1; });
+      cand.slice(0, Math.round(ids.length / 5)).forEach(function (k) { stackPages[k] = 1; });
     }
     return !!stackPages[id];
   }
@@ -93,22 +94,20 @@
     columns(imgs).forEach(function (g, gi) {
       if (!window.NNV_LAY_ALL && !isStackPage(id)) return;   // ~33% страниц (NNV_LAY_ALL — стопки везде, для проверки)
       var first = imgs[g[0]], last = imgs[g[g.length - 1]];
-      var half = Math.floor(g.length / 2);
-      var box = '<div class="lay-stack" style="left:' + vw(first.x) + ";top:" + vw(first.y) +
-                ";width:" + vw(first.w) + ";height:" + vw(last.y + last.h - first.y) + '">';
+      var x0 = W, x1 = 0;
+      g.forEach(function (j) { x0 = Math.min(x0, imgs[j].x); x1 = Math.max(x1, imgs[j].x + imgs[j].w); });
+      var box = '<div class="lay-stack" style="left:' + vw(x0) + ";top:" + vw(first.y) +
+                ";width:" + vw(x1 - x0) + ";height:" + vw(last.y + last.h - first.y) + '">';
       var prevEnd = first.y;
       g.forEach(function (j, k) {
         var o = imgs[j];
         inStack[j] = 1;
-        var st = "margin-top:" + vw(o.y - prevEnd) + ";height:" + vw(o.h);
-        var cls = "lay-card";
-        if (k >= half) {
-          cls += " is-stuck";
-          st += ";top:calc(100vh - " + vw(o.h) + " - 48px)";
-          var rot = [1, -2, 2, -1][k % 4];
-          st += ";--rot:" + rot + "deg";
-        }
-        box += '<div class="' + cls + '" style="' + st + '">' + img(o, "") + "</div>";
+        // своё место и размер из макета; прилипает, когда над экраном остаётся ~22% кадра
+        var st = "margin-top:" + vw(o.y - prevEnd) + ";margin-left:" + vw(o.x - x0) +
+                 ";width:" + vw(o.w) + ";height:" + vw(o.h) +
+                 ";top:calc(" + vw(o.h) + " * -0.22);z-index:" + (k + 1) +
+                 ";--rot:" + [1, -2, 2, -1, 1, -1][(k + gi) % 6] + "deg";
+        box += '<div class="lay-card" style="' + st + '">' + img(o, "") + "</div>";
         prevEnd = o.y + o.h;
       });
       html.push(box + "</div>");
@@ -123,7 +122,7 @@
       imgs.forEach(function (b, j) {
         if (j === i || inStack[j]) return;
         // двигается тот, кто меньше: крупный кадр — «задник»
-        if (overlap(o, b) > 0.02 && o.w * o.h <= b.w * b.h) k = Math.max(k, 0.16 + 0.22 * (1 - o.w * o.h / (b.w * b.h)));
+        if (overlap(o, b) > 0.02 && o.w * o.h <= b.w * b.h) k = Math.max(k, 0.05 + 0.07 * (1 - o.w * o.h / (b.w * b.h)));
       });
       var st = "left:" + vw(o.x) + ";top:" + vw(o.y) + ";width:" + vw(o.w) + ";height:" + vw(o.h) + ";z-index:" + (i + 1);
       html.push('<div class="lay-im' + (k ? " is-par" : "") + '" data-k="' + k.toFixed(3) + '" style="' + st + '">' +
